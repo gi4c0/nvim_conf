@@ -46,40 +46,40 @@ call plug#begin()
 call plug#end()
 
 " ----------- Native vim settings -----------
-source $HOME/.dot-files/config/nvim/settings.vim
-source $HOME/.dot-files/config/nvim/mappings.vim
+source $HOME/.config/nvim/settings.vim
+source $HOME/.config/nvim/mappings.vim
 
 " ----------- Scripts -----------------------
-source $HOME/.dot-files/config/nvim/scripts/scripts.vim
+source $HOME/.config/nvim/scripts/scripts.vim
 
 " ===                           PLUGIN SETUP                               === "
-" source $HOME/.dot-files/config/nvim/plug-config/coc.vim
-source $HOME/.dot-files/config/nvim/plug-config/ranger.vim
-source $HOME/.dot-files/config/nvim/plug-config/markdown.vim
-source $HOME/.dot-files/config/nvim/plug-config/fugitive.vim
-source $HOME/.dot-files/config/nvim/plug-config/nerd-commenter.vim
-source $HOME/.dot-files/config/nvim/plug-config/undotree.vim
-source $HOME/.dot-files/config/nvim/plug-config/ultisnips.vim
-source $HOME/.dot-files/config/nvim/plug-config/vim-wiki.vim
-source $HOME/.dot-files/config/nvim/plug-config/git-gutter.vim
-source $HOME/.dot-files/config/nvim/plug-config/lazygit.vim
-source $HOME/.dot-files/config/nvim/plug-config/scratch.vim
+" source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/ranger.vim
+source $HOME/.config/nvim/plug-config/markdown.vim
+source $HOME/.config/nvim/plug-config/fugitive.vim
+source $HOME/.config/nvim/plug-config/nerd-commenter.vim
+source $HOME/.config/nvim/plug-config/undotree.vim
+source $HOME/.config/nvim/plug-config/ultisnips.vim
+source $HOME/.config/nvim/plug-config/vim-wiki.vim
+source $HOME/.config/nvim/plug-config/git-gutter.vim
+source $HOME/.config/nvim/plug-config/lazygit.vim
+source $HOME/.config/nvim/plug-config/scratch.vim
 
-source $HOME/.dot-files/config/nvim/plug-config/vim-maximizer.vim
-source $HOME/.dot-files/config/nvim/plug-config/vimspector.vim
+source $HOME/.config/nvim/plug-config/vim-maximizer.vim
+source $HOME/.config/nvim/plug-config/vimspector.vim
 
-source $HOME/.dot-files/config/nvim/plug-config/telescope.vim
-luafile $HOME/.dot-files/config/nvim/plug-config/tree-sitter.lua
-luafile $HOME/.dot-files/config/nvim/plug-config/lualine.lua
+source $HOME/.config/nvim/plug-config/telescope.vim
+luafile $HOME/.config/nvim/plug-config/tree-sitter.lua
+luafile $HOME/.config/nvim/plug-config/lualine.lua
 
 " LSP
-source $HOME/.dot-files/config/nvim/plug-config/lsp-config.vim
-luafile $HOME/.dot-files/config/nvim/plug-config/lsp-servers.lua
-luafile $HOME/.dot-files/config/nvim/plug-config/compe-config.lua
-luafile $HOME/.dot-files/config/nvim/plug-config/nvim-lsp-ts-utils.lua
-luafile $HOME/.dot-files/config/nvim/plug-config/lsp-saga.lua
-luafile $HOME/.dot-files/config/nvim/plug-config/lsp-signature.lua
+source $HOME/.config/nvim/plug-config/lsp-config.vim
+luafile $HOME/.config/nvim/plug-config/lsp-servers.lua
+luafile $HOME/.config/nvim/plug-config/compe-config.lua
+luafile $HOME/.config/nvim/plug-config/nvim-lsp-ts-utils.lua
+luafile $HOME/.config/nvim/plug-config/lsp-saga.lua
+luafile $HOME/.config/nvim/plug-config/lsp-signature.lua
 
 " =========== Themes ============"
-source $HOME/.dot-files/config/nvim/themes/one-dark.vim
-" source $HOME/.dot-files/config/nvim/themes/nv-code.vim
+source $HOME/.config/nvim/themes/one-dark.vim
+" source $HOME/.config/nvim/themes/nv-code.vim
