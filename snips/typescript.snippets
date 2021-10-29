@@ -19,12 +19,15 @@ endsnippet
 snippet docm "ts doc method" b
 /**
  * $1
+ * @param $2 { $3 }
+ * @returns { $0 }
  */
 endsnippet
 
 snippet ip "interface property readonly" b
 /**
  * $1
+ * @type { $3 }
  */
 readonly $2: $3;
 endsnippet
@@ -32,6 +35,7 @@ endsnippet
 snippet ips "interface prop string" b
 /**
  * $1
+ * @type { String }
  */
 readonly $2: string;
 endsnippet
@@ -39,6 +43,7 @@ endsnippet
 snippet ipn "interface prop number" b
 /**
  * $1
+ * @type { Number }
  */
 readonly $2: number;
 endsnippet
@@ -46,6 +51,7 @@ endsnippet
 snippet ipb "interface prop boolean" b
 /**
  * $1
+ * @type { Boolean }
  */
 readonly $2: boolean;
 endsnippet
@@ -53,6 +59,7 @@ endsnippet
 snippet cp "class property" b
 /**
  * $1
+ * @type { $2 }
  */
 public readonly $3: $2;
 endsnippet
@@ -60,6 +67,7 @@ endsnippet
 snippet cpn "class property number" b
 /**
  * $1
+ * @type { Number }
  */
 public readonly $2: number;
 endsnippet
@@ -67,6 +75,7 @@ endsnippet
 snippet cps "class property string" b
 /**
  * $1
+ * @type { String }
  */
 public readonly $2: string;
 endsnippet
@@ -74,6 +83,7 @@ endsnippet
 snippet cpb "class property boolean" b
 /**
  * $1
+ * @type { Boolean }
  */
 public readonly $2: boolean;
 endsnippet
@@ -81,8 +91,9 @@ endsnippet
 snippet parsconf "parser config" b
 /**
  * Config $1
+ * @type { ParserConfigModel<$2> }
  */
-public static readonly $3: ParserConfigModel<$2> = new ParserConfigModel<$2>({
+private static readonly $3: ParserConfigModel<$2> = new ParserConfigModel<$2>({
   mappings: ${4:new Array<keyof $2>($0)},
 	validators: {
 
@@ -117,7 +128,7 @@ endsnippet
 
 snippet iferr "if error check"
 if ($1 instanceof ErrorModel) {
-  return $0
+  $0
 }
 endsnippet
 
@@ -125,10 +136,6 @@ snippet hiferr "handler if error check"
 if ($1 instanceof ErrorModel) {
   return HandlerHelper.fail<NothingType>($1.description, HttpStatusEnum.InternalServerError, NOTHING);
 }
-endsnippet
-
-snippet cerr "const err: "
-const err: ErrorModel<$1, $2> = new ErrorModel<$1, $2>({ description: $0 });
 endsnippet
 
 snippet mon "monad type"
@@ -144,6 +151,7 @@ endsnippet
 snippet tp "type property readonly" b
 /**
  * $1
+ * @type { $3 }
  */
 $2: $3;
 endsnippet
@@ -151,6 +159,7 @@ endsnippet
 snippet tps "type prop string" b
 /**
  * $1
+ * @type { String }
  */
 $2: string;
 endsnippet
@@ -158,6 +167,7 @@ endsnippet
 snippet tpn "type prop number" b
 /**
  * $1
+ * @type { Number }
  */
 $2: number;
 endsnippet
@@ -165,12 +175,8 @@ endsnippet
 snippet tpb "type prop boolean" b
 /**
  * $1
+ * @type { Boolean }
  */
 $2: boolean;
 endsnippet
 
-snippet et "export type" b
-export type $1Type = Readonly<{
-  $0
-}>;
-endsnippet
