@@ -8,7 +8,6 @@ call plug#begin()
   Plug 'tpope/vim-surround'                                 " Add functionality for surrounding stuff
   Plug 'tpope/vim-repeat'                                   " Enable repeating for surround
   Plug 'jiangmiao/auto-pairs'                               " Auto insert pairs for '{]
-  Plug 'sirver/ultisnips'                                   " snippets
   Plug 'airblade/vim-gitgutter'                             " Show git diff
   Plug 'dag/vim-fish'                                       " Support for .fish files
   Plug 'mbbill/undotree'                                    " Kind of git but built in Vim
@@ -22,10 +21,20 @@ call plug#begin()
 
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}           " Run :call coc#util#install()
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-compe'
+  Plug 'glepnir/lspsaga.nvim'
+
+  " Completion
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'SirVer/ultisnips'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
   Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' " npm i -g eslint_d
-  Plug 'glepnir/lspsaga.nvim'
+
   Plug 'ray-x/lsp_signature.nvim'
 
   " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -38,6 +47,7 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'                              " Required for telescope
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
+  Plug 'onsails/lspkind-nvim'                               " Nice icons in selection (completion) block
 
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'                       " Required for lualine above
@@ -75,10 +85,10 @@ luafile $HOME/.config/nvim/plug-config/lualine.lua
 " LSP
 source $HOME/.config/nvim/plug-config/lsp-config.vim
 luafile $HOME/.config/nvim/plug-config/lsp-servers.lua
-luafile $HOME/.config/nvim/plug-config/compe-config.lua
 luafile $HOME/.config/nvim/plug-config/nvim-lsp-ts-utils.lua
 luafile $HOME/.config/nvim/plug-config/lsp-saga.lua
 luafile $HOME/.config/nvim/plug-config/lsp-signature.lua
+luafile $HOME/.config/nvim/plug-config/nvim-cmp.lua
 
 " =========== Themes ============"
 source $HOME/.config/nvim/themes/one-dark.vim
