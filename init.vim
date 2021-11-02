@@ -21,7 +21,6 @@ call plug#begin()
 
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}           " Run :call coc#util#install()
   Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
 
   " Completion
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -86,7 +85,6 @@ luafile $HOME/.config/nvim/plug-config/lualine.lua
 source $HOME/.config/nvim/plug-config/lsp-config.vim
 luafile $HOME/.config/nvim/plug-config/lsp-servers.lua
 luafile $HOME/.config/nvim/plug-config/nvim-lsp-ts-utils.lua
-luafile $HOME/.config/nvim/plug-config/lsp-saga.lua
 luafile $HOME/.config/nvim/plug-config/lsp-signature.lua
 luafile $HOME/.config/nvim/plug-config/nvim-cmp.lua
 
