@@ -29,6 +29,8 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+  Plug 'ThePrimeagen/harpoon'
+
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'                       " Required for lualine above
 
@@ -54,6 +56,7 @@ source $HOME/.config/nvim/plug-config/vim-wiki.vim
 source $HOME/.config/nvim/plug-config/git-gutter.vim
 source $HOME/.config/nvim/plug-config/lazygit.vim
 source $HOME/.config/nvim/plug-config/scratch.vim
+source $HOME/.config/nvim/plug-config/harpoon.vim
 
 source $HOME/.config/nvim/plug-config/vim-maximizer.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
