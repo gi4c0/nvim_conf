@@ -7,6 +7,8 @@ nnoremap <silent> <leader>gS :vertical :Git<cr><C-w>o
 " Git blame
 nnoremap <silent> <leader>gb :Git blame<cr>
 
+nnoremap <leader>gp :G pull origin master
+
 nnoremap <silent> <leader>gt :0Gclog<cr>
 
 augroup AutoMakes
