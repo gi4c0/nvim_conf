@@ -31,7 +31,7 @@ call plug#begin()
   Plug 'SirVer/ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
-  Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim' " Required by 'nvim-lsp-ts-utils'
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' " npm i -g eslint_d
 
   Plug 'ray-x/lsp_signature.nvim'
@@ -47,6 +47,8 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
   Plug 'onsails/lspkind-nvim'                               " Nice icons in selection (completion) block
+
+  Plug 'ThePrimeagen/harpoon'
 
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'                       " Required for lualine above
@@ -76,6 +78,7 @@ source $HOME/.config/nvim/plug-config/scratch.vim
 
 source $HOME/.config/nvim/plug-config/vim-maximizer.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
+source $HOME/.config/nvim/plug-config/harpoon.vim
 
 source $HOME/.config/nvim/plug-config/telescope.vim
 luafile $HOME/.config/nvim/plug-config/tree-sitter.lua

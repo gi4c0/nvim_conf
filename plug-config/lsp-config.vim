@@ -3,5 +3,8 @@ nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+
+nnoremap <silent> <leader>aw <cmd>lua vim.lsp.buf.code_action()<CR>
+
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-j> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
