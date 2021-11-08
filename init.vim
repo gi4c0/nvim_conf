@@ -23,13 +23,9 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'
 
   " Completion
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+
   Plug 'SirVer/ultisnips'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
   Plug 'jose-elias-alvarez/null-ls.nvim' " Required by 'nvim-lsp-ts-utils'
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' " npm i -g eslint_d
@@ -89,7 +85,6 @@ source $HOME/.config/nvim/plug-config/lsp-config.vim
 luafile $HOME/.config/nvim/plug-config/lsp-servers.lua
 luafile $HOME/.config/nvim/plug-config/nvim-lsp-ts-utils.lua
 luafile $HOME/.config/nvim/plug-config/lsp-signature.lua
-luafile $HOME/.config/nvim/plug-config/nvim-cmp.lua
 
 " =========== Themes ============"
 source $HOME/.config/nvim/themes/one-dark.vim
