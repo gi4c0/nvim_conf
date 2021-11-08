@@ -7,7 +7,7 @@ call plug#begin()
   Plug 'scrooloose/nerdcommenter'                           " Commenting tool
   Plug 'tpope/vim-surround'                                 " Add functionality for surrounding stuff
   Plug 'tpope/vim-repeat'                                   " Enable repeating for surround
-  Plug 'jiangmiao/auto-pairs'                               " Auto insert pairs for '{]
+  " Plug 'jiangmiao/auto-pairs'                               " Auto insert pairs for '{]
   Plug 'airblade/vim-gitgutter'                             " Show git diff
   Plug 'dag/vim-fish'                                       " Support for .fish files
   Plug 'mbbill/undotree'                                    " Kind of git but built in Vim
@@ -31,9 +31,6 @@ call plug#begin()
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' " npm i -g eslint_d
 
   Plug 'ray-x/lsp_signature.nvim'
-
-  " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-  " Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
   Plug 'puremourning/vimspector'
   Plug 'szw/vim-maximizer'
@@ -85,6 +82,8 @@ source $HOME/.config/nvim/plug-config/lsp-config.vim
 luafile $HOME/.config/nvim/plug-config/lsp-servers.lua
 luafile $HOME/.config/nvim/plug-config/nvim-lsp-ts-utils.lua
 luafile $HOME/.config/nvim/plug-config/lsp-signature.lua
+
+source $HOME/.config/nvim/plug-config/coq.vim
 
 " =========== Themes ============"
 source $HOME/.config/nvim/themes/one-dark.vim
