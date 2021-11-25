@@ -17,6 +17,8 @@ augroup AutoMakes
 augroup END
 
 " Take the right part during merge conflict
-nmap <leader>gj :diffget //3<CR>
+nmap <leader>gml :diffget //3<CR>
 " Take the left part during merge conflict
-nmap <leader>gf :diffget //2<CR>
+nmap <leader>gmh :diffget //2<CR>
+
+nnoremap <leader>gc :Gvsplit :%<left><left>

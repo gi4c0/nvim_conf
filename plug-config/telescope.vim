@@ -38,5 +38,5 @@ nnoremap <C-Space> <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fr <cmd>lua require('telescope.builtin').oldfiles()<cr>
 
 nnoremap <leader>ghh <cmd>lua require('telescope.builtin').git_commits()<cr>
-nnoremap <leader>gcc <cmd>lua require('telescope.builtin').git_branches()<cr>
+nnoremap <leader>gB <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>ghb <cmd>lua require('telescope.builtin').git_bcommits()<cr>
