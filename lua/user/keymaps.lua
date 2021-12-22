@@ -23,6 +23,7 @@ keymap("n", "M-j", ":resize -8<CR>", options)
 keymap("n", "M-k", ":resize +8<CR>", options)
 keymap("n", "M-h", ":vertical resize -8<CR>", options)
 keymap("n", "M-l", ":vertical resize +8<CR>", options)
+keymap("n", "<C-s>", ":w<cr>", options)
 
 -- Close window with Q
 keymap("n", "Q", ":q<cr>", options)
@@ -37,4 +38,4 @@ keymap("n", "<C-l>", "<C-w>l", options)
 -- Stay in indent mode
 keymap("v", "<", "<gv", options)
 keymap("v", ">", ">gv", options)
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", '"_dP', options)

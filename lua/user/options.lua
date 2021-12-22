@@ -38,6 +38,7 @@ vim.opt.splitright = true            -- Vertical splits will automatically be to
 -- vim.opt.t_Co = 256              -- Support 256 colors
 vim.opt.cursorline = true            -- Enable highlighting of the current line
 vim.opt.backup = false              -- This is recommended by coc
+vim.opt.termguicolors = true
 vim.opt.writebackup = true         -- This is recommended by coc
 vim.opt.clipboard = 'unnamedplus' -- Copy paste between vim and everything else
 vim.opt.showmode = false            -- Get rid of 'INSERT/NORMAL/VISUAL' status
