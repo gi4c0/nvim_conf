@@ -51,11 +51,27 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
 -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+
+-- File navigation
+  use 'kevinhwang91/rnvimr'
+
+-- Telescope
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
+
+-- Other
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  use 'jiangmiao/auto-pairs'
+
+-- Harpoon
+  use 'ThePrimeagen/harpoon'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

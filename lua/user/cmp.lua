@@ -39,11 +39,11 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
+  -- snippet = {
+    -- expand = function(args)
+      -- luasnip.lsp_expand(args.body) -- For `luasnip` users.
+    -- end,
+  -- },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
@@ -67,7 +67,8 @@ cmp.setup {
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        luasnip = "[Snippet]",
+        nvim_lua = "[LUA]",
+         -- luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
       })[entry.source.name]
@@ -76,7 +77,8 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "luasnip" },
+    { name = "nvim_lua" },
+     -- { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   },

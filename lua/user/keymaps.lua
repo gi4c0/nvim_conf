@@ -27,12 +27,7 @@ keymap("n", "<C-s>", ":w<cr>", options)
 
 -- Close window with Q
 keymap("n", "Q", ":q<cr>", options)
-
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", options)
-keymap("n", "<C-j>", "<C-w>j", options)
-keymap("n", "<C-k>", "<C-w>k", options)
-keymap("n", "<C-l>", "<C-w>l", options)
+keymap("n", "<leader>sc", ":nohlsearch<CR>", options)
 
 -- Visual --
 -- Stay in indent mode
