@@ -1,5 +1,4 @@
 local options = { noremap = true, silent = true }
-local term_options = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap

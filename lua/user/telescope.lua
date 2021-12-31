@@ -41,3 +41,4 @@ keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opt
 keymap("n", "<leader>/", "<cmd>lua require('telescope.builtin').live_grep()<cr>", options)
 keymap("n", "<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>", options)
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", options)
+keymap("n", "gr", ":Telescope lsp_references<cr>", options)
