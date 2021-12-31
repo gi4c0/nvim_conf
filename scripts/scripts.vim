@@ -1,1 +1,1 @@
-source $HOME/.dot-files/config/nvim/scripts/delete_buffers.vim
+source $HOME/.config/nvim/scripts/delete_buffers.vim

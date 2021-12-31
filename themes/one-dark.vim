@@ -1,1 +1,2 @@
+let g:onedark_transparent_background=1
 colorscheme onedark
