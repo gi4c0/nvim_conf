@@ -29,6 +29,8 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+  Plug 'ThePrimeagen/git-worktree.nvim'                     " Git Worktrees
+
   Plug 'ThePrimeagen/harpoon'
 
   Plug 'nvim-lualine/lualine.nvim'
@@ -64,6 +66,7 @@ source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 luafile $HOME/.config/nvim/plug-config/tree-sitter.lua
 luafile $HOME/.config/nvim/plug-config/lualine.lua
+source $HOME/.config/nvim/plug-config/git-worktree.vim
 
 " =========== Themes ============"
 source $HOME/.config/nvim/themes/one-dark.vim

@@ -1,5 +1,4 @@
 {
-  "npm.binPath": "/home/alex/.nvm/versions/node/v16.3.0/bin/npm",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggestionActions.enabled": true,
   "coc.preferences.formatOnSaveFiletypes": [
@@ -20,6 +19,7 @@
     "Creds",
     "Creset",
     "Evoplay",
+    "Gamatron",
     "Gclog",
     "ILIKE",
     "Liskove",
@@ -36,7 +36,9 @@
     "Tabularize",
     "UPSERT",
     "Ulti",
+    "Unplace",
     "Unvoid",
+    "Uplines",
     "Zues",
     "agrs",
     "alacritty",
@@ -56,6 +58,7 @@
     "doesnt",
     "downline",
     "else's",
+    "favourite",
     "fileupload",
     "fkey",
     "gametype",
@@ -104,7 +107,8 @@
     "upline's",
     "uploader",
     "varchar",
-    "webp"
+    "webp",
+    "winlose"
   ],
 
   "cSpell.ignorePaths": [
