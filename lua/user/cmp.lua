@@ -39,11 +39,11 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
-  -- snippet = {
-    -- expand = function(args)
-      -- luasnip.lsp_expand(args.body) -- For `luasnip` users.
-    -- end,
-  -- },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),

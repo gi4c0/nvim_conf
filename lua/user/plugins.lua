@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use 'navarasu/onedark.nvim'
 
 -- cmp plugins
+  use "L3MON4D3/LuaSnip"
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
@@ -72,6 +73,12 @@ return packer.startup(function(use)
 
 -- Harpoon
   use 'ThePrimeagen/harpoon'
+
+  use 'ThePrimeagen/git-worktree.nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
