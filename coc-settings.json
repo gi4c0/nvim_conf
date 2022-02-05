@@ -8,6 +8,7 @@
   "go.goplsOptions": {
       "gofumpt": true
   },
+  "go.goplsPath": "/Users/alekseypanchenko/go/bin/gopls",
   "cSpell.userWords": [
     "BTRIM",
     "Backoffice",
@@ -22,6 +23,7 @@
     "Gamatron",
     "Gclog",
     "ILIKE",
+    "Jili",
     "Liskove",
     "MIDDLEWARES",
     "Menlo",
@@ -39,6 +41,7 @@
     "Unplace",
     "Unvoid",
     "Uplines",
+    "Xtream",
     "Zues",
     "agrs",
     "alacritty",
