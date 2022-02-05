@@ -79,9 +79,18 @@ return packer.startup(function(use)
   use 'ThePrimeagen/harpoon'
 
   use 'ThePrimeagen/git-worktree.nvim'
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
+  }
+
+-- Clipboard history
+  use {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require('neoclip').setup({})
+    end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
