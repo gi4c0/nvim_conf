@@ -46,6 +46,10 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use 'navarasu/onedark.nvim'
 
+-- Git
+  use 'tpope/vim-fugitive'
+  use 'kdheepak/lazygit.nvim'
+
 -- cmp plugins
   use "L3MON4D3/LuaSnip"
   use "hrsh7th/nvim-cmp" -- The completion plugin
