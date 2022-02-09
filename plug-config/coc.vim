@@ -1,8 +1,7 @@
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rls', 'coc-format-json',
-  \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
-  \ 'coc-protobuf'
+  \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go'
 \]
 
 " Menu -> JSON format

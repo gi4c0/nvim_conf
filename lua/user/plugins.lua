@@ -49,6 +49,7 @@ return packer.startup(function(use)
 -- Git
   use 'tpope/vim-fugitive'
   use 'kdheepak/lazygit.nvim'
+  use 'airblade/vim-gitgutter'
 
 -- cmp plugins
   use "L3MON4D3/LuaSnip"
@@ -74,6 +75,9 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'jiangmiao/auto-pairs'
+
+-- Status line
+  use 'nvim-lualine/lualine.nvim'
 
 -- Harpoon
   use 'ThePrimeagen/harpoon'
