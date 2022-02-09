@@ -75,6 +75,7 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'jiangmiao/auto-pairs'
+  use 'sirver/ultisnips'
 
 -- Status line
   use 'nvim-lualine/lualine.nvim'
