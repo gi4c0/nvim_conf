@@ -25,7 +25,7 @@ keymap("n", "M-l", ":vertical resize +8<CR>", options)
 keymap("n", "<C-s>", ":w<cr>", options)
 
 -- Close window with Q
-keymap("n", "Q", ":q<cr>", options)
+keymap("n", "Q", ":bdelete<cr>", options)
 keymap("n", "<leader>sc", ":nohlsearch<CR>", options)
 
 -- Visual --

@@ -78,6 +78,10 @@ return packer.startup(function(use)
 -- Harpoon
   use 'ThePrimeagen/harpoon'
 
+  use {
+    'neoclide/coc.nvim',
+    branch = 'release'
+  }
   use 'ThePrimeagen/git-worktree.nvim'
 
   use {
