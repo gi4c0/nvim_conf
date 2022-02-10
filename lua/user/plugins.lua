@@ -71,13 +71,6 @@ return packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
--- Other
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'jiangmiao/auto-pairs'
-  use 'sirver/ultisnips'
-  use 'vimwiki/vimwiki'
-
 -- Status line
   use 'nvim-lualine/lualine.nvim'
 
@@ -102,6 +95,14 @@ return packer.startup(function(use)
       require('neoclip').setup({})
     end,
   }
+
+-- Other
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  use 'jiangmiao/auto-pairs'
+  use 'sirver/ultisnips'
+  use 'vimwiki/vimwiki'
+  use 'mbbill/undotree'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

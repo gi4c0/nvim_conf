@@ -195,6 +195,11 @@ _G.packer_plugins = {
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/sirver/ultisnips"
   },
+  undotree = {
+    loaded = true,
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/vim-fugitive",

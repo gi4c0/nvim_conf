@@ -2,7 +2,7 @@
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rls', 'coc-format-json',
   \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
-  \ 'coc-protobuf'
+  \ 'coc-protobuf', 'coc-lua'
 \]
 
 " Menu -> JSON format
