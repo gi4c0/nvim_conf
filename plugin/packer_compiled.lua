@@ -214,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
