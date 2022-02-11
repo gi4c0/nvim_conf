@@ -18,10 +18,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 --  Use alt + hjkl to resize windows
-keymap("n", "M-j", ":resize -8<CR>", options)
-keymap("n", "M-k", ":resize +8<CR>", options)
-keymap("n", "M-h", ":vertical resize -8<CR>", options)
-keymap("n", "M-l", ":vertical resize +8<CR>", options)
+keymap("n", "<Down>", ":resize -8<CR>", options)
+keymap("n", "<Up>", ":resize +8<CR>", options)
+keymap("n", "<Left>", ":vertical resize -8<CR>", options)
+keymap("n", "<Right>", ":vertical resize +8<CR>", options)
 keymap("n", "<C-s>", ":w<cr>", options)
 
 -- Close window with Q
