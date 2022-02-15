@@ -103,6 +103,8 @@ return packer.startup(function(use)
   use 'sirver/ultisnips'
   use 'vimwiki/vimwiki'
   use 'mbbill/undotree'
+  use 'mtth/scratch.vim'
+  use 'scrooloose/nerdcommenter'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

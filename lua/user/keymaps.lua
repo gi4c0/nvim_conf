@@ -17,7 +17,6 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
---  Use alt + hjkl to resize windows
 keymap("n", "<Down>", ":resize -8<CR>", options)
 keymap("n", "<Up>", ":resize +8<CR>", options)
 keymap("n", "<Left>", ":vertical resize -8<CR>", options)

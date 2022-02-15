@@ -19,3 +19,5 @@ require "user.git-gutter"
 require "user.ultisnips"
 require "user.vim-wiki"
 require "user.undotree"
+require "user.scratch"
+require('user.nerd-commenter')
