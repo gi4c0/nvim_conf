@@ -4,13 +4,16 @@ require "user.plugins"
 require "user.colorscheme"
 -- require "user.cmp"
 -- require "user.lsp"
+-- require "user.lua-snip"
+
 vim.cmd('source $HOME/.config/nvim/lua/user/coc.vim')
+vim.cmd('source $HOME/.config/nvim/scripts/scripts.vim')
+
 require "user.ranger"
 require "user.telescope"
 require "user.harpoon"
 require "user.git-worktree"
 require "user.treesitter"
--- require "user.lua-snip"
 require "user.fugitive"
 require "user.lazygit"
 require "user.neoclip"

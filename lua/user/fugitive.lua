@@ -4,7 +4,7 @@ local options = { noremap = true, silent = true }
 keymap("n", "<leader>gs", ":vertical :Git<cr>", options)
 keymap("n", "<leader>gS", ":vertical :Git<cr><C-w>o", options)
 keymap("n", "<leader>gb", ":Git blame<cr>", options)
-keymap("n", "<leader>gp", ":G pull origin master", options)
+keymap("n", "<leader>gp", ":G pull origin v2", options)
 keymap("n", "<leader>gt", ":0Gclog<cr>", options)
 
 keymap("n", "<leader>glm", ":diffget //3<CR>", options)
