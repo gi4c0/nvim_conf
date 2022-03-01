@@ -88,14 +88,6 @@ return packer.startup(function(use)
     run = ':TSUpdate'
   }
 
--- Clipboard history
-  use {
-    "AckslD/nvim-neoclip.lua",
-    config = function()
-      require('neoclip').setup({})
-    end,
-  }
-
 -- Other
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
