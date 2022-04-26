@@ -44,5 +44,5 @@ vim.opt.clipboard = 'unnamedplus' -- Copy paste between vim and everything else
 vim.opt.showmode = false            -- Get rid of 'INSERT/NORMAL/VISUAL' status
 vim.opt.colorcolumn = '160'       -- Visualize max allowed line length by column
 vim.opt.swapfile = false                        -- creates a swapfile
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set shortmess+=c]]
+vim.opt.iskeyword:append("-")
+vim.opt.shortmess:append("c")

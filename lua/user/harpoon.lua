@@ -2,7 +2,7 @@ local keymap = vim.api.nvim_set_keymap
 local options = { noremap = true, silent = true }
 
 keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", options)
-keymap("n", "<C-m>", "<cmd>lua require'harpoon.mark'.add_file()<CR>", options)
+keymap("n", "<leader><space>", ":lua require'harpoon.mark'.add_file()<CR>", options)
 keymap("n", "<leader>1", ":lua require'harpoon.ui'.nav_file(1)<CR>", options)
 keymap("n", "<leader>2", ":lua require'harpoon.ui'.nav_file(2)<CR>", options)
 keymap("n", "<leader>3", ":lua require'harpoon.ui'.nav_file(3)<CR>", options)
