@@ -88,6 +88,8 @@ return packer.startup(function(use)
     run = ':TSUpdate'
   }
 
+  use 'ollykel/v-vim'
+
 -- Other
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
