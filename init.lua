@@ -7,6 +7,7 @@ require "user.colorscheme"
 -- require "user.lua-snip"
 
 vim.cmd('source $HOME/.config/nvim/lua/user/coc.vim')
+-- vim.cmd('source $HOME/.config/nvim/lua/user/vimspector.vim')
 vim.cmd('source $HOME/.config/nvim/scripts/scripts.vim')
 
 require "user.ranger"
@@ -22,4 +23,5 @@ require "user.ultisnips"
 require "user.vim-wiki"
 require "user.undotree"
 require "user.scratch"
+require "user.copilot"
 require('user.nerd-commenter')

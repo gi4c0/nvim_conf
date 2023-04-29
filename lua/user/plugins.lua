@@ -81,6 +81,7 @@ return packer.startup(function(use)
     'neoclide/coc.nvim',
     branch = 'release'
   }
+
   use 'ThePrimeagen/git-worktree.nvim'
 
   use {
@@ -99,6 +100,7 @@ return packer.startup(function(use)
   use 'mbbill/undotree'
   use 'mtth/scratch.vim'
   use 'scrooloose/nerdcommenter'
+  use 'github/copilot.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
