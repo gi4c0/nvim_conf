@@ -4,13 +4,14 @@ require "user.plugins"
 require "user.colorscheme"
 require "user.lsp"
 require "user.lua-snip"
+require "user.trouble"
 
 -- vim.cmd('source $HOME/.config/nvim/lua/user/coc.vim')
 -- vim.cmd('source $HOME/.config/nvim/lua/user/vimspector.vim')
 vim.cmd('source $HOME/.config/nvim/scripts/scripts.vim')
 
--- require "user.ranger"
-require "user.oil"
+require "user.ranger"
+-- require "user.oil"
 require "user.telescope"
 require "user.harpoon"
 require "user.git-worktree"
