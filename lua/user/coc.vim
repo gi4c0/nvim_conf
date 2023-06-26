@@ -1,7 +1,8 @@
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions = [
-  \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rls', 'coc-format-json',
-  \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go'
+  \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rust-analyzer', 'coc-format-json',
+  \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
+  \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint'
 \]
 
 " Menu -> JSON format
@@ -15,6 +16,7 @@ inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<
 
 " Map keys for goto's
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <C-w>v <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> gy <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -42,6 +44,8 @@ nmap <silent> <leader>mrf :CocCommand workspace.renameCurrentFile<CR>
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+inoremap <silent><C-k> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -53,14 +57,10 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use ctrl+k and ctrl+j to navigate diagnostics
 nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
