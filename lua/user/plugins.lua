@@ -57,22 +57,23 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
-
--- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
 -- File navigation
   use 'kevinhwang91/rnvimr'
+  use 'stevearc/oil.nvim'
 
 -- Telescope
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
 -- Status line
-  use 'nvim-lualine/lualine.nvim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  use 'nvim-tree/nvim-web-devicons'
 
 -- Harpoon
   use 'ThePrimeagen/harpoon'
@@ -100,7 +101,29 @@ return packer.startup(function(use)
   use 'mbbill/undotree'
   use 'mtth/scratch.vim'
   use 'scrooloose/nerdcommenter'
-  use 'github/copilot.vim'
+  -- use 'github/copilot.vim'
+
+  -- LSP
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {                                      -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},     -- Required
+      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
+    }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

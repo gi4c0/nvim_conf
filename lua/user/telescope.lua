@@ -45,3 +45,5 @@ keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"
 
 keymap("n", "<leader>ghh", "<cmd>lua require('telescope.builtin').git_commits()<cr>", options)
 keymap("n", "<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", options)
+keymap("n", "<leader>el", ':Telescope diagnostics<CR>', options)
+
