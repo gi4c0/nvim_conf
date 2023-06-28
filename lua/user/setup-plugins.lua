@@ -112,6 +112,7 @@ return packer.startup(function(use)
     requires = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
+      {'jose-elias-alvarez/typescript.nvim'},
       {                                      -- Optional
         'williamboman/mason.nvim',
         run = function()
