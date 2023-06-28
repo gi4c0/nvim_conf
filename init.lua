@@ -9,6 +9,7 @@ require "user.plugins.lsp"
 require "user.plugins.lua-snip"
 require "user.plugins.typescript"
 require "user.plugins.trouble"
+require "user.plugins.lsp-saga"
 
 -- vim.cmd('source $HOME/.config/nvim/lua/user/plugins/coc.vim')
 vim.cmd('source $HOME/.config/nvim/scripts/scripts.vim')

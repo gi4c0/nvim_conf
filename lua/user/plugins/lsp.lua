@@ -8,8 +8,6 @@ lsp.ensure_installed( {
   'gopls'
 })
 
-lsp.preset('recommended')
-
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
@@ -23,6 +21,11 @@ lsp.set_sign_icons({
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
+
+  lsp.default_keymaps({
+    buffer = bufnr,
+    omit = {'gD', 'gr'}
+  })
 
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
