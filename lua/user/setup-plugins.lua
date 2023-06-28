@@ -19,7 +19,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost setup-plugins.lua source <afile> | PackerSync
   augroup end
 ]]
 
@@ -59,9 +59,12 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "hrsh7th/cmp-nvim-lua"
 
+
 -- File navigation
   use 'kevinhwang91/rnvimr'
   use 'stevearc/oil.nvim'
+  use 'nvim-tree/nvim-tree.lua'
+
 
 -- Telescope
   use 'nvim-telescope/telescope.nvim'
@@ -97,7 +100,6 @@ return packer.startup(function(use)
   use 'tpope/vim-repeat'
   use 'jiangmiao/auto-pairs'
   use 'sirver/ultisnips'
-  use 'vimwiki/vimwiki'
   use 'mbbill/undotree'
   use 'mtth/scratch.vim'
   use 'scrooloose/nerdcommenter'

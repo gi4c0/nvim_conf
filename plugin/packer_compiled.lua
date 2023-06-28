@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -268,11 +273,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
-  },
-  vimwiki = {
-    loaded = true,
-    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/vimwiki",
-    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
