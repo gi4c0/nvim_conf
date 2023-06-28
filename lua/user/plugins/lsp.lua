@@ -24,7 +24,7 @@ lsp.on_attach(function(client, bufnr)
 
   lsp.default_keymaps({
     buffer = bufnr,
-    omit = {'gD', 'gr'}
+    omit = {'gD', 'gr', 'K'}
   })
 
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
