@@ -44,7 +44,7 @@ nmap <silent> <leader>mrf :CocCommand workspace.renameCurrentFile<CR>
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-inoremap <silent><C-k> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
+" inoremap <silent><C-k> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -63,8 +63,8 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use ctrl+k and ctrl+j to navigate diagnostics
-nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+nmap <silent> ]d <Plug>(coc-diagnostic-prev)
+nmap <silent> [d <Plug>(coc-diagnostic-next)
 
 " Show list of errors from current buffer
 nmap <silent> <leader>el :CocDiagnostics<CR>

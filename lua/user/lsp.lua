@@ -24,8 +24,8 @@ lsp.set_sign_icons({
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-  vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>mrr", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>aw", function() vim.lsp.buf.code_action() end, opts)
 end)
