@@ -6,5 +6,6 @@ lsp_signature.setup({
     border = "rounded"
   },
   toggle_key = '<C-k>',
+  toggle_key_flip_floatwin_setting = true,
   hint_enable = false
 })
