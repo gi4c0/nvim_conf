@@ -31,6 +31,7 @@ require "user.plugins.undotree"
 require "user.plugins.scratch"
 require "user.plugins.nerd-commenter"
 require "user.plugins.oil" -- file manager
+require "user.plugins.tmux" -- file manager
 
 -- Custom
 require "user.plugins.lint-node"
