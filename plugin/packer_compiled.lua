@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cspell.nvim"] = {
+    loaded = true,
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/cspell.nvim",
+    url = "https://github.com/davidmh/cspell.nvim"
+  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
@@ -163,6 +168,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/scrooloose/nerdcommenter"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
