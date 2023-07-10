@@ -5,7 +5,9 @@ lsp.ensure_installed( {
   'eslint',
   'lua_ls',
   'rust_analyzer',
-  'gopls'
+  'gopls',
+  'jsonls',
+  'dockerls'
 })
 
 -- (Optional) Configure lua language server for neovim
@@ -33,6 +35,7 @@ lsp.on_attach(function(client, bufnr)
   -- vim.keymap.set("n", "<leader>aw", function() vim.lsp.buf.code_action() end, opts)
 end)
 
+lsp.skip_server_setup({'tsserver'}) -- We setup config separately in typescript.lua file
 lsp.setup()
 
 local cmp = require('cmp')
@@ -40,8 +43,8 @@ local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
   sources = {
-    {name = 'path'},
     {name = 'nvim_lsp'},
+    {name = 'path'},
     {name = 'buffer', keyword_length = 3},
     {name = 'luasnip', keyword_length = 2},
   },

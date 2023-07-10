@@ -81,10 +81,7 @@ return packer.startup(function(use)
 -- Harpoon
   use 'ThePrimeagen/harpoon'
 
-  use {
-    'neoclide/coc.nvim',
-    branch = 'release'
-  }
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
 
   use 'ThePrimeagen/git-worktree.nvim'
 
@@ -112,6 +109,7 @@ return packer.startup(function(use)
     requires = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
+      {'ray-x/lsp_signature.nvim'},          -- Signature
       {'jose-elias-alvarez/typescript.nvim'},
       {'nvimdev/lspsaga.nvim'},
       {                                      -- Optional
@@ -136,6 +134,14 @@ return packer.startup(function(use)
 
   use {"akinsho/toggleterm.nvim", tag = '*'}
   use 'christoomey/vim-tmux-navigator'
+
+  -- use '/Users/alekseypanchenko/dev/lint-ts-project.nvim'
+  use {
+    'gi4c0/lint-node.nvim',
+    requires = {
+      {'nvim-telescope/telescope.nvim'}
+    }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

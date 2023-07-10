@@ -24,7 +24,7 @@ vim.opt.incsearch = true             -- Highlight everything right after typing
 vim.opt.ignorecase = true            -- Ingore case while search
 vim.opt.showmatch = true             -- Show matching brackets
 vim.opt.history = 200           -- History amount of commands to keep in memory
-vim.opt.cmdheight = 2           -- Better display for messages
+vim.opt.cmdheight = 1           -- Better display for messages
 vim.opt.updatetime = 300        -- Smaller updatetime for CursorHold & CursorHoldI
 vim.opt.timeoutlen = 1000       -- By default timeoutlen is 1000 ms
 vim.opt.signcolumn = 'yes'        -- Always show signcolumns
@@ -46,3 +46,4 @@ vim.opt.colorcolumn = '160'       -- Visualize max allowed line length by column
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.iskeyword:append("-")
 vim.opt.shortmess:append("c")
+vim.diagnostic.config({ virtual_text = false })

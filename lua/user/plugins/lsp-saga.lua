@@ -6,15 +6,28 @@ require("lspsaga").setup({
     confirm = "<CR>",
     in_select = false,
   },
+  symbol_in_winbar = {
+    enable = false
+  },
+  lightbulb = {
+    enable = false,
+    enable_in_insert = true,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = true,
+  },
+  finder = {
+    keys = {
+      toggle_or_open = '<CR>'
+    }
+  }
 })
 
 local keymap = vim.keymap.set
 
 -- Code action
 keymap({"n","v"}, "<leader>aw", "<cmd>Lspsaga code_action<CR>")
-
--- Rename all occurrences of the hovered word for the entire file
--- keymap("n", "<leader>mrr", "<cmd>Lspsaga rename<CR>")
+keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
 -- Rename all occurrences of the hovered word for the selected files
 keymap("n", "<leader>mrr", "<cmd>Lspsaga rename<CR>")
@@ -50,4 +63,4 @@ keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
 -- Pressing the key twice will enter the hover window
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 
-keymap("n", "gr", ":Lspsaga lsp_finder<CR>")
+keymap("n", "gr", ":Lspsaga finder<CR>")

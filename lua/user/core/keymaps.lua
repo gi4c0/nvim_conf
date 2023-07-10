@@ -28,6 +28,7 @@ keymap('n', 'cI', '^ciw', options)
 -- Close window with Q
 keymap("n", "Q", ":bdelete<cr>", options)
 keymap("n", "<leader>sc", ":nohlsearch<CR>", options)
+keymap("n", "<leader>hv", ":Telescope help_tags<CR>", options)
 
 -- Visual --
 -- Stay in indent mode
