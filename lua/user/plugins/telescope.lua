@@ -5,6 +5,7 @@ local actions = require('telescope.actions')
 
 require('telescope').setup{
   defaults = {
+    file_ignore_patterns = {"%.git/*"},
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     mappings = {
       i = {
@@ -37,7 +38,7 @@ require('telescope').setup{
   }
 }
 
-keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", options)
+keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>", options)
 keymap("n", "<leader>/", "<cmd>lua require('telescope.builtin').live_grep()<cr>", options)
 keymap("n", "<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>", options)
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", options)
