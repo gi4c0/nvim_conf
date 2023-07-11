@@ -20,6 +20,9 @@ require("lspsaga").setup({
     keys = {
       toggle_or_open = '<CR>'
     }
+  },
+  implement = {
+    enable = false
   }
 })
 
