@@ -2,8 +2,9 @@
 local keymap = vim.api.nvim_set_keymap
 local options = { noremap = true, silent = true }
 local actions = require('telescope.actions')
+local telescope = require "telescope"
 
-require('telescope').setup{
+telescope.setup{
   defaults = {
     file_ignore_patterns = {"%.git/*"},
     file_sorter = require('telescope.sorters').get_fzy_sorter,
@@ -35,8 +36,26 @@ require('telescope').setup{
         }
       }
     }
+  },
+  extensions = {
+    file_browser = {
+      previewer = false,
+      -- theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    }
   }
 }
+
+telescope.load_extension "file_browser"
 
 keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>", options)
 keymap("n", "<leader>/", "<cmd>lua require('telescope.builtin').live_grep()<cr>", options)
@@ -47,3 +66,4 @@ keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"
 keymap("n", "<leader>ghh", "<cmd>lua require('telescope.builtin').git_commits()<cr>", options)
 keymap("n", "<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", options)
 
+keymap("n", "<C-f>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true, silent = true })

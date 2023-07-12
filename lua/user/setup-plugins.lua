@@ -67,8 +67,12 @@ return packer.startup(function(use)
 
 
 -- Telescope
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-telescope/telescope-file-browser.nvim'}
+    }
+  }
 
 -- Status line
   use {

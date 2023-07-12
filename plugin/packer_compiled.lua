@@ -234,10 +234,10 @@ _G.packer_plugins = {
     path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/scratch.vim",
     url = "https://github.com/mtth/scratch.vim"
   },
-  ["telescope-fzy-native.nvim"] = {
+  ["telescope-file-browser.nvim"] = {
     loaded = true,
-    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
+    path = "/Users/alekseypanchenko/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
