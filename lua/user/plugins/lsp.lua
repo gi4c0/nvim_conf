@@ -64,3 +64,6 @@ cmp.setup({
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
   }
 })
+
+-- GO
+vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
