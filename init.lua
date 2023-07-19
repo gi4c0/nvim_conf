@@ -39,5 +39,5 @@ require "user.plugins.lint-node"
 -- require "user.plugins.nvim-tree"
 -- require "user.plugins.terminal"
 -- require "user.plugins.copilot"
--- require "user.ranger"
+-- require "user.plugins.ranger"
 -- vim.cmd('source $HOME/.config/nvim/lua/user/vimspector.vim')

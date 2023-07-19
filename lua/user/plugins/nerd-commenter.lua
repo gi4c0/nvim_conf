@@ -1,3 +1,5 @@
+-- Create default mappings
+vim.g.NERDCreateDefaultMappings = 0
 -- Add <n> spaces before comment
 vim.g.NERDSpaceDelims = 1
 
@@ -15,3 +17,9 @@ vim.g.NERDToggleCheckAllLines = 1
 
 -- Specifies if empty lines should be commented (useful with regions).
 vim.g.NERDCommentEmptyLines = 0
+
+
+local opts = {noremap = true, silent = true}
+
+vim.keymap.set("n", "<leader>c<space>", "<Plug>NERDCommenterToggle", opts)
+vim.keymap.set("n", "<leader>cs", "<Plug>NERDCommenterSexy", opts)

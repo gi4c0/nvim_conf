@@ -29,10 +29,11 @@ lsp.on_attach(function(client, bufnr)
     omit = {'gD', 'gr', 'K'}
   })
 
-  vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   -- vim.keymap.set("n", "<leader>mrr", function() vim.lsp.buf.rename() end, opts)
-  -- vim.keymap.set("n", "<leader>aw", function() vim.lsp.buf.code_action() end, opts)
 end)
 
 lsp.skip_server_setup({'tsserver'}) -- We setup config separately in typescript.lua file

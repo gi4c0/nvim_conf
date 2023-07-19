@@ -1,5 +1,6 @@
 require("lspsaga").setup({
   rename = {
+    auto_save = true,
     quit = "<C-c>",
     exec = "<CR>",
     mark = "x",
@@ -8,6 +9,10 @@ require("lspsaga").setup({
   },
   symbol_in_winbar = {
     enable = false
+  },
+  project_replace = {
+    quit = '<ESC>',
+    select = '<TAB>'
   },
   lightbulb = {
     enable = false,
@@ -31,7 +36,6 @@ local keymap = vim.keymap.set
 
 -- Code action
 keymap({"n","v"}, "<leader>aw", "<cmd>Lspsaga code_action<CR>")
-keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
 -- Rename all occurrences of the hovered word for the selected files
 keymap("n", "<leader>mrr", "<cmd>Lspsaga rename<CR>")
@@ -57,7 +61,7 @@ keymap("n","gt", "<cmd>Lspsaga goto_type_definition<CR>")
 -- Show line diagnostics
 -- You can pass argument ++unfocus to
 -- unfocus the show_line_diagnostics floating window
-keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+-- keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 -- Hover Doc
 -- If there is no hover doc,
