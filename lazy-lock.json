@@ -7,7 +7,6 @@
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cspell.nvim": { "branch": "main", "commit": "0e9c586bd7f7ab3f1f2f000a084121203e0ee62c" },
-  "git-worktree.nvim": { "branch": "master", "commit": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458" },
   "harpoon": { "branch": "master", "commit": "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" },
   "lazy.nvim": { "branch": "main", "commit": "25beed5e2e935ebc00d7e3eed1dc502df3c40e39" },
   "lazygit.nvim": { "branch": "main", "commit": "146c6294bf0b4db1572fa7232039aaa9003a52b9" },

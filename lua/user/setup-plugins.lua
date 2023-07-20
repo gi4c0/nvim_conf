@@ -59,8 +59,6 @@ require('lazy').setup {
 
   -- { 'neoclide/coc.nvim', branch = 'release' }
 
-  'ThePrimeagen/git-worktree.nvim',
-
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate'

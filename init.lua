@@ -20,7 +20,6 @@ vim.cmd('source $HOME/.config/nvim/scripts/scripts.vim')
 
 require "user.plugins.telescope"
 require "user.plugins.harpoon"
-require "user.plugins.git-worktree"
 require "user.plugins.treesitter"
 require "user.plugins.fugitive"
 require "user.plugins.lazygit"
