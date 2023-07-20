@@ -1,12 +1,17 @@
-local keymap = vim.api.nvim_set_keymap
-local options = { noremap = true, silent = true }
+return {
+  'mbbill/undotree',
 
-keymap('n', '<leader>u', ':UndotreeToggle<cr>:UndotreeFocus<cr>', options)
+  init = function()
+    -- Persistent undo
+    vim.cmd [[
+      if has("persistent_undo")
+        set undodir=~/dev/.undodir
+        set undofile
+      endif
+    ]]
+  end,
 
--- Persistent undo
-vim.cmd [[
-  if has("persistent_undo")
-      set undodir=~/dev/.undodir
-      set undofile
-  endif
-]]
+  keys = {
+    {'<leader>u', ':UndotreeToggle<cr>:UndotreeFocus<cr>', noremap = true, silent = true }
+  }
+}

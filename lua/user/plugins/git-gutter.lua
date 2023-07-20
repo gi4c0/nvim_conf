@@ -1,13 +1,14 @@
-local keymap = vim.api.nvim_set_keymap
-local options = { noremap = true, silent = true }
-
---  Disable default mappings
-vim.g.gitgutter_map_keys = 0
-
--- Jump to next git hunk
-keymap('n', ']g', '<Plug>(GitGutterNextHunk)', {})
-
--- Jump to previous git hunk
-keymap('n', '[g', '<Plug>(GitGutterPrevHunk)', {})
-
-keymap('n', '<leader>hs', '<Plug>(GitGutterPreviewHunk)', {})
+return {
+  'airblade/vim-gitgutter',
+  keys = {
+    -- Jump to next git hunk
+    {']g', '<Plug>(GitGutterNextHunk)', noremap = true, silent = true},
+    -- Jump to previous git hunk
+    {'[g', '<Plug>(GitGutterPrevHunk)', noremap = true, silent = true} ,
+    {'<leader>hs', '<Plug>(GitGutterPreviewHunk)', noremap = true, silent = true},
+  },
+  config = function()
+    --  Disable default mappings
+    vim.g.gitgutter_map_keys = 0
+  end
+}

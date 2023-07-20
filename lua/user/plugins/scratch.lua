@@ -1,12 +1,17 @@
-local keymap = vim.api.nvim_set_keymap
-local options = { noremap = true, silent = true }
+return {
+  'mtth/scratch.vim',
 
---  Open the scratch window in a horizontal split instead of a vertical one
-vim.g.scratch_horizontal = 0
-vim.g.scratch_top = 0
-vim.g.scratch_no_mappings = 1
+  keys = {
+    {'<leader>bs', ':Scratch<CR>', noremap = true, silent = true }
+  },
 
-vim.g.scratch_height = 100
-vim.g.scratch_autohide = 0
+  init = function()
+    --  Open the scratch window in a horizontal split instead of a vertical one
+    vim.g.scratch_horizontal = 0
+    vim.g.scratch_top = 0
+    vim.g.scratch_no_mappings = 1
 
-keymap('n', '<leader>bs', ':Scratch<CR>', options)
+    vim.g.scratch_height = 100
+    vim.g.scratch_autohide = 0
+  end
+}

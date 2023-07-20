@@ -1,4 +1,17 @@
 require('trouble').setup{
+}
+
+return {
+  'folke/trouble.nvim',
+
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+
+  keys = {
+    {"<leader>eL", "<cmd>TroubleToggle workspace_diagnostics<cr>", silent = true, noremap = true },
+    {"<leader>el", "<cmd>TroubleToggle document_diagnostics<cr>", silent = true, noremap = true },
+  },
+
+  opts = {
     position = "bottom", -- position of the list can be: bottom, top, left, right
     height = 10, -- height of the trouble list when position is top or bottom
     width = 50, -- width of the list when position is left or right
@@ -47,7 +60,5 @@ require('trouble').setup{
       other = "",
     },
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+  }
 }
-
-vim.keymap.set("n", "<leader>eL", "<cmd>TroubleToggle workspace_diagnostics<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "<leader>el", "<cmd>TroubleToggle document_diagnostics<cr>", {silent = true, noremap = true})
