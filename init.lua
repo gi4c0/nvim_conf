@@ -7,7 +7,6 @@ require "user.core.globals"
 
 -- ------ LSP --------
 require "user.plugins.lsp"
-require "user.plugins.lua-snip"
 require "user.plugins.lua-ls"
 require "user.plugins.typescript"
 require "user.plugins.trouble"
@@ -30,7 +29,8 @@ require "user.plugins.undotree"
 require "user.plugins.scratch"
 require "user.plugins.nerd-commenter"
 require "user.plugins.oil" -- file manager
-require "user.plugins.tmux" -- file manager
+require "user.plugins.tmux"
+require "user.plugins.dap"
 
 -- Custom
 require "user.plugins.lint-node"

@@ -1,4 +1,4 @@
-  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -12,8 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-  -- My plugins here
-  "wbthomason/packer.nvim", -- Have packer manage itself
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
   "navarasu/onedark.nvim",
@@ -28,9 +26,27 @@ require('lazy').setup {
   "hrsh7th/nvim-cmp", -- The completion plugin
   "hrsh7th/cmp-buffer", -- buffer completions
   "hrsh7th/cmp-path", -- path completions
-  "hrsh7th/cmp-cmdline", -- cmdline completions
+  "hrsh7th/cmp-cmdline", -- cmd line completions
   "hrsh7th/cmp-nvim-lua",
 
+-- Debugger
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      { "rcarriga/nvim-dap-ui", lazy = false },
+      { "ldelossa/nvim-dap-projects" },
+      { "leoluz/nvim-dap-go" },
+      { "nvim-telescope/telescope-dap.nvim" },
+      { "theHamsta/nvim-dap-virtual-text" },
+      -- Languages
+      { "mxsdev/nvim-dap-vscode-js" },
+      {
+        "microsoft/vscode-js-debug",
+        lazy = true,
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+      },
+    },
+  },
 
 -- File navigation
   'kevinhwang91/rnvimr',
@@ -70,7 +86,21 @@ require('lazy').setup {
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'jiangmiao/auto-pairs',
-  'sirver/ultisnips',
+  {
+    'sirver/ultisnips',
+    init = function()
+      vim.g.UltiSnipsUsePythonVersion = 3
+
+      -- For split window UltiSnipsEditSplit
+      vim.g.UltiSnipsEditSplit='vertical'
+      vim.g.UltiSnipsSnippetDirectories = { '~/.config/nvim/snips' } -- Provide directory for UltiSnips
+
+      -- Trigger configuration
+      vim.g.UltiSnipsExpandTrigger='<C-l>'
+      vim.g.UltiSnipsJumpForwardTrigger='<C-l>'
+      vim.g.UltiSnipsJumpBackwardTrigger='<c-b>'
+    end
+  },
   'mbbill/undotree',
   'mtth/scratch.vim',
   'scrooloose/nerdcommenter',
@@ -97,7 +127,11 @@ require('lazy').setup {
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},     -- Required
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+      {
+        'L3MON4D3/LuaSnip',
+        version = "2.*",
+        build = "make install_jsregexp"
+      },     -- Required
       {
         'jose-elias-alvarez/null-ls.nvim',
         dependencies = {
