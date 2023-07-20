@@ -1,116 +1,88 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost setup-plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
--- Install your plugins here
-return packer.startup(function(use)
+require('lazy').setup {
   -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use 'navarasu/onedark.nvim'
+  "wbthomason/packer.nvim", -- Have packer manage itself
+  "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
+  "navarasu/onedark.nvim",
 
 -- Git
-  use 'tpope/vim-fugitive'
-  use 'kdheepak/lazygit.nvim'
-  use 'airblade/vim-gitgutter'
+  'tpope/vim-fugitive',
+  'kdheepak/lazygit.nvim',
+  'airblade/vim-gitgutter',
 
 -- cmp plugins
-  use "L3MON4D3/LuaSnip"
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "hrsh7th/cmp-nvim-lua"
+  "L3MON4D3/LuaSnip",
+  "hrsh7th/nvim-cmp", -- The completion plugin
+  "hrsh7th/cmp-buffer", -- buffer completions
+  "hrsh7th/cmp-path", -- path completions
+  "hrsh7th/cmp-cmdline", -- cmdline completions
+  "hrsh7th/cmp-nvim-lua",
 
 
 -- File navigation
-  use 'kevinhwang91/rnvimr'
-  use 'stevearc/oil.nvim'
-  use 'nvim-tree/nvim-tree.lua'
+  'kevinhwang91/rnvimr',
+  'stevearc/oil.nvim',
+  'nvim-tree/nvim-tree.lua',
 
 
 -- Telescope
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       {'nvim-telescope/telescope-file-browser.nvim'}
     }
-  }
+  },
 
 -- Status line
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
 
-  use 'nvim-tree/nvim-web-devicons'
+  'nvim-tree/nvim-web-devicons',
 
 -- Harpoon
-  use 'ThePrimeagen/harpoon'
+  'ThePrimeagen/harpoon',
 
-  -- use { 'neoclide/coc.nvim', branch = 'release' }
+  -- { 'neoclide/coc.nvim', branch = 'release' }
 
-  use 'ThePrimeagen/git-worktree.nvim'
+  'ThePrimeagen/git-worktree.nvim',
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+    build = ':TSUpdate'
+  },
 
-  use 'ollykel/v-vim'
+  'ollykel/v-vim',
 
 -- Other
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'jiangmiao/auto-pairs'
-  use 'sirver/ultisnips'
-  use 'mbbill/undotree'
-  use 'mtth/scratch.vim'
-  use 'scrooloose/nerdcommenter'
-  -- use 'github/copilot.vim'
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
+  'jiangmiao/auto-pairs',
+  'sirver/ultisnips',
+  'mbbill/undotree',
+  'mtth/scratch.vim',
+  'scrooloose/nerdcommenter',
+  -- 'github/copilot.vim'
 
   -- LSP
-  use {
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
-    requires = {
+    dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
       {'ray-x/lsp_signature.nvim'},          -- Signature
@@ -118,7 +90,7 @@ return packer.startup(function(use)
       {'nvimdev/lspsaga.nvim'},
       {                                      -- Optional
         'williamboman/mason.nvim',
-        run = function()
+        build = function()
           pcall(vim.cmd, 'MasonUpdate')
         end,
       },
@@ -130,32 +102,25 @@ return packer.startup(function(use)
       {'L3MON4D3/LuaSnip'},     -- Required
       {
         'jose-elias-alvarez/null-ls.nvim',
-        requires = {
+        dependencies = {
           {'davidmh/cspell.nvim'}
         }
       }
     }
-  }
+  },
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = { "nvim-tree/nvim-web-devicons" }
-  }
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
 
-  use {"akinsho/toggleterm.nvim", tag = '*'}
-  use 'christoomey/vim-tmux-navigator'
+  'christoomey/vim-tmux-navigator',
 
-  -- use '/Users/alekseypanchenko/dev/lint-ts-project.nvim'
-  use {
+  -- '/Users/alekseypanchenko/dev/lint-ts-project.nvim'
+  {
     'gi4c0/lint-node.nvim',
-    requires = {
+    dependencies = {
       {'nvim-telescope/telescope.nvim'}
     }
   }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+}
