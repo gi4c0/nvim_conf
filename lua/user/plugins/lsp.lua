@@ -93,7 +93,6 @@ return {
       },
 
       keys = {
-
         -- Code action
         {"<leader>aw", "<cmd>Lspsaga code_action<CR>" },
 
@@ -133,115 +132,115 @@ return {
 
         {"gr", ":Lspsaga finder<CR>" },
       }
+      },
+      {                                      -- Optional
+      'williamboman/mason.nvim',
+      build = function()
+        pcall(vim.cmd, 'MasonUpdate')
+      end,
     },
-    {                                      -- Optional
-    'williamboman/mason.nvim',
-    build = function()
-      pcall(vim.cmd, 'MasonUpdate')
-    end,
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},     -- Required
+    {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    {
+      'L3MON4D3/LuaSnip',
+      version = "2.*",
+      build = "make install_jsregexp"
+    },     -- Required
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      dependencies = {
+        {'davidmh/cspell.nvim'}
+      },
+      config = function ()
+        local null_ls = require("null-ls")
+        local cspell = require('cspell')
+
+        null_ls.setup({
+          sources = {
+            cspell.diagnostics,
+            cspell.code_actions,
+            null_ls.builtins.code_actions.eslint
+          },
+          fallback_severity = vim.diagnostic.severity.WARN
+        })
+      end
+    }
   },
-  {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-  -- Autocompletion
-  {'hrsh7th/nvim-cmp'},     -- Required
-  {'hrsh7th/cmp-nvim-lsp'}, -- Required
-  {
-    'L3MON4D3/LuaSnip',
-    version = "2.*",
-    build = "make install_jsregexp"
-  },     -- Required
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = {
-      {'davidmh/cspell.nvim'}
-    },
-    config = function ()
-      local null_ls = require("null-ls")
-      local cspell = require('cspell')
+  config = function ()
+    local lsp = require('lsp-zero').preset({})
 
-      null_ls.setup({
-        sources = {
-          cspell.diagnostics,
-          cspell.code_actions,
-          null_ls.builtins.code_actions.eslint
-        },
-        fallback_severity = vim.diagnostic.severity.WARN
-      })
-    end
-  }
-},
-
-config = function ()
-  local lsp = require('lsp-zero').preset({})
-
-  lsp.ensure_installed( {
-    'tsserver',
-    'eslint',
-    'lua_ls',
-    'rust_analyzer',
-    'gopls',
-    'jsonls',
-    'dockerls'
-  })
-
-  -- (Optional) Configure lua language server for neovim
-  require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-  lsp.set_sign_icons({
-    error = '✘',
-    warn = '▲',
-    hint = '⚑',
-    info = '»'
-  })
-
-
-  lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
-
-    lsp.default_keymaps({
-      buffer = bufnr,
-      omit = {'gD', 'gr', 'K'}
+    lsp.ensure_installed( {
+      'tsserver',
+      'eslint',
+      'lua_ls',
+      'rust_analyzer',
+      'gopls',
+      'jsonls',
+      'dockerls'
     })
 
-    vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, opts)
-    vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- vim.keymap.set("n", "<leader>mrr", function() vim.lsp.buf.rename() end, opts)
-  end)
+    -- (Optional) Configure lua language server for neovim
+    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
-  lsp.skip_server_setup({'tsserver'}) -- We setup config separately in typescript.lua file
-  lsp.setup()
+    lsp.set_sign_icons({
+      error = '✘',
+      warn = '▲',
+      hint = '⚑',
+      info = '»'
+    })
 
-  local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
 
-  cmp.setup({
-    sources = {
-      {name = 'nvim_lsp'},
-      {name = 'path'},
-      {name = 'buffer', keyword_length = 3},
-      {name = 'luasnip', keyword_length = 2},
-    },
-    mapping = {
-      ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      -- `Enter` key to confirm completion
-      ['<CR>'] = cmp.mapping.confirm({select = false}),
+    lsp.on_attach(function(client, bufnr)
+      local opts = {buffer = bufnr, remap = false}
 
-      -- Ctrl+Space to trigger completion menu
-      ['<C-Space>'] = cmp.mapping.complete(),
+      lsp.default_keymaps({
+        buffer = bufnr,
+        omit = {'gD', 'gr', 'K'}
+      })
 
-      -- Navigate between snippet placeholder
-      ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-      ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-    }
-  })
+      vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, opts)
+      vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev, opts)
+      vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      -- vim.keymap.set("n", "<leader>mrr", function() vim.lsp.buf.rename() end, opts)
+    end)
 
-  -- GO
-  vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
+    lsp.skip_server_setup({'tsserver'}) -- We setup config separately in typescript.lua file
+    lsp.setup()
 
-end
+    local cmp = require('cmp')
+    local cmp_action = require('lsp-zero').cmp_action()
+
+    cmp.setup({
+      sources = {
+        {name = 'nvim_lsp'},
+        {name = 'path'},
+        {name = 'buffer', keyword_length = 3},
+        {name = 'luasnip', keyword_length = 2},
+      },
+      mapping = {
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- `Enter` key to confirm completion
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+        -- Ctrl+Space to trigger completion menu
+        ['<C-Space>'] = cmp.mapping.complete(),
+
+        -- Navigate between snippet placeholder
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+      }
+    })
+
+    -- GO
+    vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
+
+  end
 }
