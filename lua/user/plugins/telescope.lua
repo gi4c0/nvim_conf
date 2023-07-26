@@ -18,16 +18,12 @@ return {
     {"<C-f>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true}
   },
 
-  init = function()
-    require("telescope").load_extension "file_browser"
-  end,
-
-  opts = function ()
+  config = function()
     local actions = require('telescope.actions')
 
-    return {
+    require("telescope").setup {
       defaults = {
-        file_ignore_patterns = {"%.git/*"},
+        file_ignore_patterns = {".git/*", "node_modules/*"},
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         mappings = {
           i = {
@@ -60,10 +56,15 @@ return {
       },
       extensions = {
         file_browser = {
+          respect_gitignore = false,
           previewer = false,
-          -- theme = "ivy",
+          grouped = true,
+          hidden = true,
+          select_buffer = true,
+          display_stat = false,
+          theme = "ivy",
           -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
+          -- hijack_netrw = true,
           mappings = {
             ["i"] = {
               -- your custom insert mode mappings
@@ -76,5 +77,6 @@ return {
       }
     }
 
+    require("telescope").load_extension "file_browser"
   end
 }

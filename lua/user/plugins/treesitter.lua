@@ -2,7 +2,11 @@ return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   config = function()
+    local cachePath = "/Users/alekseypanchenko/.local/share/nvim/tree-sitter-cache"
+    vim.opt.runtimepath:append(cachePath)
+
     require'nvim-treesitter.configs'.setup {
+      parser_install_dir = cachePath,
       ensure_installed = {
         "typescript",
         "json",
