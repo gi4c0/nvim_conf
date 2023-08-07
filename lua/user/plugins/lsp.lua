@@ -242,9 +242,9 @@ return {
     })
 
     -- GO
-    -- vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
+    vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
+    --[[ vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = { "*.go" },
       callback = function()
         local params = vim.lsp.util.make_range_params(nil, "utf-16")
@@ -267,7 +267,7 @@ return {
       callback = function()
         vim.lsp.buf.format()
       end,
-    })
+    }) ]]
 
   end
 }
