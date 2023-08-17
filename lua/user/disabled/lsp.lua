@@ -182,7 +182,9 @@ return {
       'rust_analyzer',
       'gopls',
       'jsonls',
-      'dockerls'
+      'dockerls',
+      'html',
+      'cssls'
     })
 
     -- (Optional) Configure lua language server for neovim
