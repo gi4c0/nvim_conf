@@ -15,7 +15,8 @@ return {
     {"<leader>ghh", "<cmd>lua require('telescope.builtin').git_commits()<cr>", noremap = true, silent = true},
     {"<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", noremap = true, silent = true},
 
-    {"<C-f>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true}
+    {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true},
+    {"<C-f>", ":Telescope file_browser files=false<CR>", noremap = true, silent = true}
   },
 
   config = function()

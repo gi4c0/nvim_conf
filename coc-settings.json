@@ -84,6 +84,7 @@
     "gitmodules",
     "godotenv",
     "gonic",
+    "gorm",
     "grpc",
     "habanero",
     "inversify",

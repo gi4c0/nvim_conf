@@ -125,6 +125,6 @@ return {
     },
   },
   keys = {
-    {"<leader>r", require("oil").open_float, desc = "Open parent directory"}
+    {"<leader>o", require("oil").open_float, desc = "Open parent directory"}
   }
 }

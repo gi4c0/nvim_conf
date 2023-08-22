@@ -11,7 +11,7 @@ return {
         "typescript",
         "json",
         "go",
-        "lua",
+        -- "lua",
         "rust",
         "yaml",
         "toml",
