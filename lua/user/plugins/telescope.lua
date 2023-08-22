@@ -16,15 +16,16 @@ return {
     {"<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", noremap = true, silent = true},
 
     {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true},
-    {"<C-f>", ":Telescope file_browser files=false<CR>", noremap = true, silent = true}
+    {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true}
   },
 
-  config = function()
+  init = function()
     local actions = require('telescope.actions')
 
     require("telescope").setup {
       defaults = {
-        file_ignore_patterns = {".git/*", "node_modules/*"},
+        respect_gitignore = false,
+        file_ignore_patterns = {"^.git/", "^node_modules/"},
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         mappings = {
           i = {
@@ -57,15 +58,19 @@ return {
       },
       extensions = {
         file_browser = {
-          respect_gitignore = false,
+          respect_gitignore = true,
+          file_ignore_patterns = {".git/*", "^node_modules/"},
           previewer = false,
           grouped = true,
           hidden = true,
           select_buffer = true,
           display_stat = false,
-          theme = "ivy",
+          theme = "dropdown",
+          layout_config = {
+            height = .75,
+          },
           -- disables netrw and use telescope-file-browser in its place
-          -- hijack_netrw = true,
+          hijack_netrw = true,
           mappings = {
             ["i"] = {
               -- your custom insert mode mappings
