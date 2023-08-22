@@ -1,5 +1,6 @@
 return {
   'airblade/vim-gitgutter',
+  lazy = false,
   keys = {
     -- Jump to next git hunk
     {']g', '<Plug>(GitGutterNextHunk)', noremap = true, silent = true},
