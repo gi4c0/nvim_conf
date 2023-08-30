@@ -1,11 +1,12 @@
 {
-  "npm.binPath": "/opt/homebrew/opt/node@16/bin/npm",
+  "npm.binPath": "/opt/homebrew/opt/node@18/bin/npm",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "suggest.noselect": true,
   "typescript.suggestionActions.enabled": true,
   "zig.path":"/Users/alekseypanchenko/bin/zls",
   "coc.preferences.formatOnSaveFiletypes": [
-    "go"
+    "go",
+    "html"
   ],
   "tslint.enable": false,
   "go.goplsOptions": {

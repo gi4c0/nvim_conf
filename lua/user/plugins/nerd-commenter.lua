@@ -1,5 +1,6 @@
 return {
   'scrooloose/nerdcommenter',
+  enabled = false,
 
   keys = {
     {"<leader>c<space>", "<Plug>NERDCommenterToggle", noremap = true, silent = true },

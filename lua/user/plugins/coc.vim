@@ -2,7 +2,8 @@
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rust-analyzer', 'coc-format-json',
   \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
-  \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css', 'coc-lua'
+  \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css', 'coc-lua',
+  \ '@yaegassy/coc-tailwindcss3', 'coc-prettier'
 \]
 
 " Menu -> JSON format
@@ -75,4 +76,12 @@ augroup cocGroup
   " Highlight the symbol and its references when holding the cursor.
   " autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+augroup END
+
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+augroup htmlGroup
+  autocmd!
+  autocmd BufWritePre *.html :CocCommand prettier.forceFormatDocument
 augroup END

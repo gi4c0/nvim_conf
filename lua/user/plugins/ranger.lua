@@ -1,5 +1,6 @@
 return {
   'kevinhwang91/rnvimr',
+  enabled = false,
   config = function()
     -- Make Ranger replace netrw and be the file explorer
     vim.g.rnvimr_ex_enable = 1
@@ -28,6 +29,6 @@ return {
 
   end,
   keys = {
-    -- { "<leader>r", ":RnvimrToggle<CR>", noremap = true, silent = true }
+    { "<leader>r", ":RnvimrToggle<CR>", noremap = true, silent = true }
   }
 }
