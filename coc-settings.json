@@ -13,6 +13,8 @@
       "gofumpt": true
   },
   "go.goplsPath": "/Users/alekseypanchenko/go/bin/gopls",
+  "cSpellExt.enableDictionaries": ["russian"],
+  "cSpell.language": "en,ru",
   "cSpell.userWords": [
     "Ambpoker",
     "BTRIM",

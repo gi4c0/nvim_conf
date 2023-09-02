@@ -1,5 +1,5 @@
 vim.opt.hidden  =  true
--- vim.opt.keymap = russian-jcukenwin          -- Russion language
+vim.opt.keymap = "russian-jcukenwin"          -- Russion language
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 vim.opt.showcmd = true               -- Show commands

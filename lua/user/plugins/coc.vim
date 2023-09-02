@@ -3,7 +3,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rust-analyzer', 'coc-format-json',
   \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
   \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css', 'coc-lua',
-  \ '@yaegassy/coc-tailwindcss3', 'coc-prettier'
+  \ '@yaegassy/coc-tailwindcss3', 'coc-prettier', 'coc-cspell-dicts', 'coc-db'
 \]
 
 " Menu -> JSON format
@@ -80,8 +80,3 @@ augroup END
 
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-
-augroup htmlGroup
-  autocmd!
-  autocmd BufWritePre *.html :CocCommand prettier.forceFormatDocument
-augroup END
