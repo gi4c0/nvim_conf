@@ -1,7 +1,7 @@
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions = [
-  \ 'coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-rust-analyzer', 'coc-format-json',
-  \ 'coc-tslint', 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
+  \ 'coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-format-json',
+  \ 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
   \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css', 'coc-lua',
   \ '@yaegassy/coc-tailwindcss3', 'coc-prettier', 'coc-cspell-dicts', 'coc-db'
 \]
@@ -10,7 +10,7 @@ let g:coc_global_extensions = [
 nnoremap <leader>mj :CocCommand formatJson --indent=2 --quote=" --trailing=false<CR>
 
 " Scrolling in float window
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+" nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"

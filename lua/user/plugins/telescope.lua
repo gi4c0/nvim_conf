@@ -16,7 +16,7 @@ return {
     {"<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", noremap = true, silent = true},
 
     {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true},
-    {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true}
+    {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true},
   },
 
   init = function()
@@ -25,7 +25,7 @@ return {
     require("telescope").setup {
       defaults = {
         respect_gitignore = false,
-        file_ignore_patterns = {"^.git/", "^node_modules/"},
+        file_ignore_patterns = {"^.git/"},
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         mappings = {
           i = {
@@ -58,8 +58,8 @@ return {
       },
       extensions = {
         file_browser = {
-          respect_gitignore = true,
-          file_ignore_patterns = {".git/*", "^node_modules/"},
+          respect_gitignore = false,
+          file_ignore_patterns = {".git/*"},
           previewer = false,
           grouped = true,
           hidden = true,
