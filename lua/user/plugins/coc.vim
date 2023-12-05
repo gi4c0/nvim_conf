@@ -2,7 +2,7 @@
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-tsserver', 'coc-rust-analyzer', 'coc-format-json',
   \ 'coc-spell-checker', 'coc-yaml', 'coc-sh', 'coc-fish', 'coc-go',
-  \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css', 'coc-lua',
+  \ 'coc-protobuf', 'coc-lua', 'coc-zig', 'coc-eslint', 'coc-html', 'coc-css',
   \ '@yaegassy/coc-tailwindcss3', 'coc-prettier', 'coc-cspell-dicts', 'coc-db'
 \]
 

@@ -2,14 +2,15 @@ return {
   'nvim-telescope/telescope.nvim',
 
   dependencies = {
-    {'nvim-telescope/telescope-file-browser.nvim'}
+    {'nvim-telescope/telescope-file-browser.nvim'},
+    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'}
   },
 
   keys = {
-    {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
+    -- {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
     {"<leader>/", "<cmd>lua require('telescope.builtin').live_grep()<cr>",noremap = true, silent = true},
     {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
-    {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
+    -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
     -- keymap("n", "gr", ":Telescope lsp_references<cr>", options)
 
     {"<leader>ghh", "<cmd>lua require('telescope.builtin').git_commits()<cr>", noremap = true, silent = true},
@@ -19,7 +20,7 @@ return {
     {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true},
   },
 
-  init = function()
+  config = function()
     local actions = require('telescope.actions')
 
     require("telescope").setup {
@@ -41,6 +42,7 @@ return {
       pickers = {
         find_files = {
           previewer = false,
+          path_display = { "absolute" }
         },
         buffers = {
           -- theme = "dropdown",
@@ -57,6 +59,13 @@ return {
         }
       },
       extensions = {
+        fzf = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the generic sorter
+          override_file_sorter = true,     -- override the file sorter
+          case_mode = "ignore_case",        -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        },
         file_browser = {
           respect_gitignore = false,
           file_ignore_patterns = {".git/*"},
@@ -83,6 +92,7 @@ return {
       }
     }
 
+    require("telescope").load_extension "fzf"
     require("telescope").load_extension "file_browser"
   end
 }
