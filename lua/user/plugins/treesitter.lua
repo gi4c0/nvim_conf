@@ -7,7 +7,7 @@ return {
     {
       'eckon/treesitter-current-functions',
       keys = {
-        {"<leader>fn", ":GetCurrentFunctions<CR>", noremap = true, silent = true}
+        {"<leader>fn", ":GetCurrentFunctionsForce telescope<CR>", noremap = true, silent = true}
       }
     }
   },

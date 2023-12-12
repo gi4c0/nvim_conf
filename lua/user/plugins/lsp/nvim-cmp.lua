@@ -1,7 +1,7 @@
 return {
   'hrsh7th/nvim-cmp',
   event = "InsertEnter",
-  enabled = true,
+  enabled = false,
 
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
@@ -17,9 +17,9 @@ return {
     local lspkind = require("lspkind")
 
     cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
-      },
+      -- completion = {
+      --   completeopt = "menu,menuone,preview,noselect",
+      -- },
     snippet = { -- configure how nvim-cmp interacts with snippet engine
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -40,10 +40,11 @@ return {
         ['<C-Space>'] = cmp.mapping.complete(),
       },
       -- sources for autocompletion
+      preselect = cmp.PreselectMode.None,
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "path" }, -- file system paths
-        { name = "buffer", keyword_length = 4 }, -- text within current buffer
+        { name = "buffer", keyword_length = 3 }, -- text within current buffer
         { name = "luasnip", keyword_length = 999 }, -- snippets
       }),
       -- configure lspkind for vs-code like pictograms in completion menu

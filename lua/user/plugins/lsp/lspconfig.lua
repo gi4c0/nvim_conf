@@ -93,7 +93,7 @@ return {
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    capabilities.textDocument.completion.completionItem.snippetSupport = false
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = false
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
