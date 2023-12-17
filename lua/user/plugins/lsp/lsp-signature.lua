@@ -9,7 +9,9 @@ return {
     toggle_key = '<C-s>',
     toggle_key_flip_floatwin_setting = true,
     hint_enable = false,
+    floating_window_above_cur_line = true,
     always_trigger = false,
-    timer_interval = 100
+    timer_interval = 200,
+    floating_window = false
   }
 }

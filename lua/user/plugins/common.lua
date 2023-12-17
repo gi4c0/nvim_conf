@@ -1,5 +1,5 @@
 return {
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
-  { 'jiangmiao/auto-pairs' },
+  -- { 'jiangmiao/auto-pairs' },
 }

@@ -1,5 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
+  lazy = false,
 
   dependencies = {
     {'nvim-telescope/telescope-file-browser.nvim'},
