@@ -11,5 +11,6 @@ return {
   config = function()
     --  Disable default mappings
     vim.g.gitgutter_map_keys = 0
+    vim.g.gitgutter_sign_priority = 0
   end
 }
