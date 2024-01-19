@@ -7,7 +7,7 @@ return {
     "pmizio/typescript-tools.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     {
-      'jose-elias-alvarez/null-ls.nvim',
+      'nvimtools/none-ls.nvim',
       dependencies = {
         {'davidmh/cspell.nvim'}
       },
@@ -110,10 +110,10 @@ return {
     })
 
     -- configure rust server with plugin
-    lspconfig["rust_analyzer"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- lspconfig["rust_analyzer"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     lspconfig["eslint"].setup{}
     -- lspconfig["typos_lsp"].setup{}

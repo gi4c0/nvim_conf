@@ -2,6 +2,7 @@ return {
   'hrsh7th/nvim-cmp',
   event = "InsertEnter",
   enabled = true,
+  lazy = false,
 
   dependencies = {
     { "hrsh7th/cmp-buffer" }, -- source for text in buffer
@@ -102,16 +103,6 @@ return {
       sources = {
         { name = 'buffer' }
       }
-    })
-
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        { name = 'cmdline' }
-      })
     })
 
     -- Set configuration for specific filetype.

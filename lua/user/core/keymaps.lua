@@ -35,3 +35,6 @@ keymap("n", "<leader>hv", ":Telescope help_tags<CR>", options)
 keymap("v", "<", "<gv", options)
 keymap("v", ">", ">gv", options)
 keymap("v", "p", '"_dP', options)
+
+keymap("n", "[b", ":bprevious<CR>", options)
+keymap("n", "]b", ":bnext<CR>", options)
