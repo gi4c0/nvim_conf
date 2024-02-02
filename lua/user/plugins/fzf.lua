@@ -1,5 +1,7 @@
 return {
   'ibhagwan/fzf-lua',
+  enabled = true,
+  lazy = false,
 
   dependencies = {
     { "junegunn/fzf", build = "./install --bin" }

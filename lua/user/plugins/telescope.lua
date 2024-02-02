@@ -10,12 +10,12 @@ return {
 
   keys = {
     -- {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
-    {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true},
+    {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true}, -- use <C-^> to open a menu
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
     -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
-    -- keymap("n", "gr", ":Telescope lsp_references<cr>", options)
+    -- {"gr", ":Telescope lsp_references<cr>",noremap = true, silent = true},
 
-    -- {"<leader>ghh", "<cmd>lua require('telescope.builtin').git_commits()<cr>", noremap = true, silent = true},
+    -- {"<leader>ghp", "<cmd>lua require('telescope.builtin').git_commits()<cr>", noremap = true, silent = true},
     -- {"<leader>ghb", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", noremap = true, silent = true},
 
     {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true},

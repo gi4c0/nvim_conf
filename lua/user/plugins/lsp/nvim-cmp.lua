@@ -8,7 +8,6 @@ return {
     { "hrsh7th/cmp-buffer" }, -- source for text in buffer
     { "petertriho/cmp-git" },
     { "hrsh7th/cmp-path" }, -- source for file system paths
-    { "L3MON4D3/LuaSnip" }, -- snippet engine
     { "saadparwaiz1/cmp_luasnip" }, -- for autocompletion
     { "onsails/lspkind.nvim" }, -- vs-code like pictograms
     {
@@ -76,9 +75,9 @@ return {
             return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
           end
         },
+        { name = "luasnip" }, -- snippets
         { name = "path" }, -- file system paths
         { name = "buffer", keyword_length = 3 }, -- text within current buffer
-        { name = "luasnip", keyword_length = 999 }, -- snippets
       }),
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
@@ -87,8 +86,8 @@ return {
           ellipsis_char = "...",
           -- Cut additional info about autocompleted items
           before = function (_entry, vim_item)
-            if (vim_item.menu ~= nil and string.len(vim_item.menu) > 45) then
-              vim_item.menu = string.sub(vim_item.menu, 1, 42) .. "..."
+            if (vim_item.menu ~= nil and vim.fn.strcharlen(vim_item.menu) > 45) then
+              vim_item.menu = vim.fn.strcharpart(vim_item.menu, 1, 42) .. "..."
             end
 
             return vim_item

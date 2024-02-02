@@ -14,7 +14,8 @@ return {
   },
 
   config = function()
-    -- The actual path for lua parser: /opt/homebrew/Cellar/neovim/0.9.4/lib/nvim/parser/lua.so
+    -- Delete this file if got error about BufRead *
+    -- The actual path for lua parser: /opt/homebrew/Cellar/neovim/0.9.5/lib/nvim/parser/lua.so
     local cachePath = "/Users/alekseypanchenko/.local/share/nvim/tree-sitter-cache"
     vim.opt.runtimepath:append(cachePath)
 
