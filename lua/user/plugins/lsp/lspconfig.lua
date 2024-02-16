@@ -179,4 +179,9 @@ return {
       },
     })
   end,
+
+  keys = {
+    {"<leader>lr", ":LspRestart<CR>", silent = true},
+    {"<leader>li", ":LspInfo<CR>", silent = true},
+  }
 }

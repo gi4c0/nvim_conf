@@ -38,6 +38,11 @@ keymap("v", "p", '"_dP', options)
 
 keymap("n", "[b", ":bprevious<CR>", options)
 keymap("n", "]b", ":bnext<CR>", options)
+
+keymap("n", "]t", ":tabnext<CR>", options)
+keymap("n", "[t", ":tabprevious<CR>", options)
+keymap("n", "tc", ":tabclose<CR>", options)
+
 keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 
 keymap('n', '<leader>if', ':%s/"/\'/g<CR>', options)
