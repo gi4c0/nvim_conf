@@ -1,6 +1,6 @@
 return {
   "williamboman/mason.nvim",
-  enabled = true,
+  enabled = false,
   dependencies = {
     {"williamboman/mason-lspconfig.nvim"},
     {"WhoIsSethDaniel/mason-tool-installer.nvim"},

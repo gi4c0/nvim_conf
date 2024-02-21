@@ -1,6 +1,6 @@
 return {
   'nvimdev/lspsaga.nvim',
-  enabled = true,
+  enabled = false,
   opts = {
     rename = {
       auto_save = true,

@@ -5,7 +5,7 @@ return {
 
   keys = {
     {"<C-l>", "<cmd> lua require('luasnip').expand()<CR>", silent = true, mode = {"i"}},
-    {"<C-l>", "<cmd> lua require('luasnip').jump(1)<CR>", silent = true, mode = {"i", "s"}},
+    {"<C-j>", "<cmd> lua require('luasnip').jump(1)<CR>", silent = true, mode = {"i", "s"}},
   },
 
   dependencies = {

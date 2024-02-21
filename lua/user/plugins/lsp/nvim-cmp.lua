@@ -1,7 +1,7 @@
 return {
   'hrsh7th/nvim-cmp',
   event = "InsertEnter",
-  enabled = true,
+  enabled = false,
   lazy = false,
 
   dependencies = {
@@ -10,6 +10,28 @@ return {
     { "hrsh7th/cmp-path" }, -- source for file system paths
     { "saadparwaiz1/cmp_luasnip" }, -- for autocompletion
     { "onsails/lspkind.nvim" }, -- vs-code like pictograms
+    {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      enabled = true,
+      config = function()
+        local autopairs = require("nvim-autopairs")
+        local Rule = require("nvim-autopairs.rule")
+        local cond = require("nvim-autopairs.conds")
+
+        autopairs.setup{}
+
+        autopairs.add_rules {
+          Rule("<", ">"):with_pair(cond.before_regex("%a+")):with_move(function(opts) return opts.char == ">" end),
+          Rule("|", "|"):with_pair(cond.before_regex("%(+")):with_move(function(opts) return opts.char == "|" end),
+          Rule(' ', ' '):with_pair(function (opts)
+            local pair = opts.line:sub(opts.col, opts.col+1)   -- change to +1
+            return vim.tbl_contains({')', ']', '}'}, pair)
+          end)
+        }
+
+      end
+    }
   },
 
   config = function()
@@ -81,21 +103,21 @@ return {
 
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     -- cmp.setup.cmdline({ '/', '?' }, {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = {
-    --     { name = 'buffer' }
-    --   }
-    -- })
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = {
+        --     { name = 'buffer' }
+        --   }
+        -- })
 
-    -- Set configuration for specific filetype.
-    cmp.setup.filetype('gitcommit', {
-      sources = cmp.config.sources({
-        { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-      }, {
-        { name = 'buffer' },
-      })
-    })
+        -- Set configuration for specific filetype.
+        cmp.setup.filetype('gitcommit', {
+          sources = cmp.config.sources({
+            { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+          }, {
+            { name = 'buffer' },
+          })
+        })
 
-    require("cmp_git").setup()
-  end
-}
+        require("cmp_git").setup()
+      end
+    }

@@ -2,5 +2,5 @@ return {
   'mrcjkb/rustaceanvim',
   version = '^3', -- Recommended
   ft = { 'rust' },
-  enabled = true
+  enabled = false
 }
