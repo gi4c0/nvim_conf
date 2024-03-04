@@ -1,7 +1,7 @@
 return {
   'kdheepak/lazygit.nvim',
   keys = {
-    {"<leader>gg", ":LazyGit<cr>", noremap = true, silent = true },
+    {"<leader>gg", ":LazyGit<cr>", noremap = true, silent = true, desc = "Lazy Git" },
   },
   config = function()
     -- vim.g.lazygit_floating_window_winblend = 1

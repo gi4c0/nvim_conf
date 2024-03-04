@@ -1,6 +1,7 @@
 return {
   'nvimdev/lspsaga.nvim',
-  enabled = false,
+  enabled = true,
+  cond = vim.env.USE_COC ~= '1',
   opts = {
     rename = {
       auto_save = true,
@@ -37,10 +38,10 @@ return {
 
   keys = {
     -- Code action
-    {"<leader>aw", "<cmd>Lspsaga code_action<CR>" },
+    {"<leader>cm", "<cmd>Lspsaga code_action<CR>", desc = "Menu" },
 
     -- Rename all occurrences of the hovered word for the selected files
-    {"<leader>mrr", "<cmd>Lspsaga rename<CR>" },
+    {"<leader>cr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
 
     -- Peek definition
     -- You can edit the file containing the definition in the floating window

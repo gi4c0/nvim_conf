@@ -6,7 +6,7 @@ return {
     {']g', '<Plug>(GitGutterNextHunk)', noremap = true, silent = true},
     -- Jump to previous git hunk
     {'[g', '<Plug>(GitGutterPrevHunk)', noremap = true, silent = true} ,
-    {'<leader>hs', '<Plug>(GitGutterPreviewHunk)', noremap = true, silent = true},
+    {'<leader>gd', '<Plug>(GitGutterPreviewHunk)', noremap = true, silent = true, desc = "Git diff (chunk)"},
   },
   config = function()
     --  Disable default mappings

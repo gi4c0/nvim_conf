@@ -2,6 +2,7 @@ return {
   'neoclide/coc.nvim',
   enabled = true,
   lazy = false,
+  cond = vim.env.USE_COC == '1',
   branch = 'release',
   dependencies = {
     'jiangmiao/auto-pairs'
@@ -42,7 +43,7 @@ return {
     keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
     -- Symbol renaming
-    keyset("n", "<leader>mrr", "<Plug>(coc-rename)", {silent = true})
+    keyset("n", "<leader>cr", "<Plug>(coc-rename)", {silent = true, noremap = true, expr = true, replace_keycodes = false, desc = "Rename"})
 
     -- Update signature help on jump placeholder
     vim.api.nvim_create_augroup("CocGroup", {})
@@ -55,18 +56,16 @@ return {
 
     keyset("i", "<C-s>", "<C-\\><C-o>:call CocActionAsync('showSignatureHelp')<cr>", { silent = true})
 
-    local opts = {silent = true, nowait = true}
-    keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
-    keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+    keyset("n", "<leader>ca", "<Plug>(coc-codeaction-selected)", { silent = true, nowait = true, desc = "Code action" })
 
     local opts = {silent = true, nowait = true, expr = true}
-    keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
-    keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+
+    -- CONFILICTS with telescope file browser
     keyset("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
     keyset("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
     keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
     keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 
-    keyset("n", "<space>el", ":<C-u>CocList diagnostics<cr>", { silent = true, nowait = true })
+    keyset("n", "<space>el", ":CocDiagnostics<cr>", { silent = true, nowait = true, desc= "Error list" })
   end,
 }

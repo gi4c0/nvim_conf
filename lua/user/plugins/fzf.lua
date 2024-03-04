@@ -26,8 +26,8 @@ return {
 
   keys = {
     {'<C-p>', "<cmd>lua require('fzf-lua').files()<CR>", silent = true},
-    {'<leader>fr', ":FzfLua files resume=true<CR>", silent = true},
-    {'<leader>fR', ':FzfLua oldfiles<CR>', noremap = true, silent = true },
+    {'<leader>fR', ":FzfLua files resume=true<CR>", silent = true, desc = "Resume on file search"},
+    {'<leader>fr', ':FzfLua oldfiles<CR>', noremap = true, silent = true, "Recent files" },
     {'<C-Space>', "<cmd>lua require('fzf-lua').buffers()<CR>", silent = true},
     -- {'<leader>/', ":FzfLua live_grep<CR>", silent = true},
     {'<leader>ss', ":FzfLua grep<CR>", silent = true},

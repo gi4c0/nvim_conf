@@ -17,8 +17,8 @@ return {
       },
 
       keys = {
-        {"<leader>se", '<cmd>lua require("scissors").editSnippet()<CR>', silent = true},
-        {"<leader>sa", '<cmd>lua require("scissors").addNewSnippet()<CR>', silent = true, mode = {"n", "x"}}
+        {"<leader>Se", '<cmd>lua require("scissors").editSnippet()<CR>', silent = true, desc = "Edit snippet"},
+        {"<leader>Sa", '<cmd>lua require("scissors").addNewSnippet()<CR>', silent = true, mode = {"n", "x"}, desc = "Add snippet"}
       }
     }
   },

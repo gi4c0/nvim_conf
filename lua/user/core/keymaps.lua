@@ -27,8 +27,7 @@ keymap('n', 'cI', '^ciw', options)
 
 -- Close window with Q
 keymap("n", "Q", ":bdelete<cr>", options)
-keymap("n", "<leader>sc", ":nohlsearch<CR>", options)
-keymap("n", "<leader>hv", ":Telescope help_tags<CR>", options)
+keymap("n", "<leader>sc", ":nohlsearch<CR>", { noremap = true, silent = true, desc = "Clear" })
 
 -- Visual --
 -- Stay in indent mode
@@ -44,5 +43,3 @@ keymap("n", "[t", ":tabprevious<CR>", options)
 keymap("n", "tc", ":tabclose<CR>", options)
 
 keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
-
-keymap('n', '<leader>if', ':%s/"/\'/g<CR>', options)

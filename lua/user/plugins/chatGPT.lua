@@ -1,7 +1,7 @@
 -- lazy.nvim
 return {
 	"robitx/gp.nvim",
-  enabled = true,
+  enabled = false,
 	config = function()
 		require("gp").setup({
       openai_api_key = {"cat", "/Users/alekseypanchenko/.chat_gpt_api_key"},
