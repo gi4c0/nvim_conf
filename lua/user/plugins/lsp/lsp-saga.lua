@@ -38,7 +38,7 @@ return {
 
   keys = {
     -- Code action
-    {"<leader>cm", "<cmd>Lspsaga code_action<CR>", desc = "Menu" },
+    {"<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "Menu" },
 
     -- Rename all occurrences of the hovered word for the selected files
     {"<leader>cr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },

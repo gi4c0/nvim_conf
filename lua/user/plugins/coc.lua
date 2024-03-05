@@ -56,7 +56,7 @@ return {
 
     keyset("i", "<C-s>", "<C-\\><C-o>:call CocActionAsync('showSignatureHelp')<cr>", { silent = true})
 
-    keyset("n", "<leader>ca", "<Plug>(coc-codeaction-selected)", { silent = true, nowait = true, desc = "Code action" })
+    keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursors)", { silent = true, nowait = true, desc = "Code action" })
 
     local opts = {silent = true, nowait = true, expr = true}
 
