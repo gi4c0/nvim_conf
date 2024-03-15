@@ -1,7 +1,7 @@
 return {
   'ray-x/lsp_signature.nvim',
   enabled = false,
-  cond = vim.env.USE_COC ~= '1',
+  cond = vim.env.COC ~= '1',
   opts = {
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {

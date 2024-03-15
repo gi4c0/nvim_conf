@@ -2,7 +2,7 @@ return {
   'neoclide/coc.nvim',
   enabled = true,
   lazy = false,
-  cond = vim.env.USE_COC == '1',
+  cond = vim.env.COC == '1',
   branch = 'release',
   dependencies = {
     'jiangmiao/auto-pairs'
@@ -43,7 +43,7 @@ return {
     keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
     -- Symbol renaming
-    keyset("n", "<leader>cr", "<Plug>(coc-rename)", {silent = true, noremap = true, expr = true, replace_keycodes = false, desc = "Rename"})
+    keyset("n", "<leader>cr", "<Plug>(coc-rename)", {silent = true, desc = "Rename"})
 
     -- Update signature help on jump placeholder
     vim.api.nvim_create_augroup("CocGroup", {})
@@ -56,7 +56,8 @@ return {
 
     keyset("i", "<C-s>", "<C-\\><C-o>:call CocActionAsync('showSignatureHelp')<cr>", { silent = true})
 
-    keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursors)", { silent = true, nowait = true, desc = "Code action" })
+    keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", { nowait = true, desc = "Code action" })
+    -- keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursors)", { nowait = true, desc = "Code action" })
 
     local opts = {silent = true, nowait = true, expr = true}
 

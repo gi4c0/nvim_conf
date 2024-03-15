@@ -1,7 +1,7 @@
 return {
   'nvimdev/lspsaga.nvim',
   enabled = true,
-  cond = vim.env.USE_COC ~= '1',
+  cond = vim.env.COC ~= '1',
   opts = {
     rename = {
       auto_save = true,

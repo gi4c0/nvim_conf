@@ -13,14 +13,10 @@ return {
     {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
     -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
-    { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
-    {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
-    {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
 
     {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
     {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser"},
     {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
-    {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},
   },
 
   config = function()

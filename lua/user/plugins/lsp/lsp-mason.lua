@@ -1,7 +1,7 @@
 return {
   "williamboman/mason.nvim",
   enabled = true,
-  cond = vim.env.USE_COC ~= '1',
+  cond = vim.env.COC ~= '1',
   dependencies = {
     {"williamboman/mason-lspconfig.nvim"},
     {"WhoIsSethDaniel/mason-tool-installer.nvim"},

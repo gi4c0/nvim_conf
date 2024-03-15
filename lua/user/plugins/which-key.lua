@@ -5,14 +5,30 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  },
 
   config = function()
     local wk = require("which-key")
+
+    wk.setup({
+      plugins = {
+        marks = false,
+        registers = false,
+        spelling = {
+          enabled = false
+        },
+        presets = {
+          operators = false, -- adds help for operators like d, y, ...
+          motions = false, -- adds help for motions
+          text_objects = false, -- help for text objects triggered after entering an operator
+          windows = false, -- default bindings on <c-w>
+          nav = false, -- misc bindings to work with windows
+          z = false, -- bindings for folds, spelling and others prefixed with z
+          g = false, -- bindings for prefixed with g
+        },
+      },
+      triggers_nowait = {}
+    })
+
     wk.register({
       g = { name = "Git", },
       b = { name = "Buffer" },
@@ -27,5 +43,6 @@ return {
       S = { name = "Snippet" },
       u = { name = "Undo tree" },
     }, { prefix = "<leader>" })
+
   end
 }

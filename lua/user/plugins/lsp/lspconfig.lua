@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   enabled = true,
-  cond = vim.env.USE_COC ~= '1',
+  cond = vim.env.COC ~= '1',
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
@@ -123,5 +123,9 @@ return {
     {"gl", vim.diagnostic.open_float, silent = true, desc = "Show line diagnostics"},
     {"<C-k>", vim.diagnostic.goto_prev, silent = true, desc = "Go to Previous error"},
     {"<C-j>", vim.diagnostic.goto_next, silent = true, desc = "Go to Next error"},
+    { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
+    {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
+    {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
+    {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},
   }
 }
