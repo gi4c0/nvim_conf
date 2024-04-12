@@ -6,8 +6,8 @@ return {
     {
       "sindrets/diffview.nvim",
       keys = {
-        {"<leader>gd", ":DiffviewFileHistory %<CR>", silent = true, mode = {"n"}},
-        {"<leader>gd", ":DiffviewFileHistory<CR>", silent = true, mode = {"v"}}
+        {"<leader>gd", ":DiffviewFileHistory %<CR>", desc = "Show file history", silent = true, mode = {"n"}},
+        {"<leader>gd", ":DiffviewFileHistory<CR>", desc = "Show selected chunk history", silent = true, mode = {"v"}}
       }
 
     },        -- optional - Diff integration
@@ -15,10 +15,10 @@ return {
       'tpope/vim-fugitive',
       enabled = true,
       keys = {
-        {"<leader>gb", ":Git blame<cr>", noremap = true, silent = true },
+        {"<leader>gb", ":Git blame<cr>", desc = "Git blame", noremap = true, silent = true },
         {"<leader>gp", ":G pull origin v2", noremap = true, silent = true },
-        {"<leader>gt", ":0Gclog<cr>", noremap = true, silent = true },
-        {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true },
+        {"<leader>gl", ":0Gclog<cr>", desc = "Current file logs", noremap = true, silent = true },
+        {"<leader>gc", ":Gvsplit :%<left><left>", desc = "Git checkout", noremap = true, silent = true },
       }
     }
   },
@@ -49,6 +49,6 @@ return {
   },
 
   keys = {
-    {'<leader>gs', ':Neogit<CR>', silent = true}
+    {'<leader>gs', ':Neogit<CR>', desc = "Git status", silent = true}
   }
 }

@@ -3,7 +3,8 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "suggest.noselect": true,
   "typescript.suggestionActions.enabled": true,
-  "zig.path":"/Users/alekseypanchenko/bin/zls",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
   "coc.preferences.formatOnSaveFiletypes": [
     "go",
     "html"
@@ -30,6 +31,7 @@
     "Creds",
     "Creset",
     "Evoplay",
+    "FILESIZE",
     "Gamatron",
     "Gclog",
     "Hasher",

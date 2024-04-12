@@ -115,7 +115,7 @@ return {
             return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
           end
         },
-        { name = "luasnip" }, -- snippets
+        -- { name = "luasnip" }, -- snippets
         { name = "path" }, -- file system paths
         { name = "buffer", keyword_length = 3 }, -- text within current buffer
       }),

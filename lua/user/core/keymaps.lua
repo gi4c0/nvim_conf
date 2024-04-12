@@ -33,7 +33,6 @@ keymap("n", "<leader>sc", ":nohlsearch<CR>", { noremap = true, silent = true, de
 -- Stay in indent mode
 keymap("v", "<", "<gv", options)
 keymap("v", ">", ">gv", options)
-keymap("v", "p", '"_dP', options)
 
 keymap("n", "[b", ":bprevious<CR>", options)
 keymap("n", "]b", ":bnext<CR>", options)
@@ -43,3 +42,5 @@ keymap("n", "[t", ":tabprevious<CR>", options)
 keymap("n", "tc", ":tabclose<CR>", options)
 
 keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
+
+keymap('n', '<leader>bD', ':Bonly<CR>', { noremap = true, silent = true, desc = "Delete all buffers except current" })
