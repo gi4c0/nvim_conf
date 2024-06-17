@@ -68,5 +68,9 @@ return {
     keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 
     keyset("n", "<space>el", ":CocDiagnostics<cr>", { silent = true, nowait = true, desc= "Error list" })
+
+    vim.cmd [[
+      command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+    ]]
   end,
 }

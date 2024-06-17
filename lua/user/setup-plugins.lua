@@ -11,23 +11,29 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({ { import = "user.plugins" }, { import = "user.plugins.lsp" } }, {
-  checker = {
-    enabled = true,
-    notify = false
-  },
-  change_detection = {
-    notify = false
-  }
+require('lazy').setup({
+    { import = "user.plugins" },
+    { import = "user.plugins.lsp" }
+}, {
+    -- defaults = {
+    --     version = "*"
+    -- },
+    checker = {
+        enabled = true,
+        notify = false
+    },
+    change_detection = {
+        notify = false
+    }
 })
 
 -- Git
 
-  -- { 'neoclide/coc.nvim', branch = 'release' }
+-- { 'neoclide/coc.nvim', branch = 'release' }
 
 -- Other
-  -- 'github/copilot.vim'
+-- 'github/copilot.vim'
 
-  -- LSP
+-- LSP
 
-  -- '/Users/alekseypanchenko/dev/lint-ts-project.nvim'
+-- '/Users/alekseypanchenko/dev/lint-ts-project.nvim'

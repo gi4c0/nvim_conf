@@ -9,7 +9,7 @@ return {
     { "hrsh7th/cmp-buffer" }, -- source for text in buffer
     { "petertriho/cmp-git" },
     { "hrsh7th/cmp-path" }, -- source for file system paths
-    { "saadparwaiz1/cmp_luasnip" }, -- for autocompletion
+    { "saadparwaiz1/cmp_luasnip", }, -- for autocompletion
     { "onsails/lspkind.nvim" }, -- vs-code like pictograms
     {
       'windwp/nvim-autopairs',
@@ -117,7 +117,7 @@ return {
         },
         -- { name = "luasnip" }, -- snippets
         { name = "path" }, -- file system paths
-        { name = "buffer", keyword_length = 3 }, -- text within current buffer
+        { name = "buffer" }, -- text within current buffer
       }),
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
@@ -151,6 +151,13 @@ return {
           }, {
             { name = 'buffer' },
           })
+        })
+
+        cmp.setup.filetype({ 'sql' }, {
+          sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" }
+          }
         })
 
         require("cmp_git").setup()

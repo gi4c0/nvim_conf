@@ -7,7 +7,8 @@
   "typescript.preferences.quoteStyle": "single",
   "coc.preferences.formatOnSaveFiletypes": [
     "go",
-    "html"
+    "html",
+    "typescript"
   ],
   "tslint.enable": false,
   "go.goplsOptions": {
@@ -115,6 +116,7 @@
     "mhartington",
     "minigrep",
     "monospace",
+    "nestjs",
     "newtype",
     "nord",
     "occured",

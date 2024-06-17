@@ -5,7 +5,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "pmizio/typescript-tools.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     {
       'nvimtools/none-ls.nvim',
@@ -13,7 +12,7 @@ return {
         { 'davidmh/cspell.nvim' },
         { 'nvimtools/none-ls-extras.nvim' }
       },
-      config = function ()
+      config = function()
         local null_ls = require("null-ls")
         local cspell = require('cspell')
 
@@ -30,7 +29,7 @@ return {
 
     {
       'rust-lang/rust.vim',
-      config = function ()
+      config = function()
         vim.g.rustfmt_autosave = true
       end,
 
@@ -39,7 +38,8 @@ return {
         { "<leader>cm", function() vim.cmd.RustLsp('expandMacro') end, silent = true, noremap = true, desc = "Expand macro" },
         { "<leader>oc", function() vim.cmd.RustLsp('openCargo') end, silent = true, noremap = true, desc = "Open cargo" }
       }
-    }
+    },
+
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -62,45 +62,35 @@ return {
 
     lspconfig["eslint"].setup{}
 
-    require("typescript-tools").setup {
-      on_attach = on_attach,
-    }
-
     -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     -- configure tailwindcss server
     lspconfig["gopls"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     -- configure tailwindcss server
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     -- configure emmet language server
     lspconfig["emmet_ls"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     })
 
     -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
       settings = { -- custom settings for lua
         Lua = {
           -- make the language server recognize "vim" global
@@ -120,6 +110,7 @@ return {
   end,
 
   keys = {
+    {"K", vim.lsp.buf.hover, silent = true },
     {"gl", vim.diagnostic.open_float, silent = true, desc = "Show line diagnostics"},
     {"<C-k>", vim.diagnostic.goto_prev, silent = true, desc = "Go to Previous error"},
     {"<C-j>", vim.diagnostic.goto_next, silent = true, desc = "Go to Next error"},

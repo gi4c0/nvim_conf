@@ -72,7 +72,7 @@ return {
     -- there is no information available.
     -- To disable it just use ":Lspsaga hover_doc ++quiet"
     -- Pressing the key twice will enter the hover window
-    {"K", "<cmd>Lspsaga hover_doc<CR>" },
+    -- {"K", "<cmd>Lspsaga hover_doc<CR>" },
 
     -- {"gr", ":Lspsaga finder<CR>" },
   }
