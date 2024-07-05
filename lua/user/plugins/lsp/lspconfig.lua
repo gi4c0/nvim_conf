@@ -57,7 +57,6 @@ return {
     -- configure html server
     lspconfig["html"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     lspconfig["eslint"].setup{}
