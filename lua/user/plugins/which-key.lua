@@ -1,6 +1,7 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  version = "2.*",
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
@@ -29,6 +30,23 @@ return {
       triggers_nowait = {}
     })
 
+    -- TODO: migrate to v3
+    -- wk.add({
+    --   {"<leader>g", group = "Git"},
+    --   {"<leader>b", group = "Buffer"},
+    --   {"<leader>c", group = "Code actions"},
+    --   {"<leader>e", group = "Errors"},
+    --   {"<leader>f", group = "Files"},
+    --   {"<leader>h", group = "Help"},
+    --   {"<leader>l", group = "Lsp"},
+    --   {"<leader>m", group = "Marks"},
+    --   {"<leader>p", group = "Swap Parameters"},
+    --   {"<leader>o", group = "Open"},
+    --   {"<leader>s", group = "Search"},
+    --   {"<leader>S", group = "Snippet"},
+    --   {"<leader>u", group = "Undo tree"},
+    -- })
+
     wk.register({
       g = { name = "Git", },
       b = { name = "Buffer" },
@@ -37,6 +55,7 @@ return {
       f = { name = "Files" },
       h = { name = "Help" },
       l = { name = "Lsp" },
+      m = { name = "Marks" },
       p = { name = "Swap Parameters" },
       o = { name = "Open" },
       s = { name = "Search" },
