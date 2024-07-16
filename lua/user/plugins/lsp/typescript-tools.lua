@@ -19,12 +19,19 @@ return {
 
     config = {
         settings = {
-            expose_as_code_action = { 'add_missing_imports', 'organize_imports', 'fix_all' }
+          expose_as_code_action = { 'add_missing_imports', 'organize_imports', 'fix_all' },
+          vtsls = {
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true, -- Should improve performance
+              },
+            },
+          },
         }
-    },
+      },
 
-    keys = {
+      keys = {
         {'<leader>ci', ':TSToolsAddMissingImports<CR>', silent = true, desc = 'Add missing Imports'},
         {'<leader>cI', ':TSToolsOrganizeImports<CR>', silent = true, desc = 'Organize Imports'},
+      }
     }
-}

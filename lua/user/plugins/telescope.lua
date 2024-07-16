@@ -21,6 +21,8 @@ return {
 
   config = function()
     local actions = require('telescope.actions')
+    local open_with_trouble = require("trouble.sources.telescope").open
+    local add_to_trouble = require("trouble.sources.telescope").add
 
     require("telescope").setup {
       defaults = {
@@ -30,11 +32,12 @@ return {
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,
+            ["<C-t>"] = open_with_trouble,
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-p>"] = require('telescope.actions.layout').toggle_preview
           },
           n = {
-
+            ["<C-t>"] = open_with_trouble
           }
         },
 
