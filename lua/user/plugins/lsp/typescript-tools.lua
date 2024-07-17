@@ -1,37 +1,39 @@
 return {
-    'pmizio/typescript-tools.nvim',
-    cond = vim.env.COC ~= '1',
-    lazy = false,
+  'pmizio/typescript-tools.nvim',
+  cond = vim.env.COC ~= '1',
+  lazy = false,
 
-    dependencies = {
-        {
-            'sbdchd/neoformat',
-            config = function()
-                vim.g.neoformat_try_node_exe = 1;
+  dependencies = {
+    {
+      'dense-analysis/ale',
+      config = function()
+        vim.cmd[[
+          let g:ale_fixers = {
+            \   'typescript': ['prettier'],
+            \}
+          let g:ale_linters_explicit = 1
+          let g:ale_fix_on_save = 1
+        ]]
 
-                vim.api.nvim_create_autocmd('BufWritePre', {
-                    pattern = { '*.ts' },
-                    command = 'Neoformat',
-                })
-            end
-        }
+        end
+      }
     },
 
     config = {
-        settings = {
-          expose_as_code_action = { 'add_missing_imports', 'organize_imports', 'fix_all' },
-          vtsls = {
-            experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true, -- Should improve performance
-              },
+      settings = {
+        expose_as_code_action = { 'add_missing_imports', 'organize_imports', 'fix_all' },
+        vtsls = {
+          experimental = {
+            completion = {
+              enableServerSideFuzzyMatch = true, -- Should improve performance
             },
           },
-        }
-      },
-
-      keys = {
-        {'<leader>ci', ':TSToolsAddMissingImports<CR>', silent = true, desc = 'Add missing Imports'},
-        {'<leader>cI', ':TSToolsOrganizeImports<CR>', silent = true, desc = 'Organize Imports'},
+        },
       }
+    },
+
+    keys = {
+      {'<leader>ci', ':TSToolsAddMissingImports<CR>', silent = true, desc = 'Add missing Imports'},
+      {'<leader>cI', ':TSToolsOrganizeImports<CR>', silent = true, desc = 'Organize Imports'},
     }
+  }

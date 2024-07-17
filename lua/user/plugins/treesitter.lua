@@ -31,6 +31,7 @@ return {
         "toml",
         "zig",
         "vim",
+        "vimdoc",
         "markdown",
         "markdown_inline"
       },     -- one of "all", "language", or a list of languages
