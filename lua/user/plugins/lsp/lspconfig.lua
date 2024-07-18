@@ -4,7 +4,28 @@ return {
   cond = vim.env.COC ~= '1',
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    { "hrsh7th/cmp-nvim-lsp" },
+    { -- Auto format
+      'dense-analysis/ale',
+      config = function()
+        vim.cmd[[
+          let g:ale_fixers = {
+            \   'typescript': ['prettier'],
+            \}
+          let g:ale_linters_explicit = 1
+          let g:ale_fix_on_save = 1
+        ]]
+
+        end
+    },
+    {
+      'MysticalDevil/inlay-hints.nvim',
+      event = "LspAttach",
+      dependencies = { "neovim/nvim-lspconfig" },
+      config = function()
+        require("inlay-hints").setup()
+      end
+    },
     { "antosha417/nvim-lsp-file-operations", config = true },
     {
       'nvimtools/none-ls.nvim',
