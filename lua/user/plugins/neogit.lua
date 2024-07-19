@@ -3,24 +3,16 @@ return {
   enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",         -- required
-    {
-      "sindrets/diffview.nvim",
-      keys = {
-        {"<leader>gd", ":DiffviewFileHistory %<CR>", desc = "Show file history", silent = true, mode = {"n"}},
-        {"<leader>gd", ":DiffviewFileHistory<CR>", desc = "Show selected chunk history", silent = true, mode = {"v"}}
-      }
-
-    },        -- optional - Diff integration
-    {
-      'tpope/vim-fugitive',
-      enabled = true,
-      keys = {
-        {"<leader>gb", ":Git blame<cr>", desc = "Git blame", noremap = true, silent = true },
-        {"<leader>gp", ":G pull origin v2", noremap = true, silent = true },
-        {"<leader>gl", ":0Gclog<cr>", desc = "Current file logs", noremap = true, silent = true },
-        {"<leader>gc", ":Gvsplit :%<left><left>", desc = "Git checkout", noremap = true, silent = true },
-      }
-    }
+    -- {
+    --   'tpope/vim-fugitive',
+    --   enabled = false,
+    --   keys = {
+    --     {"<leader>gb", ":Git blame<cr>", desc = "Git blame", noremap = true, silent = true },
+    --     {"<leader>gp", ":G pull origin v2", noremap = true, silent = true },
+    --     {"<leader>gl", ":0Gclog<cr>", desc = "Current file logs", noremap = true, silent = true },
+    --     {"<leader>gc", ":Gvsplit :%<left><left>", desc = "Git checkout", noremap = true, silent = true },
+    --   }
+    -- }
   },
   opts = {
     disable_hint = true,
