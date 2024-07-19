@@ -3,8 +3,15 @@ return {
   lazy = false,
 
   dependencies = {
-    {'nvim-telescope/telescope-file-browser.nvim'},
-    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+    {
+        'nvim-telescope/telescope-file-browser.nvim',
+        build = 'brew install fd' -- Needed for faster directories loading. Alternative to find
+    },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      -- enabled = false,
+      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+    },
     {'molecule-man/telescope-menufacture'},
     {'nvim-telescope/telescope-frecency.nvim'},
     {
@@ -70,7 +77,7 @@ return {
         },
         file_browser = {
           respect_gitignore = false,
-          file_ignore_patterns = {".git/*"},
+          -- file_ignore_patterns = {".git/*"},
           previewer = false,
           grouped = true,
           hidden = true,
