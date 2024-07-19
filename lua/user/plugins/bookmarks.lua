@@ -27,12 +27,12 @@ return {
   end,
 
   keys = {
-    { "mm", ":lua require('bookmarks').bookmark_toggle()<CR>", silent = true, desc = "add or remove bookmark at current line" },
-    { "mi", ":lua require('bookmarks').bookmark_ann()<CR>", silent = true, desc = "add or edit mark annotation at current line" },
-    { "mc", ":lua require('bookmarks').bookmark_clean()<CR>", silent = true, desc = "clean all marks in local buffer" },
-    { "mn", ":lua require('bookmarks').bookmark_next()<CR>", silent = true, desc = "jump to next mark in local buffer" },
-    { "mp", ":lua require('bookmarks').bookmark_prev()<CR>", silent = true, desc = "jump to previous mark in local buffer" },
-    { "ml", ":Telescope bookmarks list<CR>", silent = true, desc = "Bookmarks list (Telesclope)" },
-    { "mx", ":lua require('bookmarks').bookmark_clear_all()<CR>", silent = true, desc = "removes all bookmarks" },
+    { "<leader>mm", ":lua require('bookmarks').bookmark_toggle()<CR>", silent = true, desc = "add or remove bookmark at current line" },
+    { "<leader>mi", ":lua require('bookmarks').bookmark_ann()<CR>", silent = true, desc = "add or edit mark annotation at current line" },
+    { "<leader>mc", ":lua require('bookmarks').bookmark_clean()<CR>", silent = true, desc = "clean all marks in local buffer" },
+    { "<leader>mn", ":lua require('bookmarks').bookmark_next()<CR>", silent = true, desc = "jump to next mark in local buffer" },
+    { "<leader>mp", ":lua require('bookmarks').bookmark_prev()<CR>", silent = true, desc = "jump to previous mark in local buffer" },
+    { "<leader>ml", ":Telescope bookmarks list<CR>", silent = true, desc = "Bookmarks list (Telesclope)" },
+    { "<leader>mx", ":lua require('bookmarks').bookmark_clear_all()<CR>", silent = true, desc = "removes all bookmarks" },
   }
 }

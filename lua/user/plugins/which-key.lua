@@ -45,7 +45,7 @@ return {
       {"<leader>f", group = "Files"},
       {"<leader>h", group = "Help"},
       {"<leader>l", group = "Lsp"},
-      {"m", group = "Marks"},
+      {"<leader>m", group = "Marks"},
       {"<leader>p", group = "Swap Parameters"},
       {"<leader>o", group = "Open"},
       {"<leader>s", group = "Search"},
