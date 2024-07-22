@@ -6,14 +6,41 @@ return {
       {"<leader>gD", ":DiffviewFileHistory<CR>", desc = "Show selected chunk history", silent = true, mode = {"v"}}
     }
   },
+
   {
     'lewis6991/gitsigns.nvim',
     config = true,
     lazy = false,
     keys = {
-      {"<leader>gd", ":Gitsigns preview_hunk<CR>", desc = "Difference hunk preview", silent = true}
+      {"<leader>gd", ":Gitsigns preview_hunk<CR>", desc = "Difference hunk preview", silent = true},
+      {
+        ']g',
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal({']c', bang = true})
+          else
+            require('gitsigns').nav_hunk('next')
+          end
+        end,
+        silent = true,
+        desc = "Next git chunk"
+      },
+
+      {
+        '[g',
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal({'[c', bang = true})
+          else
+            require('gitsigns').nav_hunk('prev')
+          end
+        end,
+        silent = true,
+        desc = "Next git chunk"
+      }
     }
   },
+
   {
     'tpope/vim-fugitive',
     enabled = true,
