@@ -26,14 +26,3 @@ require('lazy').setup({
         notify = false
     }
 })
-
--- Git
-
--- { 'neoclide/coc.nvim', branch = 'release' }
-
--- Other
--- 'github/copilot.vim'
-
--- LSP
-
--- '/Users/alekseypanchenko/dev/lint-ts-project.nvim'

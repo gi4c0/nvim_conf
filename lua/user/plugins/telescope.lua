@@ -118,6 +118,10 @@ return {
     {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
     {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser"},
     {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
+    { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
+    {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
+    -- {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
+    -- {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},
   },
 
 }

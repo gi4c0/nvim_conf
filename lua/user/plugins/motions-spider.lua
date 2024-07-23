@@ -1,7 +1,7 @@
 return {
   "chrisgrieser/nvim-spider",
   lazy = true,
-  disabled = true,
+  enabled = false,
   config = {
     subwordMovement = false
   },
