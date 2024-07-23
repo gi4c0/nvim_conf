@@ -5,7 +5,11 @@ return {
   dependencies = {
     {
         'nvim-telescope/telescope-file-browser.nvim',
-        build = 'brew install fd' -- Needed for faster directories loading. Alternative to find
+        build = 'brew install fd', -- Needed for faster directories loading. Alternative to find
+        keys = {
+          {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
+          {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
+        }
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -14,7 +18,6 @@ return {
     },
     {'molecule-man/telescope-menufacture'},
     {'nvim-telescope/telescope-live-grep-args.nvim'},
-    {'nvim-telescope/telescope-frecency.nvim'},
     {
       'aaronhallaert/advanced-git-search.nvim',
       dependencies = {
@@ -105,21 +108,17 @@ return {
     require("telescope").load_extension "fzf"
     require("telescope").load_extension "file_browser"
     require("telescope").load_extension "menufacture"
-    -- require("telescope").load_extension "advanced_git_search"
-    require("telescope").load_extension "frecency"
     require("telescope").load_extension "live_grep_args"
   end,
 
   keys = {
     -- {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
-    {"<leader>fr", ':Telescope frecency workspace=CWD path_display={"shorten"} them=ivy<CR>',noremap = true, silent = true},
     {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
     {"<leader>?", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep"}, -- use <C-^> to open a menu
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
-    -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
+    {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
     {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
-    {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser"},
     {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
     { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
     {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
