@@ -7,8 +7,8 @@ return {
         'nvim-telescope/telescope-file-browser.nvim',
         build = 'brew install fd', -- Needed for faster directories loading. Alternative to find
         keys = {
-          {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
-          {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
+          -- {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
+          -- {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
         }
     },
     {
@@ -23,13 +23,55 @@ return {
       dependencies = {
         'tpope/vim-rhubarb'
       }
+    },
+    {
+        "mikavilpas/yazi.nvim",
+        -- event = "VeryLazy",
+        keys = {
+            -- 👇 in this section, choose your own keymappings!
+            {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
+            -- Open in the current working directory
+            { "<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory" },
+            -- NOTE: requires a version of yazi that includes
+            -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
+            {'<c-up>', function() require('yazi').toggle() end, desc = "Resume the last yazi session" },
+        },
+        opts = {
+            -- if you want to open yazi instead of netrw, see below for more info
+            open_for_directories = true,
+
+            -- enable these if you are using the latest version of yazi
+            use_ya_for_events_reading = true,
+            -- use_yazi_client_id_flag = true,
+            keymaps = {
+                open_file_in_vertical_split = '<c-v>',
+                open_file_in_horizontal_split = '<c-s>',
+                open_file_in_tab = '<c-t>',
+                grep_in_directory = '<c-g>',
+                replace_in_directory = '<c-x>',
+                cycle_open_buffers = '<tab>',
+            },
+        },
     }
   },
 
   config = function()
     local actions = require('telescope.actions')
     local open_with_trouble = require("trouble.sources.telescope").open
-    local add_to_trouble = require("trouble.sources.telescope").add
+    local yazi = require("yazi")
+
+    local action_state = require('telescope.actions.state')
+
+    local function open_in_yazi(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        if selection then
+            local dir_path = selection.path or selection[1]
+            yazi.yazi(nil, dir_path)
+        end
+
+    end
 
     require("telescope").setup {
       defaults = {
@@ -92,13 +134,13 @@ return {
             height = .75,
           },
           -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
+          hijack_netrw = false,
           mappings = {
             ["i"] = {
-              -- your custom insert mode mappings
+                ["<CR>"] = open_in_yazi
             },
             ["n"] = {
-              -- your custom normal mode mappings
+                ["<CR>"] = open_in_yazi
             },
           },
         }
@@ -114,7 +156,7 @@ return {
   keys = {
     -- {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
     {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
-    {"<leader>?", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep"}, -- use <C-^> to open a menu
+    {"<leader>?", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep ('query' -g **/path/*file*)"},
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
     {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
@@ -127,3 +169,4 @@ return {
   },
 
 }
+
