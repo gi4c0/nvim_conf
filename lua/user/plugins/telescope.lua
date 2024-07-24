@@ -28,13 +28,8 @@ return {
         "mikavilpas/yazi.nvim",
         -- event = "VeryLazy",
         keys = {
-            -- 👇 in this section, choose your own keymappings!
             {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
-            -- Open in the current working directory
-            { "<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory" },
-            -- NOTE: requires a version of yazi that includes
-            -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-            {'<c-up>', function() require('yazi').toggle() end, desc = "Resume the last yazi session" },
+            {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
         },
         opts = {
             -- if you want to open yazi instead of netrw, see below for more info
