@@ -147,8 +147,8 @@ return {
 
   keys = {
     -- {"<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>",noremap = true, silent = true},
-    {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
-    {"<leader>?", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep ('query' -g **/path/*file*)"},
+    -- {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
+    {"<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep ('query' -g **/path/*file*)"},
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
     {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
