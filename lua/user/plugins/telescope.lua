@@ -6,10 +6,6 @@ return {
     {
         'nvim-telescope/telescope-file-browser.nvim',
         build = 'brew install fd', -- Needed for faster directories loading. Alternative to find
-        keys = {
-          -- {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
-          -- {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
-        }
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -27,13 +23,14 @@ return {
     {
         "mikavilpas/yazi.nvim",
         -- event = "VeryLazy",
+        enabled = true,
         keys = {
-            {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
-            {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
+            {"<leader>-", function() require("yazi").yazi() end, desc = "Open the file manager"},
+            -- {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
         },
         opts = {
             -- if you want to open yazi instead of netrw, see below for more info
-            open_for_directories = true,
+            open_for_directories = false,
 
             -- enable these if you are using the latest version of yazi
             use_ya_for_events_reading = true,
@@ -53,20 +50,20 @@ return {
   config = function()
     local actions = require('telescope.actions')
     local open_with_trouble = require("trouble.sources.telescope").open
-    local yazi = require("yazi")
-
-    local action_state = require('telescope.actions.state')
-
-    local function open_in_yazi(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        actions.close(prompt_bufnr)
-
-        if selection then
-            local dir_path = selection.path or selection[1]
-            yazi.yazi(nil, dir_path)
-        end
-
-    end
+    -- local yazi = require("yazi")
+    --
+    -- local action_state = require('telescope.actions.state')
+    --
+    -- local function open_in_yazi(prompt_bufnr)
+    --     local selection = action_state.get_selected_entry()
+    --     actions.close(prompt_bufnr)
+    --
+    --     if selection then
+    --         local dir_path = selection.path or selection[1]
+    --         yazi.yazi(nil, dir_path)
+    --     end
+    --
+    -- end
 
     require("telescope").setup {
       defaults = {
@@ -129,13 +126,13 @@ return {
             height = .75,
           },
           -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = false,
+          hijack_netrw = true,
           mappings = {
             ["i"] = {
-                ["<CR>"] = open_in_yazi
+                -- ["<CR>"] = open_in_yazi
             },
             ["n"] = {
-                ["<CR>"] = open_in_yazi
+                -- ["<CR>"] = open_in_yazi
             },
           },
         }
@@ -159,6 +156,10 @@ return {
     {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
     { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
     {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
+
+    {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
+    {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
+
     -- {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
     -- {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},
   },

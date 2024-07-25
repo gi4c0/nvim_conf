@@ -94,6 +94,7 @@ return {
     {
       'mrcjkb/rustaceanvim',
       cond = vim.env.COC ~= '1',
+      lazy = false,
       config = function()
         vim.g.rustfmt_autosave = true
       end,
