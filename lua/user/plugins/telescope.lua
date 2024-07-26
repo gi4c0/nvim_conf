@@ -25,12 +25,12 @@ return {
         -- event = "VeryLazy",
         enabled = true,
         keys = {
-            {"<leader>-", function() require("yazi").yazi() end, desc = "Open the file manager"},
-            -- {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
+            {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
+            {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
         },
         opts = {
             -- if you want to open yazi instead of netrw, see below for more info
-            open_for_directories = false,
+            open_for_directories = true,
 
             -- enable these if you are using the latest version of yazi
             use_ya_for_events_reading = true,
@@ -50,20 +50,20 @@ return {
   config = function()
     local actions = require('telescope.actions')
     local open_with_trouble = require("trouble.sources.telescope").open
-    -- local yazi = require("yazi")
-    --
-    -- local action_state = require('telescope.actions.state')
-    --
-    -- local function open_in_yazi(prompt_bufnr)
-    --     local selection = action_state.get_selected_entry()
-    --     actions.close(prompt_bufnr)
-    --
-    --     if selection then
-    --         local dir_path = selection.path or selection[1]
-    --         yazi.yazi(nil, dir_path)
-    --     end
-    --
-    -- end
+    local yazi = require("yazi")
+
+    local action_state = require('telescope.actions.state')
+
+    local function open_in_yazi(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        if selection then
+            local dir_path = selection.path or selection[1]
+            yazi.yazi(nil, dir_path)
+        end
+
+    end
 
     require("telescope").setup {
       defaults = {
@@ -129,10 +129,10 @@ return {
           hijack_netrw = true,
           mappings = {
             ["i"] = {
-                -- ["<CR>"] = open_in_yazi
+                ["<CR>"] = open_in_yazi
             },
             ["n"] = {
-                -- ["<CR>"] = open_in_yazi
+                ["<CR>"] = open_in_yazi
             },
           },
         }
