@@ -56,6 +56,14 @@ return {
   {
     'tpope/vim-fugitive',
     enabled = true,
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "git",
+        callback = function()
+          vim.opt_local.foldmethod = "syntax" -- Need this to automatically fold file changes in git object
+        end
+      })
+    end,
     dependencies = {
       { -- pretty git log
         "rbong/vim-flog",
@@ -71,6 +79,9 @@ return {
       {"<leader>gl", ":Flogsplit -path=%<CR>", noremap = true, silent = true, desc = "Git log of current file" },
       {"<leader>gL", ":Flogsplit<CR>", noremap = true, silent = true, desc = "Git log of repository file" },
       {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true, desc = "Show git file on given commit/branch" },
+      {">", "zo", desc = "Open fold", ft="git" },
+      {"<", "zc", desc = "Close fold", ft="git" },
+      {"<TAB>", "za", desc = "Toggle fold", ft="git" },
     }
   },
 }
