@@ -68,7 +68,12 @@ return {
       { -- pretty git log
         "rbong/vim-flog",
         lazy = true,
-        cmd = { "Flog", "Flogsplit", "Floggit" }
+        cmd = { "Flog", "Flogsplit", "Floggit" },
+        keys = {
+          {'<leader>gf', ':Flog -path=', noremap = true, silent = true, desc = "Git flog for path" },
+          {"<leader>gl", ":Flogsplit -path=%<CR>", noremap = true, silent = true, desc = "Git log of current file" },
+          {"<leader>gL", ":Flogsplit<CR>", noremap = true, silent = true, desc = "Git log of repository file" },
+        }
       },
     },
 
@@ -76,8 +81,6 @@ return {
       {"<leader>gs", ":vertical :Git<CR>", noremap = true, silent = true, desc = "Git status" },
       {"<leader>gS", ":vertical :Git<CR><C-w>o", noremap = true, silent = true, desc = "Git status (full screen)" },
       {"<leader>gb", ":Git blame<CR>", noremap = true, silent = true, desc = "Git blame" },
-      {"<leader>gl", ":Flogsplit -path=%<CR>", noremap = true, silent = true, desc = "Git log of current file" },
-      {"<leader>gL", ":Flogsplit<CR>", noremap = true, silent = true, desc = "Git log of repository file" },
       {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true, desc = "Show git file on given commit/branch" },
       {">", "zo", desc = "Open fold", ft="git" },
       {"<", "zc", desc = "Close fold", ft="git" },

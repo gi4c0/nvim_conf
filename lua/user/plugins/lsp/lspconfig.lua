@@ -6,13 +6,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
-        {
-          'MysticalDevil/inlay-hints.nvim',
-          event = "LspAttach",
-          config = function()
-            require("inlay-hints").setup()
-          end
-        },
         -- { "antosha417/nvim-lsp-file-operations", config = true },
 
       },
@@ -38,6 +31,11 @@ return {
 
         -- configure css server
         lspconfig["cssls"].setup({
+          capabilities = capabilities,
+        })
+
+        -- configure tailwindcss server
+        lspconfig["gleam"].setup({
           capabilities = capabilities,
         })
 
@@ -152,16 +150,6 @@ return {
 
         config = {
           settings = {
-            -- tsserver_file_preferences = {
-              --   includeInlayParameterNameHints = "all",
-              --   includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              --   includeInlayFunctionParameterTypeHints = true,
-              --   includeInlayVariableTypeHints = true,
-              --   includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-              --   includeInlayPropertyDeclarationTypeHints = true,
-              --   includeInlayFunctionLikeReturnTypeHints = true,
-              --   includeInlayEnumMemberValueHints = true,
-              -- },
               expose_as_code_action = { 'add_missing_imports', 'organize_imports', 'fix_all' },
               vtsls = {
                 experimental = {

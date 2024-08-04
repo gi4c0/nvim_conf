@@ -1,3 +1,4 @@
 return {
-  'AndrewRadev/tagalong.vim'
+  'AndrewRadev/tagalong.vim',
+  ft = 'html'
 }
