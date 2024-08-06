@@ -23,6 +23,11 @@ return {
         end
 
         -- configure html server
+        lspconfig["graphql"].setup({
+          capabilities = capabilities,
+        })
+
+        -- configure html server
         lspconfig["html"].setup({
           capabilities = capabilities,
         })

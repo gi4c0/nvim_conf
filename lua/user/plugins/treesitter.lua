@@ -24,6 +24,7 @@ return {
       ensure_installed = {
         "typescript",
         "json",
+        "graphql",
         "gleam",
         "go",
         "lua",

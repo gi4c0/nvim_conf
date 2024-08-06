@@ -31,6 +31,7 @@ return {
         'tailwindcss',
         'emmet_ls',
         'pyright',
+        'graphql'
       },
 
       automatic_installation = true, -- not the same as ensure_installed
