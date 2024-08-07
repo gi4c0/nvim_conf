@@ -8,6 +8,26 @@ return {
   },
 
   {
+    'polarmutex/git-worktree.nvim',
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      {
+         'nvim-telescope/telescope.nvim',
+         version = '^2',
+         config = function()
+           require("telescope").load_extension("git_worktree")
+         end
+      }
+    },
+
+    keys = {
+      {'<leader>gw', function() require('telescope').extensions.git_worktree.git_worktree() end, desc = "Git Worktree"},
+      {'<leader>gW', function() require('telescope').extensions.git_worktree.create_git_worktree() end, desc = "Create Git Worktree"}
+    }
+
+  },
+
+  {
     'kdheepak/lazygit.nvim',
     keys = {
         {"<leader>gg", ":LazyGit<cr>", noremap = true, silent = true, desc = "Lazy Git" },
