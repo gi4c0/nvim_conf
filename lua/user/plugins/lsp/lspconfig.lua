@@ -150,7 +150,7 @@ return {
             sources = {
               cspell.diagnostics,
               cspell.code_actions,
-              require("none-ls.code_actions.eslint"),
+              -- require("none-ls.code_actions.eslint"), -- slows down code actions a lot
             },
             fallback_severity = vim.diagnostic.severity.WARN
           })
