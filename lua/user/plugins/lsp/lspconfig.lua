@@ -97,9 +97,19 @@ return {
     {
       'mrcjkb/rustaceanvim',
       cond = vim.env.COC ~= '1',
-      lazy = false,
-      config = function()
-        vim.g.rustfmt_autosave = true
+      ft = "rust",
+      dependencies = {
+        { 'lukas-reineke/lsp-format.nvim' }
+      },
+      init = function()
+        -- vim.g.rustfmt_autosave = true
+        vim.g.rustaceanvim = {
+          server = {
+            on_attach = function(client, bufnr)
+              require("lsp-format").on_attach(client, bufnr)
+            end
+          }
+        }
       end,
 
       keys = {
@@ -116,7 +126,6 @@ return {
         vim.cmd[[
         let g:ale_fixers = {
           \   'typescript': ['prettier'],
-          \   'rust': ['rustfmt'],
           \   'go': ['gofmt'],
           \}
           let g:ale_linters_explicit = 1
