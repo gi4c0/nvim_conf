@@ -25,8 +25,8 @@ return {
         -- event = "VeryLazy",
         enabled = true,
         keys = {
-            {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
-            {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
+            {"-", function() require("yazi").yazi() end, desc = "Open the file manager"},
+            {"_", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
         },
         opts = {
             -- if you want to open yazi instead of netrw, see below for more info
@@ -50,20 +50,22 @@ return {
   config = function()
     local actions = require('telescope.actions')
     local open_with_trouble = require("trouble.sources.telescope").open
-    local yazi = require("yazi")
+    local fb_actions = require("telescope._extensions.file_browser.actions")
 
-    local action_state = require('telescope.actions.state')
-
-    local function open_in_yazi(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        actions.close(prompt_bufnr)
-
-        if selection then
-            local dir_path = selection.path or selection[1]
-            yazi.yazi(nil, dir_path)
-        end
-
-    end
+    -- local yazi = require("yazi")
+    --
+    -- local action_state = require('telescope.actions.state')
+    --
+    -- local function open_in_yazi(prompt_bufnr)
+    --     local selection = action_state.get_selected_entry()
+    --     actions.close(prompt_bufnr)
+    --
+    --     if selection then
+    --         local dir_path = selection.path or selection[1]
+    --         yazi.yazi(nil, dir_path)
+    --     end
+    --
+    -- end
 
     require("telescope").setup {
       defaults = {
@@ -78,7 +80,7 @@ return {
             ["<C-p>"] = require('telescope.actions.layout').toggle_preview
           },
           n = {
-            ["<C-t>"] = open_with_trouble
+            ["<C-t>"] = open_with_trouble,
           }
         },
 
@@ -89,7 +91,6 @@ return {
           path_display = { "absolute" }
         },
         buffers = {
-          -- theme = "dropdown",
           sort_lastused = true,
           previewer = false,
           mappings = {
@@ -116,24 +117,35 @@ return {
         file_browser = {
           respect_gitignore = false,
           -- file_ignore_patterns = {".git/*"},
-          previewer = false,
+          previewer = true,
           grouped = true,
           hidden = true,
           select_buffer = true,
+          sorting_strategy = "ascending",
           display_stat = false,
-          theme = "dropdown",
+          layout_strategy = "horizontal",
           layout_config = {
-            height = .75,
+            anchor = "CENTER",
+            height = 0.75,
+            preview_cutoff = 40,
+            prompt_position = "top",
+            width = .8
           },
           -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
           mappings = {
-            ["i"] = {
-                ["<CR>"] = open_in_yazi
+            n = {
+              h = fb_actions.goto_parent_dir,
+              l = actions.select_default, -- action for going into directories and opening files
             },
-            ["n"] = {
-                ["<CR>"] = open_in_yazi
+            i = {
+                -- ["<CR>"] = open_in_yazi
+              ['<C-h>'] = fb_actions.goto_parent_dir,
+              ['<C-l>'] = actions.select_default, -- action for going into directories and opening files
             },
+            -- n = {
+            --     ["<CR>"] = open_in_yazi
+            -- },
           },
         }
       }
