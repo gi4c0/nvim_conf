@@ -23,7 +23,7 @@ return {
     {
         "mikavilpas/yazi.nvim",
         -- event = "VeryLazy",
-        enabled = true,
+        enabled = false,
         keys = {
             {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
             {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
@@ -52,20 +52,20 @@ return {
     local open_with_trouble = require("trouble.sources.telescope").open
     local fb_actions = require("telescope._extensions.file_browser.actions")
 
-    local yazi = require("yazi")
-
-    local action_state = require('telescope.actions.state')
-
-    local function open_in_yazi(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        actions.close(prompt_bufnr)
-
-        if selection then
-            local dir_path = selection.path or selection[1]
-            yazi.yazi(nil, dir_path)
-        end
-
-    end
+    -- local yazi = require("yazi")
+    --
+    -- local action_state = require('telescope.actions.state')
+    --
+    -- local function open_in_yazi(prompt_bufnr)
+    --     local selection = action_state.get_selected_entry()
+    --     actions.close(prompt_bufnr)
+    --
+    --     if selection then
+    --         local dir_path = selection.path or selection[1]
+    --         yazi.yazi(nil, dir_path)
+    --     end
+    --
+    -- end
 
     require("telescope").setup {
       defaults = {
@@ -117,7 +117,8 @@ return {
         file_browser = {
           respect_gitignore = false,
           -- file_ignore_patterns = {".git/*"},
-          previewer = false,
+          previewer = true,
+          initial_mode = "normal",
           grouped = true,
           hidden = true,
           select_buffer = true,
@@ -129,7 +130,7 @@ return {
             height = 0.75,
             preview_cutoff = 40,
             prompt_position = "top",
-            width = .5
+            width = .8
           },
           -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
@@ -137,10 +138,10 @@ return {
             n = {
               h = fb_actions.goto_parent_dir,
               l = actions.select_default, -- action for going into directories and opening files
-              ["<CR>"] = open_in_yazi
+              -- ["<CR>"] = open_in_yazi
             },
             i = {
-              ["<CR>"] = open_in_yazi,
+              -- ["<CR>"] = open_in_yazi,
               ['<C-h>'] = fb_actions.goto_parent_dir,
               ['<C-l>'] = actions.select_default, -- action for going into directories and opening files
             },
@@ -163,7 +164,7 @@ return {
     {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
     {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
-    {"<C-f>", ":Telescope file_browser files=false respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
+    {"<C-f>", ":Telescope file_browser files=false initial_mode=insert respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
     { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
     {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
 
