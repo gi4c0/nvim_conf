@@ -20,52 +20,12 @@ return {
         'tpope/vim-rhubarb'
       }
     },
-    {
-        "mikavilpas/yazi.nvim",
-        -- event = "VeryLazy",
-        enabled = false,
-        keys = {
-            {"<leader>r", function() require("yazi").yazi() end, desc = "Open the file manager"},
-            {"<leader>R", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Open the file manager in nvim's working directory"},
-        },
-        opts = {
-            -- if you want to open yazi instead of netrw, see below for more info
-            open_for_directories = true,
-
-            -- enable these if you are using the latest version of yazi
-            use_ya_for_events_reading = true,
-            -- use_yazi_client_id_flag = true,
-            keymaps = {
-                open_file_in_vertical_split = '<c-v>',
-                open_file_in_horizontal_split = '<c-s>',
-                open_file_in_tab = '<c-t>',
-                grep_in_directory = '<c-g>',
-                replace_in_directory = '<c-x>',
-                cycle_open_buffers = '<tab>',
-            },
-        },
-    }
   },
 
   config = function()
     local actions = require('telescope.actions')
     local open_with_trouble = require("trouble.sources.telescope").open
     local fb_actions = require("telescope._extensions.file_browser.actions")
-
-    -- local yazi = require("yazi")
-    --
-    -- local action_state = require('telescope.actions.state')
-    --
-    -- local function open_in_yazi(prompt_bufnr)
-    --     local selection = action_state.get_selected_entry()
-    --     actions.close(prompt_bufnr)
-    --
-    --     if selection then
-    --         local dir_path = selection.path or selection[1]
-    --         yazi.yazi(nil, dir_path)
-    --     end
-    --
-    -- end
 
     require("telescope").setup {
       defaults = {
@@ -138,10 +98,8 @@ return {
             n = {
               h = fb_actions.goto_parent_dir,
               l = actions.select_default, -- action for going into directories and opening files
-              -- ["<CR>"] = open_in_yazi
             },
             i = {
-              -- ["<CR>"] = open_in_yazi,
               ['<C-h>'] = fb_actions.goto_parent_dir,
               ['<C-l>'] = actions.select_default, -- action for going into directories and opening files
             },
