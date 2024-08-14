@@ -70,7 +70,7 @@ return {
     require("telescope").setup {
       defaults = {
         respect_gitignore = false,
-        file_ignore_patterns = {"^.git/"},
+        file_ignore_patterns = {"^.git/", "dist/"},
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         mappings = {
           i = {
@@ -118,7 +118,7 @@ return {
           respect_gitignore = false,
           -- file_ignore_patterns = {".git/*"},
           previewer = true,
-          initial_mode = "normal",
+          -- initial_mode = "normal",
           grouped = true,
           hidden = true,
           select_buffer = true,
