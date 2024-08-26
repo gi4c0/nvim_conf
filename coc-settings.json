@@ -1,5 +1,6 @@
 {
   "npm.binPath": "/opt/homebrew/opt/node@18/bin/npm",
+  "diagnostic.enableMessage": "jump",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "suggest.noselect": true,
   "typescript.suggestionActions.enabled": true,

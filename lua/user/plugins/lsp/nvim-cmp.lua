@@ -1,7 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
   event = "InsertEnter",
-  enabled = true,
   cond = vim.env.COC ~= '1',
   lazy = false,
 

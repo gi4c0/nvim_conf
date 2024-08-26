@@ -1,6 +1,5 @@
 return {
   'neoclide/coc.nvim',
-  enabled = true,
   lazy = false,
   cond = vim.env.COC == '1',
   branch = 'release',
@@ -57,6 +56,7 @@ return {
     keyset("i", "<C-s>", "<C-\\><C-o>:call CocActionAsync('showSignatureHelp')<cr>", { silent = true})
 
     keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", { nowait = true, desc = "Code action" })
+    keyset("n", "gl", ":call CocAction('diagnosticInfo')<CR>", { nowait = true, desc = "Show diagnostic info" })
     -- keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursors)", { nowait = true, desc = "Code action" })
 
     local opts = {silent = true, nowait = true, expr = true}

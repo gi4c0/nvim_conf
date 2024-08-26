@@ -2,6 +2,7 @@ return {
   "folke/trouble.nvim",
   opts = {},
   cmd = "Trouble",
+  cond = vim.env.COC ~= '1',
   enabled = true,
   keys = {
     {
