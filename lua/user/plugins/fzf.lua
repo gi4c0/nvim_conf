@@ -36,8 +36,8 @@ return {
     {'<leader>gB', ':FzfLua git_branches<CR>', noremap = true, silent = true, "Git branches" },
     {'<C-Space>', "<cmd>lua require('fzf-lua').buffers()<CR>", silent = true},
     -- {'<leader>/', ":FzfLua live_grep<CR>", silent = true},
-    -- {'<leader>*', ":FzfLua grep_cword<CR>", silent = true, mode = {'n'}},
-    -- {'<leader>*', ":FzfLua grep_visual<CR>", silent = true, mode = {'v'}},
+    {'<leader>*', ":FzfLua grep_cword<CR>", silent = true, mode = {'n'}},
+    {'<leader>*', ":FzfLua grep_visual<CR>", silent = true, mode = {'v'}},
     {'<leader>ss', ":FzfLua grep<CR>", silent = true},
     {'<leader>sl', ":FzfLua grep_last<CR>", silent = true},
   }

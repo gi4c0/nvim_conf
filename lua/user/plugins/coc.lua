@@ -26,7 +26,7 @@ return {
     -- GoTo code navigation
     keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
     keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
-    keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+    keyset("n", "gr", "<Plug>(coc-references)", {})
 
     -- Use K to show documentation in preview window
     function _G.show_docs()
