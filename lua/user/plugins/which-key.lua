@@ -50,6 +50,7 @@ return {
       {"<leader>o", group = "Open"},
       {"<leader>s", group = "Search"},
       {"<leader>S", group = "Snippet"},
+      {"<leader>t", group = "Tabs"},
       {"<leader>u", group = "Undo tree"},
     })
 

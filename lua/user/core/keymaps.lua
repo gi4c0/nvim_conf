@@ -43,4 +43,5 @@ keymap("n", "tc", ":tabclose<CR>", options)
 
 keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 
-keymap('n', '<leader>bD', ':Bonly<CR>', { noremap = true, silent = true, desc = "Delete all buffers except current" })
+keymap('n', '<leader>bD', ':Bonly<CR>', { noremap = true, silent = true, desc = "Delete all buffers except for current" })
+keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, silent = true, desc = "Delete all tabs except for current" })

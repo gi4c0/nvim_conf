@@ -23,6 +23,7 @@ return {
         'lua_ls',
         'rust_analyzer',
         'gopls',
+        'biome',
         'jsonls',
         'dockerls',
         'html',

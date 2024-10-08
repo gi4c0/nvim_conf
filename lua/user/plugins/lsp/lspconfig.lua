@@ -32,33 +32,38 @@ return {
           capabilities = capabilities,
         })
 
-        lspconfig["eslint"].setup{}
+        -- configure html server
+        lspconfig["biome"].setup{}
+
+        -- lspconfig["eslint"].setup{
+        --   -- cmd_env = {
+        --   --   NODE_OPTIONS = "--max-old-space-size=20480"
+        --   -- },
+        -- }
 
         -- configure css server
         lspconfig["cssls"].setup({
           capabilities = capabilities,
         })
 
-        -- configure tailwindcss server
         lspconfig["gleam"].setup({
           capabilities = capabilities,
         })
 
-        -- configure tailwindcss server
         lspconfig["gopls"].setup({
           capabilities = capabilities,
         })
 
-        -- configure tailwindcss server
-        lspconfig["tailwindcss"].setup({
-          capabilities = capabilities,
-        })
+        -- -- configure tailwindcss server
+        -- lspconfig["tailwindcss"].setup({
+        --   capabilities = capabilities,
+        -- })
 
         -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-        })
+        -- lspconfig["emmet_ls"].setup({
+        --   capabilities = capabilities,
+        --   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+        -- })
 
         -- configure python server
         lspconfig["pyright"].setup({

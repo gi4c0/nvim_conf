@@ -1,6 +1,8 @@
 return {
-  'hrsh7th/nvim-cmp',
+  -- 'hrsh7th/nvim-cmp',
+  'iguanacucumber/magazine.nvim',
   event = "InsertEnter",
+  name = "nvim-cmp",
   cond = vim.env.COC ~= '1',
   lazy = false,
 
