@@ -119,7 +119,7 @@ return {
     -- {"<leader>/", ":lua require('telescope').extensions.menufacture.live_grep()<CR>",noremap = true, silent = true, desc = "Telescope live grep"}, -- use <C-^> to open a menu
     {"<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", noremap = true, silent = true, desc = "Telescope grep ('query' -g **/path/*file*)"},
     -- {"<C-Space>", "<cmd>lua require('telescope.builtin').buffers()<cr>",noremap = true, silent = true},
-    {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
+    -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
     {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
     {"<C-f>", ":Telescope file_browser files=false initial_mode=insert respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
