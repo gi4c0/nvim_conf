@@ -14,10 +14,10 @@ return {
       "<cmd>Trouble diagnostics toggle filter.buf=0 focus=true filter.severity=vim.diagnostic.severity.ERROR<cr>",
       desc = "Buffer Diagnostics (Trouble)",
     },
-    {
-      "gr",
-      "<cmd>Trouble lsp_references toggle focus=true win.position=bottom win.size.height=16<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
-    },
+    -- {
+    --   "gr",
+    --   "<cmd>Trouble lsp_references toggle focus=true win.position=bottom win.size.height=16<cr>",
+    --   desc = "LSP Definitions / references / ... (Trouble)",
+    -- },
   },
 }

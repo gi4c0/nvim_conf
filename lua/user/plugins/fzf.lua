@@ -30,7 +30,7 @@ return {
   end,
 
   keys = {
-    {'<C-p>', "<cmd>lua require('fzf-lua').files()<CR>", silent = true},
+    -- {'<C-p>', "<cmd>lua require('fzf-lua').files()<CR>", silent = true},
     {'<leader>fR', ":FzfLua files resume=true<CR>", silent = true, desc = "Resume on file search"},
     -- {'<leader>fr', ':FzfLua oldfiles<CR>', noremap = true, silent = true, "Recent files" },
     {'<leader>gB', ':FzfLua git_branches<CR>', noremap = true, silent = true, "Git branches" },

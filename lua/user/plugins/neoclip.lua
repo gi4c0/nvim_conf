@@ -7,7 +7,7 @@ return {
   config = function()
     require('neoclip').setup({
       enable_persistent_history = true,
-      default_register = '0',
+      default_register = '"',
       keys = {
         telescope = {
           i = {
@@ -42,6 +42,7 @@ return {
   end,
 
   keys = {
-    {'<leader>y', ':Telescope neoclip<CR>', silent = true, desc = "Yank Manager (Neoclip)" }
+    {'<leader>y', ':Telescope neoclip<CR>', silent = true, desc = "Yank Manager (Neoclip)" },
+    -- {'<C-y>', ':Telescope neoclip<CR>', silent = true, desc = "Yank Manager (Neoclip)" }
   }
 }
