@@ -48,7 +48,7 @@ return {
     {"gD", ":Lspsaga peek_definition<CR>", {noremap = true } },
 
     -- Go to definition
-    {"gd", "<cmd>Lspsaga goto_definition<CR>" },
+    -- {"gd", "<cmd>Lspsaga goto_definition<CR>" },
 
     -- Peek type definition
     -- You can edit the file containing the type definition in the floating window
@@ -58,7 +58,7 @@ return {
     {"gT", "<cmd>Lspsaga peek_type_definition<CR>" },
 
     -- Go to type definition
-    {"gt", "<cmd>Lspsaga goto_type_definition<CR>" },
+    -- {"gt", "<cmd>Lspsaga goto_type_definition<CR>" },
 
 
     -- Show line diagnostics

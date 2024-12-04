@@ -46,5 +46,6 @@ keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 keymap('n', '<leader>bD', ':Bonly<CR>', { noremap = true, silent = true, desc = "Delete all buffers except for current" })
 
 keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, silent = true, desc = "Delete all tabs except for current" })
-keymap('n', '<leader>td', ':tabedit<CR>', { noremap = true, silent = true, desc = "Create tab" })
-keymap('n', '<leader>tc', ':tabclose<CR>', { noremap = true, silent = true, desc = "Quite tab" })
+keymap('n', '<leader>tn', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
+keymap('n', '<leader>tc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
+keymap('n', '<leader>td', ':tabclose<CR>', { noremap = true, silent = true, desc = "Close tab" })

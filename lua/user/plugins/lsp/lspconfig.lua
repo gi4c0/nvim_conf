@@ -93,7 +93,9 @@ return {
 
       keys = {
         {"K", vim.lsp.buf.hover, silent = true },
+        {"gd", vim.lsp.buf.definition, silent = true },
         {"gl", vim.diagnostic.open_float, silent = true, desc = "Show line diagnostics"},
+        {"gt", vim.lsp.buf.type_definition, silent = true, desc = "Show line diagnostics"},
         {"<C-k>", vim.diagnostic.goto_prev, silent = true, desc = "Go to Previous error"},
         {"<C-j>", vim.diagnostic.goto_next, silent = true, desc = "Go to Next error"},
       }
@@ -183,6 +185,7 @@ return {
           keys = {
             {'<leader>ci', ':TSToolsAddMissingImports<CR>', silent = true, desc = 'Add missing Imports'},
             {'<leader>cI', ':TSToolsOrganizeImports<CR>', silent = true, desc = 'Organize Imports'},
+            {'<leader>cR', ':TSToolsRenameFile<CR>', silent = true, desc = 'Rename file'},
           }
         }
       }
