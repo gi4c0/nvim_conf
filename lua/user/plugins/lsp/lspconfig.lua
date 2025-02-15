@@ -4,91 +4,44 @@ return {
     enabled = true,
     cond = vim.env.COC ~= '1',
     event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      servers = {
+        graphql = {},
+        html = {},
+        -- eslint = {},
+        cssls = {},
+        zls = {
+          settings = {
+            zls = {
+              enable_build_on_save =  true,
+              build_on_save_step =  "check"
+            }
+          }
+        },
+        gopls = {},
+        tailwindcss = {},
+        emmet_ls = {
+          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+        },
+        pyright = {},
+        lua_ls = {
+        }
+      }
+    },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      { 'saghen/blink.cmp' }
+      -- { "hrsh7th/cmp-nvim-lsp" },
         -- { "antosha417/nvim-lsp-file-operations", config = true },
 
       },
-      config = function()
-        local lspconfig = require("lspconfig")
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local capabilities = cmp_nvim_lsp.default_capabilities()
-
-        -- Change the Diagnostic symbols in the sign column (gutter)
-        -- (not in youtube nvim video)
-        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-        for type, icon in pairs(signs) do
-          local hl = "DiagnosticSign" .. type
-          vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      config = function(_, opts)
+        local lspconfig = require('lspconfig')
+        for server, config in pairs(opts.servers) do
+          -- passing config.capabilities to blink.cmp merges with the capabilities in your
+          -- `opts[server].capabilities, if you've defined it
+          config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+          lspconfig[server].setup(config)
         end
-
-        -- configure html server
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-        })
-
-        -- configure html server
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-        })
-
-        -- configure html server
-        lspconfig["biome"].setup{}
-
-        -- lspconfig["eslint"].setup{
-        --   -- cmd_env = {
-        --   --   NODE_OPTIONS = "--max-old-space-size=20480"
-        --   -- },
-        -- }
-
-        -- configure css server
-        lspconfig["cssls"].setup({
-          capabilities = capabilities,
-        })
-
-        lspconfig["gleam"].setup({
-          capabilities = capabilities,
-        })
-
-        lspconfig["gopls"].setup({
-          capabilities = capabilities,
-        })
-
-        -- -- configure tailwindcss server
-        -- lspconfig["tailwindcss"].setup({
-        --   capabilities = capabilities,
-        -- })
-
-        -- configure emmet language server
-        -- lspconfig["emmet_ls"].setup({
-        --   capabilities = capabilities,
-        --   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-        -- })
-
-        -- configure python server
-        lspconfig["pyright"].setup({
-          capabilities = capabilities,
-        })
-
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = { -- custom settings for lua
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                -- make language server aware of runtime files
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-              },
-            },
-          },
-        })
       end,
 
       keys = {
