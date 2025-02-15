@@ -5,7 +5,7 @@ return {
     cond = vim.env.COC ~= '1',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      { "iguanacucumber/magazine.nvim" },
         -- { "antosha417/nvim-lsp-file-operations", config = true },
 
       },

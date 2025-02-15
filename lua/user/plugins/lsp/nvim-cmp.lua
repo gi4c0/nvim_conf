@@ -4,14 +4,22 @@ return {
   event = "InsertEnter",
   name = "nvim-cmp",
   cond = vim.env.COC ~= '1',
+  enabled = true,
   lazy = false,
 
   dependencies = {
-    { "hrsh7th/cmp-buffer" }, -- source for text in buffer
+    { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+    { "https://codeberg.org/FelipeLema/cmp-async-path" },
+
+    -- { "hrsh7th/cmp-buffer" }, -- source for text in buffer
     { "petertriho/cmp-git" },
-    { "hrsh7th/cmp-path" }, -- source for file system paths
+    -- { "hrsh7th/cmp-path" }, -- source for file system paths
     { "saadparwaiz1/cmp_luasnip", }, -- for autocompletion
     { "onsails/lspkind.nvim" }, -- vs-code like pictograms
+
     {
       'windwp/nvim-autopairs',
       event = "InsertEnter",
@@ -115,6 +123,10 @@ return {
           entry_filter = function(entry, ctx)
             return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
           end
+        },
+        {
+          name = 'lazydev',
+          group_index = 0,
         },
         -- { name = "luasnip" }, -- snippets
         { name = "path" }, -- file system paths

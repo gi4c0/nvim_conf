@@ -25,6 +25,7 @@ return {
         "typescript",
         "json",
         "graphql",
+        "html",
         "gleam",
         "go",
         "lua",
