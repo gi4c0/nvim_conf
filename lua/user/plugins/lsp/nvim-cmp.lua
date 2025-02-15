@@ -4,6 +4,7 @@ return {
   event = "InsertEnter",
   name = "nvim-cmp",
   cond = vim.env.COC ~= '1',
+  enabled = false,
   lazy = false,
 
   dependencies = {
