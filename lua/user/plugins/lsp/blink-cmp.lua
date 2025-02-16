@@ -20,22 +20,15 @@ return {
     -- See the full "keymap" documentation for information on defining your own keymap.
     keymap = {
        preset = 'default',
-       ['<CR>'] = {
-         function(cmp)
-           P(cmp)
-           return
-         end,
-         'accept',
-        'fallback'
-      },
+       ['<CR>'] = { 'select_and_accept', 'fallback' },
        ['<C-k>'] = { 'select_prev', 'fallback' },
        ['<C-j>'] = { 'select_next', 'fallback' },
 
     },
 
-    completion = {
-      menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end }
-    },
+    -- completion = {
+    --   menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end }
+    -- },
 
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
