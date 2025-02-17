@@ -1,13 +1,25 @@
 return {
   'stevearc/oil.nvim',
-  enabled = false,
+  enabled = true,
   config = function()
       local oil = require("oil")
 
       oil.setup({
         float = {
-            max_width = 75,
+            max_width = 125,
             max_height = 30
+        },
+
+        lsp_file_methods = {
+          enabled = true,
+          timeout_ms = 1000 * 10,
+          -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+          -- Set to "unmodified" to only save unmodified buffers
+          autosave_changes = true,
+        },
+        keymaps = {
+          ["<C-h>"] = "actions.parent",
+          ["<C-l>"] = "actions.select",
         }
       })
 
@@ -25,6 +37,6 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 
   keys = {
-      {'-', '<CMD>Oil<CR>', { desc = "Open parent directory" }}
+      {'-', '<CMD>Oil --float<CR>', { desc = "Open parent directory" }}
   }
 }
