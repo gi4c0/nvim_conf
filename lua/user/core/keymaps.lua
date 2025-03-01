@@ -49,3 +49,4 @@ keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, silent = true, desc 
 keymap('n', '<leader>tn', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
 keymap('n', '<leader>tc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
 keymap('n', '<leader>td', ':tabclose<CR>', { noremap = true, silent = true, desc = "Close tab" })
+keymap('n', "gV", "`[v`]", { noremap = true, silent = true, desc = "Select last paste area" })

@@ -1,6 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
-  enabled = true,
+  enabled = false,
   lazy = false,
 
   dependencies = {

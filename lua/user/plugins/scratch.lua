@@ -1,5 +1,6 @@
 return {
   'mtth/scratch.vim',
+  enabled = false,
 
   keys = {
     {'<leader>bs', ':Scratch<CR>', noremap = true, silent = true }

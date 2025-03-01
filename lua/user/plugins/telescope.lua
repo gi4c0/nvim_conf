@@ -1,6 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   lazy = false,
+  enabled = false,
 
   dependencies = {
     {
@@ -155,13 +156,13 @@ return {
       {'<C-p>', ':Telescope smart_open<CR>', silent = true, desc = "Recent files"},
       -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
-      {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
+      -- {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
       {"<C-f>", ":Telescope file_browser files=false initial_mode=insert respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
-      { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
-      {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
+      -- { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
+      -- {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
 
-      {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
-      {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
+      -- {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
+      -- {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
 
       -- {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
       -- {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},

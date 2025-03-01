@@ -1,10 +1,12 @@
 return {
     'pteroctopus/faster.nvim',
+    enabled = true,
     config = {
-      behavior = {
+      behaviours = {
         bigfile = {
           extra_patterns = {
-            { pattern = "*.json", filesize = 0.5 }
+            { pattern = "*.json", filesize = 0.5 },
+            { pattern = "*.ts", filesize = 15 }
           }
         }
       }

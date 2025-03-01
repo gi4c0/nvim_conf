@@ -4,12 +4,6 @@ return {
   enabled = true,
 
   dependencies = {
-    {
-      'eckon/treesitter-current-functions',
-      keys = {
-        {"<leader>fn", ":GetCurrentFunctionsForce telescope<CR>", noremap = true, silent = true, desc = "Functions in current file"}
-      }
-    },
     { 'nvim-treesitter/nvim-treesitter-textobjects' }
   },
 
