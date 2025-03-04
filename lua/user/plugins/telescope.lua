@@ -157,7 +157,7 @@ return {
       -- {"<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>",noremap = true, silent = true},
 
       -- {"<leader>hh", ":Telescope help_tags<CR>", silent = true, desc = "Seach on help tags"},
-      {"<C-f>", ":Telescope file_browser files=false initial_mode=insert respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
+      -- {"<C-f>", ":Telescope file_browser files=false initial_mode=insert respect_gitignore=true<CR>", noremap = true, silent = true, desc = "Search by folder"},
       -- { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
       -- {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
 

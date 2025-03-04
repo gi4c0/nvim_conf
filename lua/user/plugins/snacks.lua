@@ -1,9 +1,17 @@
 local function get_directories()
-  local dirs = {}
-  for line in io.popen("fd . --type d"):lines() do
-    table.insert(dirs, line)
+  local directories = {}
+
+  local handle = io.popen("fd . --type directory")
+  if handle then
+    for line in handle:lines() do
+      table.insert(directories, line)
+    end
+    handle:close()
+  else
+    print("Failed to execute fd command")
   end
-  return dirs
+
+  return directories
 end
 
 return {
@@ -26,7 +34,7 @@ return {
       },
       formatters = {
         file = {
-          truncate = 75
+          truncate = 150
         }
       },
       win = {
@@ -56,7 +64,7 @@ return {
     }
   },
   keys = {
-    { "<leader>ff", function() Snacks.picker.smart({ matcher = { cwd_bonus = true } }) end, desc = "Smart Find Files" },
+    { "<leader>ff", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
     { "<C-Space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true }) end, desc = "File Explorer" },
     -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
@@ -78,28 +86,56 @@ return {
     { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
     { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
     { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
-    { "<leader>fd", function()
+
+    { "<C-f>", function()
       local Snacks = require("snacks")
-      local directories = get_directories()
+      local dirs = get_directories()
+
       return Snacks.picker({
         finder = function()
           local items = {}
-          for i, dir in ipairs(directories) do
+          for i, item in ipairs(dirs) do
             table.insert(items, {
               idx = i,
-              file = { path = dir },
-              text = dir,
+              file = item,
+              text = item,
             })
           end
           return items
         end,
+        layout = {
+          layout = {
+            box = "horizontal",
+            width = 0.5,
+            height = 0.5,
+            {
+              box = "vertical",
+              border = "rounded",
+              title = "Find directory",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+            },
+          },
+        },
+        format = function(item, _)
+          local file = item.file
+          local ret = {}
+          local a = Snacks.picker.util.align
+          local icon, icon_hl = Snacks.util.icon(file.ft, "directory")
+          ret[#ret + 1] = { a(icon, 3), icon_hl }
+          ret[#ret + 1] = { " " }
+          ret[#ret + 1] = { a(file, 20) }
+
+          return ret
+        end,
         confirm = function(picker, item)
           picker:close()
-          -- Open the files picker with the selected directory as root
-          Snacks.picker.pick("files", { dirs = { item.file.path } })
+          Snacks.picker.pick("files", {
+            dirs = { item.file },
+          })
         end,
       })
-    end, desc = "Smart Find Files" },
+    end, desc = "Find directories" },
   },
 }
 
