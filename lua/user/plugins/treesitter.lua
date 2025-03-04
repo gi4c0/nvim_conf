@@ -4,13 +4,19 @@ return {
   enabled = true,
 
   dependencies = {
-    { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    {
+      'eckon/treesitter-current-functions',
+      keys = {
+        {"<leader>fn", ":GetCurrentFunctionsForce telescope<CR>", noremap = true, silent = true, desc = "Functions in current file"}
+      }
+    },
   },
 
   config = function()
     -- Delete this file if got error about BufRead *
     -- The actual path for lua parser: /opt/homebrew/Cellar/neovim/0.9.5/lib/nvim/parser/lua.so
-    local cachePath = "/Users/alekseypanchenko/.local/share/nvim/tree-sitter-cache"
+    local cachePath = "/Users/oleksii/.local/share/nvim/tree-sitter-cache"
     vim.opt.runtimepath:append(cachePath)
 
     require'nvim-treesitter.configs'.setup {

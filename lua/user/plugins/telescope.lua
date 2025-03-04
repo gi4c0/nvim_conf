@@ -1,7 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   lazy = false,
-  enabled = false,
+  enabled = true,
 
   dependencies = {
     {
@@ -10,7 +10,7 @@ return {
     },
     {
       "danielfalk/smart-open.nvim",
-      branch = "0.2.x",
+      -- branch = "0.2.x",
       dependencies = {
         "kkharji/sqlite.lua",
         -- Only required if using match_algorithm fzf
@@ -161,8 +161,8 @@ return {
       -- { "gr", ":Telescope lsp_references<cr>",noremap = true, silent = true, desc = "Show LSP references" },
       -- {"gt", "<cmd>Telescope lsp_type_definitions<CR>", silent = true, noremap = true, desc = "Show LSP type definitions"},
 
-      -- {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
-      -- {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
+      {"<leader>r", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", noremap = true, silent = true, desc = "File browser (from file)"},
+      {"<leader>R", ":Telescope file_browser<CR>", noremap = true, silent = true, desc = "File browser (from root)"},
 
       -- {"<leader>li", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP Implementations"},
       -- {"<leader>el", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics"},

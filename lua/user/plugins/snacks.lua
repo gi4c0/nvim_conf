@@ -1,3 +1,11 @@
+local function get_directories()
+  local dirs = {}
+  for line in io.popen("fd . --type d"):lines() do
+    table.insert(dirs, line)
+  end
+  return dirs
+end
+
 return {
   "folke/snacks.nvim",
   priority=1000,
@@ -8,6 +16,9 @@ return {
     lazygit = {},
     image = {},
     picker = {
+      filter = {
+        cwd = true
+      },
       layout = {
         layout ={
           width = 0.85
@@ -15,7 +26,7 @@ return {
       },
       formatters = {
         file = {
-          truncate = 70
+          truncate = 75
         }
       },
       win = {
@@ -45,13 +56,13 @@ return {
     }
   },
   keys = {
-    { "<C-p>", function() Snacks.picker.smart({ matcher = { cwd_bonus = true } }) end, desc = "Smart Find Files" },
+    { "<leader>ff", function() Snacks.picker.smart({ matcher = { cwd_bonus = true } }) end, desc = "Smart Find Files" },
     { "<C-Space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>r", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true }) end, desc = "File Explorer" },
-    { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
+    { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true }) end, desc = "File Explorer" },
+    -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
     { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
     { "<leader>/", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
-    { "<leader>fn", function() Snacks.picker.lsp_symbols({ filter = { default = { "Function", "Method" } } }) end, desc = "Show functions and methods" },
+    -- { "<leader>fn", function() Snacks.picker.lsp_symbols({ filter = { default = { "Function", "Method" } } }) end, desc = "Show functions and methods" },
     { "gr", function() Snacks.picker.lsp_references() end, desc = "Go to lsp References" },
     { "gt", function() Snacks.picker.lsp_references() end, desc = "Go to Type definitions" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
@@ -67,5 +78,28 @@ return {
     { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
     { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
     { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
+    { "<leader>fd", function()
+      local Snacks = require("snacks")
+      local directories = get_directories()
+      return Snacks.picker({
+        finder = function()
+          local items = {}
+          for i, dir in ipairs(directories) do
+            table.insert(items, {
+              idx = i,
+              file = { path = dir },
+              text = dir,
+            })
+          end
+          return items
+        end,
+        confirm = function(picker, item)
+          picker:close()
+          -- Open the files picker with the selected directory as root
+          Snacks.picker.pick("files", { dirs = { item.file.path } })
+        end,
+      })
+    end, desc = "Smart Find Files" },
   },
 }
+
