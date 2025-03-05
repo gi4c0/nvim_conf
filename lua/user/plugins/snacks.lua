@@ -1,19 +1,3 @@
-local function get_directories()
-  local directories = {}
-
-  local handle = io.popen("fd . --type directory")
-  if handle then
-    for line in handle:lines() do
-      table.insert(directories, line)
-    end
-    handle:close()
-  else
-    print("Failed to execute fd command")
-  end
-
-  return directories
-end
-
 return {
   "folke/snacks.nvim",
   priority=1000,
@@ -64,9 +48,9 @@ return {
     }
   },
   keys = {
-    { "<leader>ff", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
-    { "<C-Space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true }) end, desc = "File Explorer" },
+    { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
+    { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false } }) end, desc = "Buffers" },
+    { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
     -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
     { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
     { "<leader>/", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
@@ -86,56 +70,6 @@ return {
     { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
     { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
     { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
-
-    { "<C-f>", function()
-      local Snacks = require("snacks")
-      local dirs = get_directories()
-
-      return Snacks.picker({
-        finder = function()
-          local items = {}
-          for i, item in ipairs(dirs) do
-            table.insert(items, {
-              idx = i,
-              file = item,
-              text = item,
-            })
-          end
-          return items
-        end,
-        layout = {
-          layout = {
-            box = "horizontal",
-            width = 0.5,
-            height = 0.5,
-            {
-              box = "vertical",
-              border = "rounded",
-              title = "Find directory",
-              { win = "input", height = 1, border = "bottom" },
-              { win = "list", border = "none" },
-            },
-          },
-        },
-        format = function(item, _)
-          local file = item.file
-          local ret = {}
-          local a = Snacks.picker.util.align
-          local icon, icon_hl = Snacks.util.icon(file.ft, "directory")
-          ret[#ret + 1] = { a(icon, 3), icon_hl }
-          ret[#ret + 1] = { " " }
-          ret[#ret + 1] = { a(file, 20) }
-
-          return ret
-        end,
-        confirm = function(picker, item)
-          picker:close()
-          Snacks.picker.pick("files", {
-            dirs = { item.file },
-          })
-        end,
-      })
-    end, desc = "Find directories" },
   },
 }
 
