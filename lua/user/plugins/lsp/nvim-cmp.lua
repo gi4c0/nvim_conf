@@ -9,6 +9,18 @@ return {
 
   dependencies = {
     { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          { path = "snacks.nvim", words = { "Snacks" } },
+        },
+      },
+    },
     { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
     { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
     { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
@@ -149,22 +161,22 @@ return {
       },
     })
 
-        -- Set configuration for specific filetype.
-        cmp.setup.filetype('gitcommit', {
-          sources = cmp.config.sources({
-            { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-          }, {
-            { name = 'buffer' },
-          })
-        })
+    -- Set configuration for specific filetype.
+    cmp.setup.filetype('gitcommit', {
+      sources = cmp.config.sources({
+        { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+      }, {
+        { name = 'buffer' },
+      })
+    })
 
-        cmp.setup.filetype({ 'sql' }, {
-          sources = {
-            { name = "vim-dadbod-completion" },
-            { name = "buffer" }
-          }
-        })
+    cmp.setup.filetype({ 'sql' }, {
+      sources = {
+        { name = "vim-dadbod-completion" },
+        { name = "buffer" }
+      }
+    })
 
-        require("cmp_git").setup()
-      end
-    }
+    require("cmp_git").setup()
+  end
+}

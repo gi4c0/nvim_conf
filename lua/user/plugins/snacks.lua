@@ -18,6 +18,7 @@ return {
       },
       formatters = {
         file = {
+          filename_first = true,
           truncate = 150
         }
       },
