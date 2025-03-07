@@ -141,6 +141,7 @@ return {
   {
     'tpope/vim-fugitive',
     enabled = true,
+    lazy = false,
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "git",
@@ -166,7 +167,7 @@ return {
       {"<leader>gs", ":vertical :Git<CR>", noremap = true, silent = true, desc = "Git status" },
       {"<leader>gS", ":vertical :Git<CR><C-w>o", noremap = true, silent = true, desc = "Git status (full screen)" },
       {"<leader>gb", ":Git blame<CR>", noremap = true, silent = true, desc = "Git blame" },
-      {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true, desc = "Show git file on given commit/branch" },
+      -- {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true, desc = "Show git file on given commit/branch" },
       {">", "zo", desc = "Open fold", ft="git" },
       {"<", "zc", desc = "Close fold", ft="git" },
       {"<TAB>", "za", desc = "Toggle fold", ft="git" },
