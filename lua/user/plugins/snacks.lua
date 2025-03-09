@@ -55,7 +55,7 @@ return {
     -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
     { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
     { "<leader>/", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
-    -- { "<leader>fn", function() Snacks.picker.lsp_symbols({ filter = { default = { "Function", "Method" } } }) end, desc = "Show functions and methods" },
+    { "<leader>fn", function() Snacks.picker.lsp_symbols({ filter = { default = { "Method" } } }) end, desc = "Show functions and methods" },
     { "gr", function() Snacks.picker.lsp_references() end, desc = "Go to lsp References" },
     { "gt", function() Snacks.picker.lsp_references() end, desc = "Go to Type definitions" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
