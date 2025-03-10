@@ -42,11 +42,11 @@ return {
       }
     },
     health = {},
-    bigfile = {
-      notify = true,
-      size = 15 * 1024 * 1024, -- 1.5MB
-      line_length = 500, -- average line length (useful for minified files)
-    }
+    -- bigfile = {
+    --   notify = true,
+    --   size = 15 * 1024 * 1024, -- 1.5MB
+    --   line_length = 500, -- average line length (useful for minified files)
+    -- }
   },
   keys = {
     { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },

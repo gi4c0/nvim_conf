@@ -96,8 +96,6 @@ local function open_file_from_branch(branch, files)
     layout = layout,
     confirm = function(picker, item)
       picker:close()
-      P('cmd: ' .. ':Gvsplit ' .. branch .. ':' .. item.filename)
-
       vim.cmd(':Gvsplit ' .. branch .. ':' .. item.filename)
     end,
     preview = nil,

@@ -5,7 +5,7 @@ return {
     require('mini.files').setup({
       mappings = {
         go_in_plus  = 'l',
-        synchronize = '<C-s>',
+        -- synchronize = '<C-s>',
       }
     })
 
@@ -76,6 +76,7 @@ return {
   end,
   keys = {
     { '<leader>r', function() require('mini.files').open(vim.api.nvim_buf_get_name(0)) end },
+    { '<leader>R', function() require('mini.files').open(vim.uv.cwd()) end },
     { "<C-f>", function() require('user.libs.snacks-dirs').find_dirs(function(path) require('mini.files').open(path) end) end, desc = "Find directories" },
   }
 }
