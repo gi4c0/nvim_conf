@@ -72,7 +72,7 @@ return {
     { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
     { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
 
-    { '<leader>gc', function() require('user.git-picker').pick_branch_and_file() end }
+    { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end }
   },
 }
 

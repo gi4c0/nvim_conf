@@ -1,5 +1,6 @@
 local M = {}
 local Snacks = require("snacks")
+local state = require('user.libs.git-picker.state')
 
 -- Trim function using pattern matching
 local function trim(s)
@@ -29,7 +30,9 @@ local layout = {
   },
 }
 
+---@return string[]
 local get_branches = function()
+  ---@type string[]
   local branches = {}
   local handle = io.popen("git branch")
 
@@ -105,11 +108,12 @@ end
 
 M.pick_branch_and_file = function()
   local branches = get_branches()
+  local merged_with_cache = state.merge_branches_with_cached(branches)
 
   local items = {}
   local start_item = nil
 
-  for i, item in ipairs(branches) do
+  for i, item in ipairs(merged_with_cache) do
     table.insert(items, { idx = i, score = 1, branch = item, text = item })
   end
 
@@ -138,6 +142,8 @@ M.pick_branch_and_file = function()
     end,
     confirm = function(picker, item)
       picker:close()
+      state.save_to_state(item.branch)
+
       local files = get_files_from_branch(item.branch)
 
       if #files > 0 then
@@ -147,6 +153,5 @@ M.pick_branch_and_file = function()
     preview = nil,
   })
 end
-
 
 return M
