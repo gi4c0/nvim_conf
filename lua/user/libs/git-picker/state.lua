@@ -16,16 +16,12 @@ M.save_to_state = function (branch)
 
     if existing_branch_index > 0 then
         table.remove(cache, existing_branch_index + 1)
-        table.insert(cache, 1, branch)
-        return
     end
 
     table.insert(cache, 1, branch)
-    vim.fn.writefile(cache, FILE_CACHE)
 end
 
----@return string[]
-M.read_from_state = function()
+local function load_cache()
     if #cache > 0 then
         return cache
     end
@@ -35,7 +31,7 @@ M.read_from_state = function()
         return {}
     end
 
-    return vim.fn.readfile(FILE_CACHE)
+    cache = vim.fn.readfile(FILE_CACHE)
 end
 
 local function remove_from_cache(branch)
@@ -51,6 +47,7 @@ end
 ---@param all_branches string[]
 ---@return string[]
 M.merge_branches_with_cached = function(all_branches)
+    load_cache()
     local result = vim.fn.deepcopy(all_branches)
 
     for cache_index, cache_branch in ipairs(cache) do
@@ -73,6 +70,13 @@ M.merge_branches_with_cached = function(all_branches)
 
     return result
 end
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    P("hello")
+    vim.fn.writefile(cache, FILE_CACHE)
+  end
+})
 
 return M
 
