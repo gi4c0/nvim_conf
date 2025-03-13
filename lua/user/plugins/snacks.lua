@@ -50,7 +50,7 @@ return {
   },
   keys = {
     { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
-    { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false } }) end, desc = "Buffers" },
+    { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Buffers" },
     { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
     -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
     { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
