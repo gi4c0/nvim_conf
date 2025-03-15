@@ -22,16 +22,12 @@ local files_by_branch = {}
 M.save_file_to_cache = function(file)
     last_file = file
 
-    if files_by_branch[last_cwd_branch] == nil then
+    if not files_by_branch[last_cwd_branch] then
         files_by_branch[last_cwd_branch] = {}
     end
 
     local files = files_by_branch[last_cwd_branch]
-    P(last_cwd_branch)
-    P(files)
-
     local existing_index = vim.fn.index(files, file)
-    P(existing_index)
 
     if existing_index == 0 then -- already on the top of the list
         return
@@ -42,20 +38,20 @@ M.save_file_to_cache = function(file)
     end
 
     table.insert(files, 1, file)
-    P(files_by_branch)
 end
 
 ---@param project_cwd string
 ---@param branch string
 M.save_branch_to_state = function (project_cwd, branch)
-    last_cwd_branch = project_cwd .. branch
+    last_cwd_branch = project_cwd .. '__' .. branch
 
-    if branches_by_cwd[project_cwd] == nil then
+    if not branches_by_cwd[project_cwd] then
       branches_by_cwd[project_cwd] = {}
     end
 
     local branches = branches_by_cwd[project_cwd]
 
+    ---@type integer
     local existing_branch_index = vim.fn.index(branches, branch)
 
     if existing_branch_index == 0 then -- already on the top of the list
@@ -119,7 +115,7 @@ H.load_cache()
 
 ---@param new string[]
 ---@param cache string[]
----@returns string[]
+---@return string[]
 H.merge = function(new, cache)
     for cache_index, cache_item in ipairs(cache) do
         local branch_index = vim.fn.index(new, cache_item)
@@ -146,10 +142,9 @@ end
 ---@param all_branches string[]
 ---@return string[]
 M.merge_branches_with_cache = function(cwd, all_branches)
-    -- local normalized_cwd = normalize_str(cwd)
     local branches = branches_by_cwd[cwd]
 
-    if branches == nil then
+    if not branches then
       return all_branches
     end
 
@@ -159,7 +154,7 @@ end
 M.merge_files_with_cache = function(all_files)
     local cache_files = files_by_branch[last_cwd_branch]
 
-    if cache_files == nil or #cache_files == 0 then
+    if not cache_files or #cache_files == 0 then
       return all_files
     end
 

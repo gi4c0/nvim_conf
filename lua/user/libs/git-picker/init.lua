@@ -30,22 +30,25 @@ local layout = {
   },
 }
 
----@return string[]
+---@return string[] | nil
 local get_branches = function()
-  ---@type string[]
-  local branches = {}
-  local handle = io.popen("git branch")
+    ---@type string[]
+    local branches = {}
+    local ok, handle = pcall(io.popen, "git branch")
 
-  if handle then
-    for line in handle:lines() do
-      table.insert(branches, trim(line))
+    if ok and handle then
+        for line in handle:lines() do
+            table.insert(branches, trim(line))
+        end
+
+        handle:close()
+        return branches
+    else
+        -- TODO: doesn't work
+        local message = "Failed to execute git branch command"
+        vim.notify(message, 'error')
+        return
     end
-
-    handle:close()
-    return branches
-  else
-    vim.notify("Failed to execute git command", "error")
-  end
 end
 
 ---@param branch string
@@ -118,10 +121,13 @@ end
 
 M.pick_branch_and_file = function()
   local branches = get_branches()
+  if not branches then return end
+
   local cwd, err = vim.uv.cwd()
 
-  if cwd == nil or err ~= nil then
+  if not cwd or err then
       vim.notify("Error getting cwd: " .. err)
+      return
   end
 
   local merged_with_cache = state.merge_branches_with_cache(cwd, branches)
