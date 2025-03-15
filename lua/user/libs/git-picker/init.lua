@@ -49,76 +49,86 @@ local get_branches = function()
 end
 
 ---@param branch string
+---@return string[]
 local function get_files_from_branch(branch)
-  local files = {}
-  local handle = io.popen("git ls-tree -r --name-only " .. branch)
-  local current_file = get_current_file()
+    ---@type string[]
+    local files = {}
+    local handle = io.popen("git ls-tree -r --name-only " .. branch)
+    local current_file = get_current_file()
 
-  if handle then
-    local idx = 1
-    local current_file_formatted
+    if handle then
+        local first_file
 
-    for git_file in handle:lines() do
-      if current_file == git_file then
-        current_file_formatted = { idx = idx, score = idx, text = git_file, filename = git_file }
-      else
-        table.insert(files, { idx = idx, score = idx, text = git_file, filename = git_file })
-      end
-      idx = idx + 1
+        for git_file in handle:lines() do
+            if current_file == git_file then
+                first_file = true
+            else
+                table.insert(files, git_file)
+            end
+        end
+
+        handle:close()
+
+        if first_file then
+            table.insert(files, 1, current_file)
+        end
     end
 
-    if current_file_formatted then
-      table.insert(files, 1, current_file_formatted)
-    end
-  end
-
-  return files
+    return files
 end
 
 ---@param branch string
 ---@param files table
 local function open_file_from_branch(branch, files)
-  Snacks.picker.pick({
-    items = files,
-    formatters = {
-      file = {
-        filename_first = false,
-      }
-    },
-    format = function(item, _)
-      local ret = {}
-      local a = Snacks.picker.util.align
-      local icon, icon_hl = Snacks.util.icon(item.filename)
+    local merged_files = state.merge_files_with_cache(files)
+    local items = {}
 
-      ret[#ret + 1] = { a(icon, 3), icon_hl }
-      ret[#ret + 1] = { " " }
-      ret[#ret + 1] = { a(item.filename, 20) }
+    for i, item in ipairs(merged_files) do
+        table.insert(items, { idx = i, score = 1, filename = item, text = item })
+    end
 
-      return ret
-    end,
-    layout = layout,
-    confirm = function(picker, item)
-      picker:close()
-      vim.cmd(':Gvsplit ' .. branch .. ':' .. item.filename)
-    end,
-    preview = nil,
-  })
+    Snacks.picker.pick({
+        items = items,
+        formatters = {
+            file = {
+                filename_first = false,
+            }
+        },
+        format = function(item, _)
+            local ret = {}
+            local a = Snacks.picker.util.align
+            local icon, icon_hl = Snacks.util.icon(item.filename)
+
+            ret[#ret + 1] = { a(icon, 3), icon_hl }
+            ret[#ret + 1] = { " " }
+            ret[#ret + 1] = { a(item.filename, 20) }
+
+            return ret
+        end,
+        layout = layout,
+        confirm = function(picker, item)
+            picker:close()
+            state.save_file_to_cache(item.filename)
+            vim.cmd(':Gvsplit ' .. branch .. ':' .. item.filename)
+        end,
+        preview = nil,
+    })
 
 end
 
 M.pick_branch_and_file = function()
   local branches = get_branches()
-  local merged_with_cache = state.merge_branches_with_cached(branches)
+  local cwd, err = vim.uv.cwd()
 
+  if cwd == nil or err ~= nil then
+      vim.notify("Error getting cwd: " .. err)
+  end
+
+  local merged_with_cache = state.merge_branches_with_cache(cwd, branches)
   local items = {}
-  local start_item = nil
 
   for i, item in ipairs(merged_with_cache) do
     table.insert(items, { idx = i, score = 1, branch = item, text = item })
-  end
-
-  if start_item then
-    table.insert(items, 1, start_item)
   end
 
   Snacks.picker.pick({
@@ -142,8 +152,8 @@ M.pick_branch_and_file = function()
     end,
     confirm = function(picker, item)
       picker:close()
-      state.save_to_state(item.branch)
 
+      state.save_branch_to_state(cwd, item.branch)
       local files = get_files_from_branch(item.branch)
 
       if #files > 0 then
