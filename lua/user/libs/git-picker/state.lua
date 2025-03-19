@@ -11,7 +11,9 @@ local FILES_CACHE_PATH = vim.fn.expand("~/.local/share/nvim/recent_files.json")
 ---@type string
 local last_cwd_branch = ''
 ---@type string
-local last_file = ''
+local last_branch
+---@type string
+local last_file
 
 ---@type table<string, string[]>
 local branches_by_cwd = {}
@@ -44,6 +46,7 @@ end
 ---@param branch string
 M.save_branch_to_state = function (project_cwd, branch)
     last_cwd_branch = project_cwd .. '__' .. branch
+    last_branch = branch
 
     if not branches_by_cwd[project_cwd] then
       branches_by_cwd[project_cwd] = {}
@@ -167,5 +170,15 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
         H.save_file(files_by_branch, FILES_CACHE_PATH)
     end
 })
+
+---@return string, string
+M.get_last_used_branch_and_file = function()
+    return last_branch, last_file
+end
+
+---@param file string
+M.set_last_visited_file = function(file)
+    last_file = file
+end
 
 return M

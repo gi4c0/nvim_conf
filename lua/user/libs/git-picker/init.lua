@@ -1,19 +1,9 @@
 local M = {}
 local Snacks = require("snacks")
 local state = require('user.libs.git-picker.state')
-
--- Trim function using pattern matching
-local function trim(s)
-  -- This pattern removes any combination of spaces and asterisks from the start and end.
-  return (s:gsub("^[%s%*]*(.-)[%s%*]*$", "%1"))
-end
-
----@return string
-local function get_current_file()
-  local full_path = vim.api.nvim_buf_get_name(0)
-  local relative_path = vim.fn.fnamemodify(full_path, ':.')
-  return relative_path
-end
+local git = require('user.libs.git-picker.git')
+local util = require('user.libs.git-picker.util')
+local explorer = require('user.libs.git-picker.explorer')
 
 local layout = {
   layout = {
@@ -29,56 +19,6 @@ local layout = {
     },
   },
 }
-
----@return string[] | nil
-local get_branches = function()
-    ---@type string[]
-    local branches = {}
-    local ok, handle = pcall(io.popen, "git branch")
-
-    if ok and handle then
-        for line in handle:lines() do
-            table.insert(branches, trim(line))
-        end
-
-        handle:close()
-        return branches
-    else
-        -- TODO: doesn't work
-        local message = "Failed to execute git branch command"
-        vim.notify(message, 'error')
-        return
-    end
-end
-
----@param branch string
----@return string[]
-local function get_files_from_branch(branch)
-    ---@type string[]
-    local files = {}
-    local handle = io.popen("git ls-tree -r --name-only " .. branch)
-    local current_file = get_current_file()
-
-    if handle then
-        local first_file
-
-        for git_file in handle:lines() do
-            if current_file == git_file then
-                first_file = true
-            else
-                table.insert(files, git_file)
-            end
-        end
-
-        handle:close()
-
-        if first_file then
-            table.insert(files, 1, current_file)
-        end
-    end
-
-    return files
-end
 
 ---@param branch string
 ---@param files table
@@ -113,6 +53,7 @@ local function open_file_from_branch(branch, files)
             picker:close()
             state.save_file_to_cache(item.filename)
             vim.cmd(':Gvsplit ' .. branch .. ':' .. item.filename)
+            explorer.set_key_bindings(vim.api.nvim_get_current_buf())
         end,
         preview = nil,
     })
@@ -120,7 +61,7 @@ local function open_file_from_branch(branch, files)
 end
 
 M.pick_branch_and_file = function()
-  local branches = get_branches()
+  local branches = git.get_branches()
   if not branches then return end
 
   local cwd, err = vim.uv.cwd()
@@ -160,7 +101,7 @@ M.pick_branch_and_file = function()
       picker:close()
 
       state.save_branch_to_state(cwd, item.branch)
-      local files = get_files_from_branch(item.branch)
+      local files = git.get_files_from_branch(item.branch)
 
       if #files > 0 then
         open_file_from_branch(item.branch, files)
@@ -169,5 +110,7 @@ M.pick_branch_and_file = function()
     preview = nil,
   })
 end
+
+M.open_explorer = explorer.open_explorer
 
 return M
