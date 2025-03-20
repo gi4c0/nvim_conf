@@ -17,9 +17,11 @@ return {
         autosave_changes = true,
       },
       keymaps = {
-        ["<C-h>"] = "actions.parent",
+        -- ["<C-h>"] = "actions.parent",
         ["<C-s>"] = { callback = function() vim.cmd [[ write ]] end, mode = "n" },
-        ["<C-l>"] = "actions.select",
+        -- ["<C-l>"] = "actions.select",
+        ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
         ["h"] = { "actions.parent", mode = "n" },
         ["l"] = { "actions.select", mode = "n" },
         ["q"] = { "actions.close", mode = "n" },
