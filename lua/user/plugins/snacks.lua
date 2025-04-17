@@ -52,6 +52,7 @@ return {
         { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
         { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Buffers" },
         { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
+        { "<leader>fr", function() Snacks.picker.recent() end, desc = "Files Recent" },
         -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
         { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
         { "<leader>/", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
@@ -64,10 +65,13 @@ return {
         { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
 
         { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
+        { "<leader>T", function() Snacks.picker.colorschemes() end, desc = "Pick colorscheme" },
+        { "<leader>y", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
 
         { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Show notifier history" },
         { "<leader>bs",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
         { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+        -- Disable because highlight works slow on big project
         { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
         { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
         { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
