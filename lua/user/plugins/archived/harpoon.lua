@@ -2,6 +2,7 @@ return {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
+    enabled = false,
     config = true,
     keys = {
         {"<leader><space>", function() require('harpoon'):list():add() end, noremap = true, silent = true, desc = "Set harpoon mark"},
