@@ -7,7 +7,15 @@ return {
     opts = {
       servers = {
         graphql = {},
-        vtsls = {},
+        vtsls = {
+            settings = {
+                typescript = {
+                    tsserver = {
+                        maxTsServerMemory = 12000
+                    }
+                }
+            }
+        },
         html = {},
         -- eslint = {},
         cssls = {},
