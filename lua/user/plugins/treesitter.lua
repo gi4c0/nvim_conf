@@ -20,7 +20,12 @@ return {
     vim.opt.runtimepath:append(cachePath)
 
     require'nvim-treesitter.configs'.setup {
+      ident = { enabled = true },
       parser_install_dir = cachePath,
+      sync_install = false,
+      auto_install = true,
+      modules = {},
+      ignore_install = {},
       ensure_installed = {
         "typescript",
         "json",

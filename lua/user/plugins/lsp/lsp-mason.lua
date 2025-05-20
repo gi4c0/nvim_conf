@@ -1,9 +1,10 @@
 return {
   "williamboman/mason.nvim",
   enabled = true,
+  tag = "v1.11.0",
   cond = vim.env.COC ~= '1',
   dependencies = {
-    {"williamboman/mason-lspconfig.nvim"},
+    {"williamboman/mason-lspconfig.nvim", tag = "v1.32.0"},
     {"WhoIsSethDaniel/mason-tool-installer.nvim"},
   },
   config = function()
@@ -20,6 +21,7 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         'eslint',
+        'vtsls',
         'lua_ls',
         'rust_analyzer',
         'gopls',

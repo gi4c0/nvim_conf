@@ -4,7 +4,7 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-        words = {},
+        -- words = {},
         lazygit = {},
         image = {},
         picker = {
@@ -72,8 +72,8 @@ return {
         { "<leader>bs",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
         { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
         -- Disable because highlight works slow on big project
-        { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
-        { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
+        -- { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
+        -- { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
         { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
 
         { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end }
