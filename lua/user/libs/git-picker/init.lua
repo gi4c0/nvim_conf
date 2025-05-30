@@ -64,6 +64,9 @@ M.pick_branch_and_file = function()
   local branches = git.get_branches()
   if not branches then return end
 
+  -- save current file to move it to the top later
+  state.save_current_file(util.get_current_relative_file_path())
+
   local cwd, err = vim.uv.cwd()
 
   if not cwd or err then

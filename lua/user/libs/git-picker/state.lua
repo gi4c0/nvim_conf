@@ -14,11 +14,18 @@ local last_cwd_branch = ''
 local last_branch
 ---@type string
 local last_file
+---@type string
+local current_file
 
 ---@type table<string, string[]>
 local branches_by_cwd = {}
 ---@type table<string, string[]>
 local files_by_branch = {}
+
+---@param file string
+M.save_current_file = function(file)
+    current_file = file
+end
 
 ---@param file string
 M.save_file_to_cache = function(file)
@@ -121,18 +128,18 @@ H.load_cache()
 ---@return string[]
 H.merge = function(new, cache)
     for cache_index, cache_item in ipairs(cache) do
-        local branch_index = vim.fn.index(new, cache_item)
+        local cache_item_index_in_new = vim.fn.index(new, cache_item)
 
-        if branch_index == -1 then -- branch from cache was not found in the fresh branches
+        if cache_item_index_in_new == -1 then -- item from cache was not found in the fresh branches
             table.remove(cache, cache_index)
             goto continue
         end
 
-        if branch_index + 1 == cache_index then
+        if cache_item_index_in_new + 1 == cache_index then
             goto continue
         end
 
-        table.remove(new, branch_index + 1)
+        table.remove(new, cache_item_index_in_new + 1)
         table.insert(new, cache_index, cache_item)
 
         ::continue::
@@ -154,6 +161,8 @@ M.merge_branches_with_cache = function(cwd, all_branches)
     return H.merge(all_branches, branches)
 end
 
+---@param all_files string[]
+---@return string[]
 M.merge_files_with_cache = function(all_files)
     local cache_files = files_by_branch[last_cwd_branch]
 
@@ -161,7 +170,15 @@ M.merge_files_with_cache = function(all_files)
       return all_files
     end
 
-    return H.merge(all_files, cache_files)
+    local merged = H.merge(all_files, cache_files)
+    local current_file_index = vim.fn.index(merged, current_file)
+
+    if current_file_index ~= -1 then
+        table.remove(merged, current_file_index + 1)
+        table.insert(merged, 1, current_file)
+    end
+
+    return merged
 end
 
 vim.api.nvim_create_autocmd("VimLeavePre", {

@@ -7,6 +7,8 @@ return {
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     {
       'eckon/treesitter-current-functions',
+      dependencies = { 'nvim-telescope/telescope.nvim' },
+      enabled = false,
       keys = {
         {"<leader>fn", ":GetCurrentFunctionsForce telescope<CR>", noremap = true, silent = true, desc = "Functions in current file"}
       }

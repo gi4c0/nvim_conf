@@ -66,7 +66,7 @@ return {
 
         { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
         { "<leader>T", function() Snacks.picker.colorschemes() end, desc = "Pick colorscheme" },
-        { "<leader>y", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
+        -- { "<leader>y", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
 
         { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Show notifier history" },
         { "<leader>bs",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
@@ -76,6 +76,7 @@ return {
         -- { "[r",  function() Snacks.words.jump(-1, true) end, desc = "Jump reference backward" },
         { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
 
+        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
         { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end }
     },
 }

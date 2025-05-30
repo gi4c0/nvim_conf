@@ -50,3 +50,15 @@ keymap('n', '<leader>tn', ':tabedit<CR>', { noremap = true, silent = true, desc 
 keymap('n', '<leader>tc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
 keymap('n', '<leader>td', ':tabclose<CR>', { noremap = true, silent = true, desc = "Close tab" })
 keymap('n', "gV", "`[v`]", { noremap = true, silent = true, desc = "Select last paste area" })
+
+vim.keymap.set('n', '<leader>fy', function()
+    local fname = vim.fn.expand('%:t')
+    vim.fn.setreg('+', fname)
+    print('📋 File name copied: ' .. fname)
+end, { desc = 'Copy current file name to clipboard' })
+
+vim.keymap.set('n', '<leader>ft', function()
+    local fname = vim.fn.expand('%:t')
+    vim.fn.setreg('+', 'yarn test ' .. fname)
+    print('📋 File name copied for test: ' .. fname)
+end, { desc = 'Copy current file name to clipboard' })
