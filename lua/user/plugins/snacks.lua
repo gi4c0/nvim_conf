@@ -57,6 +57,7 @@ return {
         { "<leader>*", function() Snacks.picker.grep_word() end, desc = "Grep word" },
         { "<leader>/", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
         { "<leader>fn", function() Snacks.picker.lsp_symbols({ filter = { default = { "Method" } } }) end, desc = "Show functions and methods" },
+        { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "Show LSP Symblos" },
         { "gr", function() Snacks.picker.lsp_references() end, desc = "Go to lsp References" },
         { "gt", function() Snacks.picker.lsp_references() end, desc = "Go to Type definitions" },
         { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
