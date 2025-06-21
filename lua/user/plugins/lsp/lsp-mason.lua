@@ -42,7 +42,8 @@ return {
 
     require "mason-tool-installer".setup {
         ensure_installed = {
-          'codelldb'
+          'codelldb',
+          'js-debug-adapter',
         }
     }
   end,
