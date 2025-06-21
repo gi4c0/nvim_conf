@@ -62,3 +62,5 @@ vim.keymap.set('n', '<leader>ft', function()
     vim.fn.setreg('+', 'yarn test ' .. fname)
     print('📋 File name copied for test: ' .. fname)
 end, { desc = 'Copy current file name to clipboard' })
+
+vim.keymap.set('n', 'gR', require('user.libs.find-resolver').find, { desc = "Find resolver" })

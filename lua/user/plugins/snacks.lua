@@ -78,7 +78,7 @@ return {
         { "<leader>gg",  function() Snacks.lazygit() end, desc = "Lazy git" },
 
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-        { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end }
+        { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end },
     },
 }
 
