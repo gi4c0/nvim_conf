@@ -7,6 +7,7 @@ return {
         opts = {
             servers = {
                 graphql = {},
+                v_analyzer = {},
                 vtsls = {
                     complete_function_calls = true,
                     typescript = {
