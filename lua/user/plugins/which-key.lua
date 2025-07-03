@@ -41,6 +41,7 @@ return {
       {"<leader>g", group = "Git"},
       {"<leader>b", group = "Buffer"},
       {"<leader>c", group = "Code actions"},
+      {"<leader>d", group = "Debug"},
       {"<leader>e", group = "Errors"},
       {"<leader>f", group = "Files"},
       {"<leader>h", group = "Help"},

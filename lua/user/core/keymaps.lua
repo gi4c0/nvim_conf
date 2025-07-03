@@ -26,7 +26,7 @@ keymap("n", "<C-s>", ":w<cr>", options)
 keymap('n', 'cI', '^ciw', options)
 
 -- Close window with Q
-keymap("n", "Q", ":bdelete<cr>", options)
+vim.keymap.set("n", "Q", require('user.libs.smart-close-buffer').close_buffer, options)
 keymap("n", "<leader>sc", ":nohlsearch<CR>", { noremap = true, silent = true, desc = "Clear" })
 
 -- Visual --
