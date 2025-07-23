@@ -62,6 +62,8 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
+            ["ai"] = "@conditional.outer",
+            ["ii"] = "@conditional.inner",
             -- You can use the capture groups defined in textobjects.scm
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",

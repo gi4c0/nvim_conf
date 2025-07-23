@@ -45,6 +45,8 @@ return {
       {"<leader>e", group = "Errors"},
       {"<leader>f", group = "Files"},
       {"<leader>h", group = "Help"},
+      {"<leader>k", group = "Kalula"},
+      {"<leader>K", group = "Kalula Picker"},
       {"<leader>l", group = "Lsp"},
       {"<leader>m", group = "Marks"},
       {"<leader>p", group = "Swap Parameters"},

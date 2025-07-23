@@ -42,8 +42,14 @@ vim.opt.termguicolors = true
 vim.opt.writebackup = true         -- This is recommended by coc
 vim.opt.clipboard = 'unnamedplus' -- Copy paste between vim and everything else
 vim.opt.showmode = false            -- Get rid of 'INSERT/NORMAL/VISUAL' status
-vim.opt.colorcolumn = '140'       -- Visualize max allowed line length by column
+-- vim.opt.colorcolumn = '140'       -- Visualize max allowed line length by column
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.iskeyword:append("-")
 vim.opt.shortmess:append("c")
 vim.diagnostic.config({ virtual_text = false })
+
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})

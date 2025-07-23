@@ -23,6 +23,7 @@ return {
         { '<leader>dk', function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Evaluate Expression', mode = {'n', 'v'} },
         { '<leader>dc', function() require('dapui').float_element('console', { position = 'center', width = 150, enter = true, height = 35, title = 'Console' }) end, desc = 'Debug: Console open' },
         { '<leader>ds', function() require('dapui').float_element('scopes', { position = 'center', width = 150, enter = true, height = 35, title = 'Variables' }) end, desc = 'Debug: Scopes open' },
+        { '<leader>df', function() require('dap').focus_frame() end, desc = 'Debug: Focus Frame (current position)' },
     },
 
     opts = require('user.plugins.dap-adapters.js-debug-adapter').configure_js_adapter,

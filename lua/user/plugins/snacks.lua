@@ -50,7 +50,8 @@ return {
     },
     keys = {
         { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
-        { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Buffers" },
+        { "<leader>K", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } }, cwd = "./kalula" }) end, desc = "Kalula picker" },
+        { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } }, sort_lastused = true, nofile = false, current = false }) end, desc = "Buffers" },
         { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
         { "<leader>fr", function() Snacks.picker.recent() end, desc = "Files Recent" },
         -- { "<leader>R", function() Snacks.explorer({ layout = { preset = "vertical" }, auto_close = true, ignored = true, hidden = true }) end, desc = "File Explorer with hidden and ingored" },
