@@ -4,6 +4,13 @@ return {
     build = 'brew install jq',
     opts = {
         global_keymaps_prefix = "<leader>k",
-        global_keymaps = true
+        global_keymaps = true,
+        ui = {
+            display_mode = "float"
+        },
+        kulala_keymaps = {
+            ["Next response"] = { "]k", function() require("kulala.ui").show_next() end, },
+            ["Previous response"] = { "[k", function() require("kulala.ui").show_previous() end, },
+        }
     }
 }
