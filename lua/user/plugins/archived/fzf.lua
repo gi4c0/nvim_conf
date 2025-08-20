@@ -1,10 +1,11 @@
 return {
   'ibhagwan/fzf-lua',
-  enabled = false,
+  enabled = true,
   lazy = false,
 
   dependencies = {
-    { "junegunn/fzf", build = "./install --bin" }
+    { "junegunn/fzf", build = "./install --bin" },
+    { 'elanmed/fzf-lua-frecency.nvim', setup = true },
   },
 
   config = function ()
@@ -38,16 +39,16 @@ return {
   end,
 
   keys = {
-    -- {'<C-p>', "<cmd>lua require('fzf-lua').files()<CR>", silent = true},
-    {'<leader>fR', ":FzfLua files resume=true<CR>", silent = true, desc = "Resume on file search"},
+    {'<leader>ff', function() require('fzf-lua-frecency').frecency({ cwd_only = true }) end, silent = true},
+    -- {'<leader>fr', ":FzfLua files resume=true<CR>", silent = true, desc = "Resume on file search"},
     -- {'<leader>fr', ':FzfLua oldfiles<CR>', noremap = true, silent = true, "Recent files" },
-    {'<leader>gB', ':FzfLua git_branches<CR>', noremap = true, silent = true, "Git branches" },
-    {'<C-Space>', "<cmd>lua require('fzf-lua').buffers()<CR>", silent = true},
-    {'<leader>/', ":FzfLua live_grep<CR>", silent = true},
-    {'<leader>*', ":FzfLua grep_cword<CR>", silent = true, mode = {'n'}},
-    {'gR', ":FzfLua grep_cword<CR> resolver", silent = true, mode = {'n'}, desc = "Grep in Resolvers"},
-    {'<leader>*', ":FzfLua grep_visual<CR>", silent = true, mode = {'v'}},
-    {'<leader>ss', ":FzfLua grep<CR>", silent = true},
-    {'<leader>sl', ":FzfLua grep_last<CR>", silent = true},
+    -- {'<leader>gB', ':FzfLua git_branches<CR>', noremap = true, silent = true, "Git branches" },
+    -- {'<C-Space>', "<cmd>lua require('fzf-lua').buffers()<CR>", silent = true},
+    -- {'<leader>/', ":FzfLua live_grep<CR>", silent = true},
+    -- {'<leader>*', ":FzfLua grep_cword<CR>", silent = true, mode = {'n'}},
+    -- {'gR', ":FzfLua grep_cword<CR> resolver", silent = true, mode = {'n'}, desc = "Grep in Resolvers"},
+    -- {'<leader>*', ":FzfLua grep_visual<CR>", silent = true, mode = {'v'}},
+    -- {'<leader>ss', ":FzfLua grep<CR>", silent = true},
+    -- {'<leader>sl', ":FzfLua grep_last<CR>", silent = true},
   }
 }

@@ -34,7 +34,6 @@ return {
           g = false, -- bindings for prefixed with g
         },
       },
-      -- triggers_nowait = {}
     })
 
     wk.add({
@@ -53,25 +52,9 @@ return {
       {"<leader>o", group = "Open"},
       {"<leader>s", group = "Search"},
       {"<leader>S", group = "Snippet"},
-      {"<leader>t", group = "Tabs"},
+      {"<leader>t", group = "terminal"},
+      {"<leader>T", group = "Tabs"},
       {"<leader>u", group = "Undo tree"},
     })
-
-    -- wk.register({
-    --   g = { name = "Git", },
-    --   b = { name = "Buffer" },
-    --   c = { name = "Code actions" },
-    --   e = { name = "Errors" },
-    --   f = { name = "Files" },
-    --   h = { name = "Help" },
-    --   l = { name = "Lsp" },
-    --   m = { name = "Marks" },
-    --   p = { name = "Swap Parameters" },
-    --   o = { name = "Open" },
-    --   s = { name = "Search" },
-    --   S = { name = "Snippet" },
-    --   u = { name = "Undo tree" },
-    -- }, { prefix = "<leader>" })
-
   end
 }

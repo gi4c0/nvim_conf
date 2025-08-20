@@ -37,19 +37,17 @@ keymap("v", ">", ">gv", options)
 keymap("n", "[b", ":bprevious<CR>", options)
 keymap("n", "]b", ":bnext<CR>", options)
 
-keymap("n", "]t", ":tabnext<CR>", options)
-keymap("n", "[t", ":tabprevious<CR>", options)
-keymap("n", "tc", ":tabclose<CR>", options)
+keymap("n", "]w", ":tabnext<CR>", options)
+keymap("n", "[w", ":tabprevious<CR>", options)
 
 keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 
 keymap('n', '<leader>bD', ':Bonly<CR>', { noremap = true, silent = true, desc = "Delete all buffers except for current" })
 
-keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, silent = true, desc = "Delete all tabs except for current" })
-keymap('n', '<leader>tn', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
-keymap('n', '<leader>tc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
-keymap('n', '<leader>td', ':tabclose<CR>', { noremap = true, silent = true, desc = "Close tab" })
-keymap('n', "gV", "`[v`]", { noremap = true, silent = true, desc = "Select last paste area" })
+keymap('n', '<leader>wO', ':tabonly<CR>', { noremap = true, silent = true, desc = "Delete all tabs except for current" })
+keymap('n', '<leader>wn', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
+keymap('n', '<leader>wc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
+keymap('n', '<leader>wd', ':tabclose<CR>', { noremap = true, silent = true, desc = "Close tab" })
 
 vim.keymap.set('n', '<leader>fy', function()
     local fname = vim.fn.expand('%:t')
@@ -57,10 +55,6 @@ vim.keymap.set('n', '<leader>fy', function()
     print('📋 File name copied: ' .. fname)
 end, { desc = 'Copy current file name to clipboard' })
 
-vim.keymap.set('n', '<leader>ft', function()
-    local fname = vim.fn.expand('%:t')
-    vim.fn.setreg('+', 'yarn test ' .. fname)
-    print('📋 File name copied for test: ' .. fname)
-end, { desc = 'Copy current file name to clipboard' })
-
 vim.keymap.set('n', 'gR', require('user.libs.find-resolver').find, { desc = "Find resolver" })
+
+vim.keymap.set('t', '<ESC><ESC>', '<C-\\><C-n>')
