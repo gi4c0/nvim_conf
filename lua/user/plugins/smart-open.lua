@@ -1,6 +1,7 @@
 return {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
+    enabled = true,
     config = function()
         local actions = require('telescope.actions')
         local smart_open_actions = require("smart-open.actions")
@@ -49,6 +50,6 @@ return {
     },
 
     keys = {
-        { '<C-p>', function() require("telescope").extensions.smart_open.smart_open({ previewer = false, cwd_only = true,  }) end, silent = true, desc = 'Smart Open' }
+        { '<leader>ff', function() require("telescope").extensions.smart_open.smart_open({ previewer = false, cwd_only = true,  }) end, silent = true, desc = 'Smart Open' }
     }
 }

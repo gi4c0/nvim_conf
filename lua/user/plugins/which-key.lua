@@ -52,7 +52,7 @@ return {
       {"<leader>o", group = "Open"},
       {"<leader>s", group = "Search"},
       {"<leader>S", group = "Snippet"},
-      {"<leader>t", group = "terminal"},
+      {"<leader>t", group = "tabs/terminal"},
       {"<leader>T", group = "Tabs"},
       {"<leader>u", group = "Undo tree"},
     })

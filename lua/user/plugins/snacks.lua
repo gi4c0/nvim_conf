@@ -50,6 +50,7 @@ return {
     },
     keys = {
         -- { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
+        { '<C-p>', function() require('user.libs.snacks-fff').fff() end, desc = "Snacks fff" },
         { "<leader>K", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } }, cwd = "./kulala" }) end, desc = "Kalula picker" },
         { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } }, sort_lastused = true, nofile = false, current = false }) end, desc = "Buffers" },
         { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
