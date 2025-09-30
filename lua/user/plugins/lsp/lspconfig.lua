@@ -16,6 +16,7 @@ return {
                         },
                     },
                     settings = {
+                        vtsls = { autoUseWorkspaceTsdk = true },
                         typescript = {
                             tsserver = {
                                 maxTsServerMemory = 12000
@@ -46,14 +47,9 @@ return {
         dependencies = {
             { 'saghen/blink.cmp' },
             { "iguanacucumber/magazine.nvim" },
-            -- { "antosha417/nvim-lsp-file-operations", config = true },
 
         },
         config = function(_, opts)
-            local lspconfig = require("lspconfig")
-            -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
-            -- local capabilities = cmp_nvim_lsp.default_capabilities()
-
             vim.diagnostic.config({
                 signs = {
                     text = {
@@ -64,18 +60,11 @@ return {
                     }
                 }
             })
-            -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-            --
-            -- for type, icon in pairs(signs) do
-            --   local hl = "DiagnosticSign" .. type
-            --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-            --
-            -- end
 
             for server, config in pairs(opts.servers) do
-                -- config.capabilities = capabilities
                 config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
+                vim.lsp.enable(server)
+                vim.lsp.config[server] = config
             end
         end,
 
@@ -84,8 +73,8 @@ return {
             -- {"gd", vim.lsp.buf.definition, silent = true },
             {"gl", vim.diagnostic.open_float, silent = true, desc = "Show line diagnostics"},
             {"gt", vim.lsp.buf.type_definition, silent = true, desc = "Show line diagnostics"},
-            {"<C-k>", vim.diagnostic.goto_prev, silent = true, desc = "Go to Previous error"},
-            {"<C-j>", vim.diagnostic.goto_next, silent = true, desc = "Go to Next error"},
+            {"<C-k>", function() vim.diagnostic.jump { count = -1, float = true } end, silent = true, desc = "Go to Previous error"},
+            {"<C-j>", function() vim.diagnostic.jump { count = 1, float = true } end, silent = true, desc = "Go to Next error"},
         }
     },
 

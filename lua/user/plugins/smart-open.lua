@@ -50,6 +50,7 @@ return {
     },
 
     keys = {
-        { '<leader>ff', function() require("telescope").extensions.smart_open.smart_open({ previewer = false, cwd_only = true,  }) end, silent = true, desc = 'Smart Open' }
+        { '<C-p>', function() require("telescope").extensions.smart_open.smart_open({ previewer = false, cwd_only = true,  }) end, silent = true, desc = 'Smart Open' }
+        -- { '<leader>ff', function() require("telescope").extensions.smart_open.smart_open({ previewer = false, cwd_only = true,  }) end, silent = true, desc = 'Smart Open' }
     }
 }

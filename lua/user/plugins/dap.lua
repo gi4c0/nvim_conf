@@ -23,6 +23,7 @@ return {
         { '<leader>dk', function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Evaluate Expression', mode = {'n', 'v'} },
         { '<leader>dc', function() require('dapui').float_element('console', { position = 'center', width = 150, enter = true, height = 35, title = 'Console' }) end, desc = 'Debug: Console open' },
         { '<leader>ds', function() require('dapui').float_element('scopes', { position = 'center', width = 150, enter = true, height = 35, title = 'Variables' }) end, desc = 'Debug: Scopes open' },
+        { '<leader>dr', function() require('dapui').float_element('repl', { position = 'center', width = 150, enter = true, height = 35, title = 'Repl' }) end, desc = 'Repl' },
         { '<leader>df', function() require('dap').focus_frame() end, desc = 'Debug: Focus Frame (current position)' },
     },
 
@@ -45,8 +46,8 @@ return {
                     elements = {
                         -- { id = "scopes", size = 0.7 },
                         -- { id = "watches", size = 0.3 },
-                        { id = "repl", size = 0.2 },
-                        { id = "breakpoints", size = 0.8 },
+                        -- { id = "repl", size = 0.2 },
+                        { id = "breakpoints", size = 1 },
                     },
                     size = 40,
                     position = 'right'

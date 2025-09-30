@@ -50,5 +50,6 @@ return {
     {'<leader>r', '<CMD>Oil --float<CR>', { desc = "Open parent directory" }},
     {'<leader>R', function() require('oil').open_float(vim.uv.cwd()) end, { desc = "Open parent directory" }},
     { "<C-f>", function() require('user.libs.snacks-dirs').find_dirs(function(path) require('oil').open_float(path) end) end, desc = "Find directories" },
+    {'<leader>kf', function() require('oil').open_float(vim.uv.cwd() .. '/kulala') end}
   }
 }

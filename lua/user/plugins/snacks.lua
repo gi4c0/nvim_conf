@@ -50,7 +50,7 @@ return {
     },
     keys = {
         -- { "<C-p>", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } } }) end, desc = "Smart Find Files" },
-        { '<C-p>', function() require('user.libs.snacks-fff').fff() end, desc = "Snacks fff" },
+        -- { '<C-p>', function() require('user.libs.snacks-fff').fff() end, desc = "Snacks fff" },
         { "<leader>K", function() Snacks.picker.smart({ layout = { preview = false, layout = { width = 0.5 } }, cwd = "./kulala" }) end, desc = "Kalula picker" },
         { "<C-Space>", function() Snacks.picker.buffers({ layout = { preview = false, layout = { width = 0.5 } }, sort_lastused = true, nofile = false, current = false }) end, desc = "Buffers" },
         { "<leader>F", function() Snacks.explorer({ layout = { preset = "vertical", layout = { width = 0.5 } }, auto_close = true }) end, desc = "File Explorer" },
@@ -72,7 +72,7 @@ return {
         -- { "<leader>y", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
 
         { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Show notifier history" },
-        { "<leader>bs",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+        { "<leader>bs",  function() Snacks.scratch({ layout = { false } }) end, desc = "Toggle Scratch Buffer" },
         { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
         -- Disable because highlight works slow on big project
         -- { "]r",  function() Snacks.words.jump(1, true) end, desc = "Jump reference forward" },
