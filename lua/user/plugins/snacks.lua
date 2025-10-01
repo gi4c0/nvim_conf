@@ -81,6 +81,8 @@ return {
 
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
         { '<leader>gc', function() require('user.libs.git-picker').pick_branch_and_file() end },
+
+        { '<leader>ti', ':lua Snacks.picker.lines()<CR> it(` ' },
     },
 }
 
