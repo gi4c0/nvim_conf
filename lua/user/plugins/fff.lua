@@ -1,6 +1,6 @@
 return {
     'dmtrKovalenko/fff.nvim',
-    enabled = true,
+    enabled = false,
     lazy = false,
     build = function()
         -- this will download prebuild binary or try to use existing rustup toolchain to build from source
@@ -38,7 +38,7 @@ return {
         },
     },
     keys = {
-        { "<leader>ff", function() require('fff').find_files() end, desc = 'FFFind files', }
-        -- { "<C-p>", function() require('fff').find_files() end, desc = 'FFFind files', }
+        -- { "<leader>ff", function() require('fff').find_files() end, desc = 'FFFind files', }
+        { "<C-p>", function() require('fff').find_files() end, desc = 'FFFind files', }
     }
 }

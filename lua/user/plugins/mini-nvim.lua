@@ -2,6 +2,7 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     enabled = true,
+    lazy = false,
     config = function ()
         require('mini.splitjoin').setup()
 
@@ -11,6 +12,13 @@ return {
                 -- synchronize = '<C-s>',
             }
         })
+
+        require('mini.pick').setup {
+            mappings = {
+                move_down  = '<C-j>',
+                move_up    = '<C-k>',
+            }
+        }
 
         vim.api.nvim_create_autocmd("User", {
             pattern = "MiniFilesActionRename",

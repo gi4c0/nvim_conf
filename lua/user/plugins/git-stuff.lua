@@ -173,4 +173,10 @@ return {
       {"<TAB>", "za", desc = "Toggle fold", ft="git" },
     }
   },
+
+  {
+      'fredehoey/tardis.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = true,
+  }
 }

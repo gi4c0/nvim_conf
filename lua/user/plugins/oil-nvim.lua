@@ -9,6 +9,7 @@ return {
           show_hidden = true
       },
       float = {
+        border = 'single',
         max_width = 125,
         max_height = 30
       },
@@ -29,6 +30,7 @@ return {
         ["l"] = { "actions.select", mode = "n" },
         ["q"] = { "actions.close", mode = "n" },
         ["Q"] = { "actions.close", mode = "n" },
+        ["<C-q>"] = { "actions.send_to_qflist", mode = {"n", "v"} },
       }
     })
 
