@@ -2,6 +2,7 @@ return {
   'L3MON4D3/LuaSnip',
   version = "v2.*",
   build = "make install_jsregexp",
+  enabled = true,
 
   keys = {
     {"<C-l>", "<cmd> lua require('luasnip').expand()<CR>", silent = true, mode = {"i"}},

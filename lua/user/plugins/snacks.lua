@@ -71,7 +71,6 @@ return {
         { "<leader>T", function() Snacks.picker.colorschemes() end, desc = "Pick colorscheme" },
         -- { "<leader>y", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
 
-        { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Show notifier history" },
         { "<leader>bs",  function() Snacks.scratch({ layout = { false } }) end, desc = "Toggle Scratch Buffer" },
         { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
         -- Disable because highlight works slow on big project

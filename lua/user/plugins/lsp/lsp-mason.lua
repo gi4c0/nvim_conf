@@ -43,6 +43,7 @@ return {
     require "mason-tool-installer".setup {
         ensure_installed = {
           'codelldb',
+          -- 'tsgo',
           'v-analyzer',
           'js-debug-adapter',
         }

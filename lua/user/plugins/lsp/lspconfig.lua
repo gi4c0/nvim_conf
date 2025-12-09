@@ -8,22 +8,23 @@ return {
             servers = {
                 graphql = {},
                 v_analyzer = {},
-                vtsls = {
-                    complete_function_calls = true,
-                    typescript = {
-                        suggest = {
-                            completeFunctionCalls = true,
-                        },
-                    },
-                    settings = {
-                        vtsls = { autoUseWorkspaceTsdk = true },
-                        typescript = {
-                            tsserver = {
-                                maxTsServerMemory = 12000
-                            }
-                        }
-                    }
-                },
+                tsgo = {},
+                -- vtsls = {
+                --     -- complete_function_calls = true,
+                --     -- typescript = {
+                --     --     suggest = {
+                --     --         completeFunctionCalls = true,
+                --     --     },
+                --     -- },
+                --     settings = {
+                --         vtsls = { autoUseWorkspaceTsdk = true },
+                --         typescript = {
+                --             tsserver = {
+                --                 maxTsServerMemory = 12000
+                --             }
+                --         }
+                --     }
+                -- },
                 html = {},
                 -- eslint = {},
                 cssls = {},

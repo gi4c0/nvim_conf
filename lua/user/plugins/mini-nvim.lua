@@ -1,10 +1,12 @@
 return {
     'echasnovski/mini.nvim',
     version = false,
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function ()
         require('mini.splitjoin').setup()
+
+        -- require('mini.completion').setup()
 
         require('mini.files').setup({
             mappings = {

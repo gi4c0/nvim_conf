@@ -42,6 +42,7 @@ return {
         require("telescope").load_extension("smart_open")
     end,
     dependencies = {
+        'nvim-telescope/telescope.nvim',
         "kkharji/sqlite.lua",
         -- Only required if using match_algorithm fzf
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

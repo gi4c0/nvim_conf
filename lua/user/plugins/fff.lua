@@ -38,7 +38,7 @@ return {
         },
     },
     keys = {
-        -- { "<leader>ff", function() require('fff').find_files() end, desc = 'FFFind files', }
-        { "<C-p>", function() require('fff').find_files() end, desc = 'FFFind files', }
+        { "<leader>ff", function() require('fff').find_files() end, desc = 'FFFind files', }
+        -- { "<C-p>", function() require('fff').find_files() end, desc = 'FFFind files', }
     }
 }

@@ -110,6 +110,7 @@ return {
     lazy = false,
     keys = {
       {"<leader>gd", ":Gitsigns preview_hunk<CR>", desc = "Difference hunk preview", silent = true},
+      {'<leader>gB', function() require('gitsigns').toggle_current_line_blame() end},
       {
         ']g',
         function()
@@ -165,7 +166,7 @@ return {
 
     keys = {
       {"<leader>gs", ":vertical :Git<CR>", noremap = true, silent = true, desc = "Git status" },
-      {"<leader>gS", ":vertical :Git<CR><C-w>o", noremap = true, silent = true, desc = "Git status (full screen)" },
+      -- {"<leader>gS", ":vertical :Git<CR><C-w>o", noremap = true, silent = true, desc = "Git status (full screen)" },
       {"<leader>gb", ":Git blame<CR>", noremap = true, silent = true, desc = "Git blame" },
       -- {"<leader>gc", ":Gvsplit :%<left><left>", noremap = true, silent = true, desc = "Show git file on given commit/branch" },
       {">", "zo", desc = "Open fold", ft="git" },
