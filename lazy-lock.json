@@ -25,7 +25,6 @@
   "meow.yarn.nvim": { "branch": "main", "commit": "a7e6770d21a36db90f68d4785ece4d2ade06ccf5" },
   "mini.icons": { "branch": "main", "commit": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428" },
   "mini.nvim": { "branch": "main", "commit": "b409fd1d8b9ea7ec7c0923eb2562b52ed5d1ab0a" },
-  "neogit": { "branch": "master", "commit": "300949af63fa48cb6bc8d93822b78cb9dbb4fd75" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "70659cc3d38151424298ab46b0f67f2251cef231" },
   "none-ls.nvim": { "branch": "main", "commit": "550197530c12b4838d685cf4e0d5eb4cca8d52c7" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
