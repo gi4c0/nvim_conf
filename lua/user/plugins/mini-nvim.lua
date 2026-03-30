@@ -9,7 +9,7 @@ return {
         require('mini.files').setup({
             mappings = {
                 go_in_plus  = 'l',
-                -- synchronize = '<C-s>',
+                synchronize = '<C-s>',
             },
             windows = {
                 preview = true,
@@ -43,10 +43,8 @@ return {
                 end)
 
                 MiniFiles.set_target_window(new_target)
-
-                -- This intentionally doesn't act on file under cursor in favor of
-                -- explicit "go in" action (`l` / `L`). To immediately open file,
-                -- add appropriate `MiniFiles.go_in()` call instead of this comment.
+                MiniFiles.go_in()
+                MiniFiles.close()
             end
 
             -- Adding `desc` will result into `show_help` entries
@@ -59,7 +57,7 @@ return {
             callback = function(args)
                 local buf_id = args.data.buf_id
                 -- Tweak keys to your liking
-                map_split(buf_id, '<C-s>', 'belowright horizontal')
+                -- map_split(buf_id, '<C-s>', 'belowright horizontal')
                 map_split(buf_id, '<C-v>', 'belowright vertical')
                 map_split(buf_id, '<C-t>', 'tab')
             end,
@@ -91,7 +89,7 @@ return {
                     -- the width of windows based on their distance from the center
                     -- i.e. center window is 60, then next over is 20, then the rest are 10.
                     -- Can use more resolution if you want like { 60, 30, 20, 15, 10, 5 }
-                    local widths = { 60, 30, 10 }
+                    local widths = { 60, 40, 35 }
 
                     local i = math.abs(idx_offset) + 1 -- because lua is 1-based lol
                     local win_config = vim.api.nvim_win_get_config(ev.data.win_id)

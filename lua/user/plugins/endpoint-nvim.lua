@@ -1,5 +1,6 @@
 return {
   "zerochae/endpoint.nvim",
+  commit = "1ba73840048caa6c0ad3c31d877221afa034e99b",
   dependencies = {
     "folke/snacks.nvim",            -- For snacks picker
   },

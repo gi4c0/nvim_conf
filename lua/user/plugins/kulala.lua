@@ -7,6 +7,11 @@ return {
         global_keymaps = true,
         ui = {
             display_mode = "float",
+            win_opts = {
+                wo = {
+                    foldmethod = 'manual'
+                }
+            }
         },
         kulala_keymaps = {
             ["Next response"] = { "]k", function() require("kulala.ui").show_next() end, },

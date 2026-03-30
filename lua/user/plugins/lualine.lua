@@ -1,3 +1,8 @@
+local function full_path()
+    local path = vim.fn.expand('%')
+    return '/' .. path:match("([^/]+/[^/]+)$")
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -13,8 +18,7 @@ return {
     },
     sections = {
       lualine_a = {'branch'},
-      lualine_b = {'filename'},
-      lualine_c = {
+      lualine_b = {
         {
           'diagnostics',
           -- table of diagnostic sources, available sources:
@@ -30,6 +34,7 @@ return {
           -- symbols = {error = 'E: ', warn = 'W: ', info = 'I: ', hint = 'H: '}
         }
       },
+      lualine_c = {full_path},
       lualine_x = {'encoding', 'fileformat', 'filetype'},
       lualine_y = {'progress'},
       lualine_z = {'location'}

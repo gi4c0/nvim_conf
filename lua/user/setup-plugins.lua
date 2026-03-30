@@ -26,3 +26,5 @@ require('lazy').setup({
         notify = false
     }
 })
+
+require('user.libs.copy-type')

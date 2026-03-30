@@ -2,29 +2,28 @@ return {
     {
         "neovim/nvim-lspconfig",
         enabled = true,
-        cond = vim.env.COC ~= '1',
         event = { "BufReadPre", "BufNewFile" },
         opts = {
             servers = {
                 graphql = {},
                 v_analyzer = {},
-                tsgo = {},
-                -- vtsls = {
-                --     -- complete_function_calls = true,
-                --     -- typescript = {
-                --     --     suggest = {
-                --     --         completeFunctionCalls = true,
-                --     --     },
-                --     -- },
-                --     settings = {
-                --         vtsls = { autoUseWorkspaceTsdk = true },
-                --         typescript = {
-                --             tsserver = {
-                --                 maxTsServerMemory = 12000
-                --             }
-                --         }
-                --     }
-                -- },
+                -- tsgo = {},
+                vtsls = {
+                    -- complete_function_calls = true,
+                    -- typescript = {
+                    --     suggest = {
+                    --         completeFunctionCalls = true,
+                    --     },
+                    -- },
+                    settings = {
+                        vtsls = { autoUseWorkspaceTsdk = true },
+                        typescript = {
+                            tsserver = {
+                                maxTsServerMemory = 12000
+                            }
+                        }
+                    }
+                },
                 html = {},
                 -- eslint = {},
                 cssls = {},

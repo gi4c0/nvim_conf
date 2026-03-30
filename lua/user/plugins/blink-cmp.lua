@@ -1,5 +1,6 @@
 return {
     'saghen/blink.cmp',
+    enabled = true,
     -- optional: provides snippets for the snippet source
     dependencies = { 'rafamadriz/friendly-snippets' },
 
@@ -47,12 +48,20 @@ return {
         sources = {
             default = { 'lazydev', 'lsp', 'path', 'buffer' },
             providers = {
+                buffer = {
+                    opts = {
+                        get_bufnrs = function()
+                            return vim.api.nvim_list_bufs()
+                        end,
+                    }
+                },
                 snippets = {
                     opts = {
                         friendly_snippets = false,
                     }
                 },
                 lsp = {
+                    fallbacks = {},
                     name = 'LSP',
                     module = 'blink.cmp.sources.lsp',
                     transform_items = function(_, items)

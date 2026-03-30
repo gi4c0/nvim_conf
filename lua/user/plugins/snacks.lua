@@ -33,14 +33,14 @@ return {
         notifier = {},
         gitbrowse = {},
         indent = {},
-        scratch = {
-            win = {
-                keys = {
-                    ['q'] = false,
-                    ['Q'] = 'close'
-                }
-            }
-        },
+        -- scratch = {
+        --     win = {
+        --         keys = {
+        --             ['q'] = false,
+        --             ['Q'] = 'close'
+        --         }
+        --     }
+        -- },
         health = {},
         bigfile = {
             notify = false,
