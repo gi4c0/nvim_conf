@@ -1,5 +1,6 @@
 return {
   'mbbill/undotree',
+  enabled = false,
 
   init = function()
     -- Persistent undo

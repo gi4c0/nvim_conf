@@ -1,6 +1,8 @@
 return {
   "zerochae/endpoint.nvim",
-  commit = "1ba73840048caa6c0ad3c31d877221afa034e99b",
+  enabled = true,
+  tag = "v2.7.0",
+  -- branch = "fix/64",
   dependencies = {
     "folke/snacks.nvim",            -- For snacks picker
   },
