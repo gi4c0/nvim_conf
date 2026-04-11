@@ -1,18 +1,10 @@
 return {
-  'mbbill/undotree',
-  enabled = false,
-
-  init = function()
-    -- Persistent undo
-    vim.cmd [[
-      if has("persistent_undo")
-        set undodir=~/dev/.undodir
-        set undofile
-      endif
-    ]]
-  end,
-
-  keys = {
-    {'<leader>u', ':UndotreeToggle<cr>:UndotreeFocus<cr>', noremap = true, silent = true }
-  }
+    "XXiaoA/atone.nvim",
+    cmd = "Atone",
+    ---@module "atone"
+    ---@type AtoneConfig
+    opts = {},
+    keys = {
+        {'<leader>u', ':Atone toggle<CR>', silent = true, desc = 'Undotree'}
+    }
 }
