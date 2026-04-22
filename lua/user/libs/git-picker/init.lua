@@ -116,4 +116,9 @@ end
 
 M.open_explorer = explorer.open_explorer
 
+M.code_diff = function()
+  local branches = git.get_branches()
+  if not branches then return end
+end
+
 return M

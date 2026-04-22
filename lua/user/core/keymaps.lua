@@ -48,15 +48,7 @@ keymap('n', '<leader>tO', ':tabonly<CR>', { noremap = true, silent = true, desc 
 keymap('n', '<leader>tn', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
 keymap('n', '<leader>tc', ':tabedit<CR>', { noremap = true, silent = true, desc = "New tab" })
 
-local deleteTerminalOrTab = function ()
-    if vim.bo.filetype == 'toggleterm' then
-        vim.cmd(':q!')
-    else
-        vim.cmd(':tabclose')
-    end
-end
-
-vim.keymap.set({'n', 't'}, '<leader>td', deleteTerminalOrTab, { noremap = true, silent = true, desc = "Close tab" })
+vim.keymap.set({'n'}, '<leader>td', ':tabclose<cr>', { noremap = true, silent = true, desc = "Close tab" })
 
 vim.keymap.set('n', '<leader>fy', function()
     local fname = vim.fn.expand('%:t')
@@ -67,3 +59,10 @@ end, { desc = 'Copy current file name to clipboard' })
 vim.keymap.set('n', 'gR', require('user.libs.find-resolver').find, { desc = "Find resolver" })
 
 vim.keymap.set('t', '<ESC><ESC>', '<C-\\><C-n>')
+
+-- Move highlighted block up/down in Visual mode
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'Move block down', silent = true })
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Move block up', silent = true })
+
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')

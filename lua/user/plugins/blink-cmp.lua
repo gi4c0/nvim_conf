@@ -65,9 +65,36 @@ return {
                     name = 'LSP',
                     module = 'blink.cmp.sources.lsp',
                     transform_items = function(_, items)
-                        return vim.tbl_filter(function(item)
-                            return item.kind ~= require('blink.cmp.types').CompletionItemKind.Snippet
+                        local blink_types = require('blink.cmp.types')
+                        local cursor_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+
+                        local filtered_items = vim.tbl_filter(function(item)
+                            return item.kind ~= blink_types.CompletionItemKind.Snippet
                         end, items)
+
+                        -- 2. Modify items
+                        return vim.tbl_map(function(item)
+                            -- Demote keywords to the bottom
+                            if item.kind == blink_types.CompletionItemKind.Keyword then
+                                item.sortText = '~' .. (item.sortText or item.label)
+                            end
+
+                            -- Fix TypeScript's overzealous textEdit ranges replacing previous lines
+                            if item.textEdit then
+                                -- `textEdit` can be a standard TextEdit or an InsertReplaceEdit
+                                local edit_range = item.textEdit.range or item.textEdit.replace
+
+                                -- If the LSP tries to modify a line above where we are currently typing:
+                                if edit_range and edit_range.start.line < cursor_line then
+                                    -- Force blink to use standard text insertion at the cursor
+                                    item.insertText = item.textEdit.newText or item.insertText or item.label
+                                    item.textEdit = nil
+                                end
+                            end
+
+                            return item
+                        end, filtered_items)
                     end,
                 },
                 lazydev = {
@@ -89,6 +116,7 @@ return {
         fuzzy = {
             implementation = "prefer_rust_with_warning",
             sorts = {
+                'exact',
                 'score',
                 'sort_text',
                 'label'

@@ -1,7 +1,86 @@
+local layout = {
+  layout = {
+    box = "horizontal",
+    width = 0.5,
+    height = 0.5,
+    {
+      box = "vertical",
+      border = "rounded",
+      title = "Find branch",
+      { win = "input", height = 1, border = "bottom" },
+      { win = "list", border = "none" },
+    },
+  },
+}
+
+local function pick_branch_for_code_diff ()
+    local branches = {}
+    local ok, handle = pcall(io.popen, 'git branch --sort=-creatordate --format="%(refname:short)"')
+
+    if ok and handle then
+        for line in handle:lines() do
+            table.insert(branches, line)
+        end
+
+        handle:close()
+    else
+        local message = "Failed to execute git branch command"
+        vim.notify(message, 'error')
+        return
+    end
+
+    local items = {}
+    table.insert(items, { idx = 1, score = 1, branch = '', text = 'HEAD' })
+
+    for i, item in ipairs(branches) do
+        table.insert(items, { idx = i + 1, score = 1, branch = item, text = item })
+    end
+
+    Snacks.picker.pick({
+        items = items,
+        formatters = {
+            file = {
+                filename_first = false,
+            }
+        },
+        layout = layout,
+        format = function(item, _)
+            local ret = {}
+            local a = Snacks.picker.util.align
+            local icon, icon_hl = Snacks.util.icon('git', 'filetype')
+
+            ret[#ret + 1] = { a(icon, 3), icon_hl }
+            ret[#ret + 1] = { " " }
+            ret[#ret + 1] = { a(item.text, 20) }
+
+            return ret
+        end,
+
+        confirm = function(picker, item)
+            picker:close()
+            vim.cmd('CodeDiff ' .. item.branch)
+        end,
+        preview = nil,
+    })
+end
+
 return {
     {
         "esmuellert/codediff.nvim",
         cmd = "CodeDiff",
+        lazy = false,
+        keys = {
+            {'<leader>gD', pick_branch_for_code_diff, desc = 'CodeDiff with branch'}
+        },
+        config = function()
+            local gitlab = require('user.libs.gitlab')
+
+            vim.api.nvim_create_user_command(
+                'MR',
+                function(opts) gitlab.show_mr(opts.args) end,
+                { nargs = 1 }
+            )
+        end
     },
 
     {
