@@ -1,6 +1,8 @@
 local M = {}
 local H = {}
 
+local file_helper = require('user.libs.file-helper')
+
 local BRANCH_CACHE_PATH = vim.fn.expand("~/.local/share/nvim/recent_git_branches.json")
 local FILES_CACHE_PATH = vim.fn.expand("~/.local/share/nvim/recent_files.json")
 
@@ -75,19 +77,6 @@ M.save_branch_to_state = function (project_cwd, branch)
     table.insert(branches, 1, branch)
 end
 
----@param file_path string
----@param data table<string, string[]>
-H.save_file = function(data, file_path)
-    local json_content = vim.fn.json_encode(data)
-    local file, err = io.open(file_path, "w")
-
-    if file then
-        file:write(json_content)
-    else
-        vim.notify("Error: couldn't to write cache file. " .. err)
-    end
-end
-
 H.load_cache = function()
     if vim.fn.filewritable(BRANCH_CACHE_PATH) ~= 1 then
         H.save_file({}, BRANCH_CACHE_PATH)
@@ -99,26 +88,8 @@ H.load_cache = function()
         return
     end
 
-    branches_by_cwd = H.read_file(BRANCH_CACHE_PATH)
-    files_by_branch = H.read_file(FILES_CACHE_PATH)
-end
-
----@param file_path string
----@return table<string, string[]>
-H.read_file = function (file_path)
-    local file, err = io.open(file_path, "r")
-
-    if file then
-        local json_string = file:read("*a")
-        file:close()
-
-        local ok, result = pcall(vim.fn.json_decode, json_string)
-        if not ok then return {} end
-        return result
-    else
-        vim.notify('Error reading file ' .. file_path .. ': ' .. err )
-        return {}
-    end
+    branches_by_cwd = file_helper.read_file(BRANCH_CACHE_PATH)
+    files_by_branch = file_helper.read_file(FILES_CACHE_PATH)
 end
 
 H.load_cache()
@@ -183,8 +154,8 @@ end
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
     callback = function()
-        H.save_file(branches_by_cwd, BRANCH_CACHE_PATH)
-        H.save_file(files_by_branch, FILES_CACHE_PATH)
+        file_helper.write_file(branches_by_cwd, BRANCH_CACHE_PATH)
+        file_helper.write_file(files_by_branch, FILES_CACHE_PATH)
     end
 })
 

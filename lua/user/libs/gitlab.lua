@@ -1,9 +1,15 @@
 local M = {}
+local file_helper = require('user.libs.file-helper')
 
 local private_token = vim.env.GITLAB_PRIVATE_TOKEN
+local CACHE_PATH = '/tmp/gitlab-nvim.json'
+local gitlab_base_url = 'https://gitlab.gosystem.io/api/v4'
+local cache = file_helper.read_file(CACHE_PATH)
 
---- @param url string
-local function async_curl(url)
+--- @param short_url string
+local function async_curl(short_url)
+    local url = gitlab_base_url .. short_url
+
     local co = coroutine.running()
     if not co then
         error("async_curl must be called from within a coroutine!")
@@ -43,18 +49,24 @@ M.show_mr = function(url)
                 error("Couldn't parse the url")
             end
 
-            local project_response = async_curl('https://gitlab.gosystem.io/api/v4/projects?search=' .. repo)
-            local project_data, project_err = project_response[1], project_response[2]
+            if not cache[repo] then
+                local project_response = async_curl('/projects?search=' .. repo)
+                local project_data, project_err = project_response[1], project_response[2]
 
-            if project_err then
-                error(project_err)
+                if project_err then
+                    error(project_err)
+                end
+
+                -- TODO: handle multiple projects via snacks picker
+                --- @type number
+                local project_id = project_data[1].id
+
+                cache[repo] = project_id
+                vim.schedule(function() file_helper.write_file(cache, CACHE_PATH) end)
             end
 
-            -- TODO: handle multiple projects via snacks picker
-            --- @type number
-            local project_id = project_data[1].id
 
-            local mr_response = async_curl('https://gitlab.gosystem.io/api/v4/projects/' .. project_id .. '/merge_requests/' .. mr_id)
+            local mr_response = async_curl('/projects/' .. cache[repo] .. '/merge_requests/' .. mr_id)
             local mr_data, mr_err = mr_response[1], mr_response[2]
 
             if mr_err then
@@ -63,7 +75,6 @@ M.show_mr = function(url)
 
             --- @type string, string
             local target_branch, source_branch = mr_data.target_branch, mr_data.source_branch
-            P({target_branch, source_branch})
 
             vim.schedule(function()
                 vim.cmd('CodeDiff origin/' .. target_branch .. ' origin/' .. source_branch)
