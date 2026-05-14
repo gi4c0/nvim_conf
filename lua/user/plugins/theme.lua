@@ -27,6 +27,10 @@ return {
             require('onedark').load()
         end
     },
+    {
+        "olimorris/onedarkpro.nvim",
+        priority = 1000, -- Ensure it loads first
+    },
 
     {
         "folke/tokyonight.nvim",
@@ -68,7 +72,80 @@ return {
                 -- end,
             })
 
-            vim.cmd[[colorscheme tokyonight]]
+            -- vim.cmd[[colorscheme tokyonight]]
+        end
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function ()
+            require("catppuccin").setup {
+                flavour = "macchiato", -- latte, frappe, macchiato, mocha
+                transparent_background = true,
+
+                integrations = {
+                    lualine = {
+                        -- lualine color overrides in the following hierarchy: Catppuccin Flavor -> Mode -> Lualine Section
+                        -- The Catppuccin flavor entry can be any Catpuccin flavor or "all" to apply to all flavors
+                        -- The flavor entry can be either a table or a function which consumes the current Catppuccin palette, just like custom_highlights and color_overrides
+                        all = function(colors)
+                            ---@type CtpIntegrationLualineOverride
+                            return {
+                                -- Specifying a normal-mode status line override for section a's background and b's foreground to use lavender like the main Catppuccin theme
+                                normal = {
+                                    a = { bg = colors.lavender, gui = "italic" },
+                                    b = { fg = colors.lavender },
+                                }
+                            }
+                        end,
+                        -- A macchiato-specific override, which takes priority over 'all'. Also using the direct table syntax instead of function in case you do not rely on dynamic palette colors
+                        macchiato = {
+                            normal = {
+                                a = { bg = "#abcdef" },
+
+                            }
+                        },
+                    },
+                    mini = {
+                        enabled = true,
+                        indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+                    },
+                    blink_cmp = {
+                        style = 'bordered',
+                    },
+                    telescope = {
+                        enabled = true,
+                    }
+                }
+            }
+
+            vim.cmd.colorscheme "catppuccin-nvim"
+        end
+    },
+    {
+        'AlexvZyl/nordic.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('nordic').setup({
+                transparent = {
+                    bg = true,
+                    float = false,
+                }
+            })
+
+            -- require('nordic').load()
+        end
+    },
+    {
+        'rebelot/kanagawa.nvim',
+        config = function()
+            require('kanagawa').setup({
+                transparent = true
+            })
+
+            -- vim.cmd("colorscheme kanagawa-wave")
         end
     }
 }

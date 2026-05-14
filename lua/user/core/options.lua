@@ -53,3 +53,17 @@ vim.filetype.add({
     ['http'] = 'http',
   },
 })
+
+-- Enable persistent undo
+vim.opt.undofile = true
+
+-- Set the directory where undo history will be stored
+-- This uses a standard Neovim data path (~/.local/share/nvim/undo on Linux/macOS)
+local undo_dir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.undodir = undo_dir
+
+
+-- Create the directory if it doesn't exist
+if vim.fn.isdirectory(undo_dir) == 0 then
+    vim.fn.mkdir(undo_dir, "p")
+end

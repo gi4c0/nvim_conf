@@ -73,8 +73,10 @@ return {
             -- {"gd", vim.lsp.buf.definition, silent = true },
             {"gl", vim.diagnostic.open_float, silent = true, desc = "Show line diagnostics"},
             {"gt", vim.lsp.buf.type_definition, silent = true, desc = "Show line diagnostics"},
-            {"<C-k>", function() vim.diagnostic.jump { count = -1, float = true } end, silent = true, desc = "Go to Previous error"},
-            {"<C-j>", function() vim.diagnostic.jump { count = 1, float = true } end, silent = true, desc = "Go to Next error"},
+            {"[d", function() vim.diagnostic.jump { count = -1, float = true, severity = vim.diagnostic.severity.ERROR } end, silent = true, desc = "Go to Previous error"},
+            {"]d", function() vim.diagnostic.jump { count = 1, float = true, severity = vim.diagnostic.severity.ERROR } end, silent = true, desc = "Go to Next error"},
+            {"[D", function() vim.diagnostic.jump { count = -1, float = true } end, silent = true, desc = "Go to Previous error or warning"},
+            {"]D", function() vim.diagnostic.jump { count = 1, float = true } end, silent = true, desc = "Go to Next error or warning"},
         }
     },
 

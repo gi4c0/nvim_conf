@@ -6,5 +6,5 @@ return {
     opts = {},
     keys = {
         {'<leader>u', ':Atone toggle<CR>', silent = true, desc = 'Undotree'}
-    }
+    },
 }

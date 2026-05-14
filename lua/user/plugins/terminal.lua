@@ -14,15 +14,16 @@ return {
             desc = "test file"
         },
         -- {'<leader>td', '<cmd>q!<CR>', mode = {'t', 'n'}, desc = "Terminal Delete"},
-        {'<C-t>', '<cmd>ToggleTerm<CR>', desc = "Terminal toggle", mode = {'t', 'n'}},
-        { "<C-x>",  "<cmd>q!<CR>",  mode = { "t" } },
+        {'<C-t><C-t>', '<cmd>ToggleTerm<CR>', desc = "Terminal toggle", mode = {'n', 't'}},
+        { '<C-t><C-x>',  '<cmd>q!<CR>',  mode = { 't', 'n' } },
+        { '<C-t><C-d>',  '<cmd>q!<CR>',  mode = { 't', 'n' } },
         {
-            '<leader>tf',
+            '<C-t><C-f>',
             function ()
                 local fname = vim.fn.expand('%:t')
                 vim.cmd('TermExec cmd="yarn test ' .. fname .. '"')
             end,
-            desc = "test file"
+            desc = "wTa fuck"
         },
     }
 }

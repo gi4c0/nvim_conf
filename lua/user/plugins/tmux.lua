@@ -5,9 +5,9 @@ return {
   end,
 
   keys = {
-    {"<A-h>", ":<C-U>TmuxNavigateLeft<cr>", noremap = true, silent = true },
-    {"<A-j>", ":<C-U>TmuxNavigateDown<cr>", noremap = true, silent = true },
-    {"<A-k>", ":<C-U>TmuxNavigateUp<cr>", noremap = true, silent = true },
-    {"<A-l>", ":<C-U>TmuxNavigateRight<cr>", noremap = true, silent = true },
+    {"<C-h>", ":<C-U>TmuxNavigateLeft<cr>", noremap = true, silent = true },
+    {"<C-j>", ":<C-U>TmuxNavigateDown<cr>", noremap = true, silent = true },
+    {"<C-k>", ":<C-U>TmuxNavigateUp<cr>", noremap = true, silent = true },
+    {"<C-l>", ":<C-U>TmuxNavigateRight<cr>", noremap = true, silent = true },
   }
 }

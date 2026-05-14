@@ -77,7 +77,7 @@ M.show_mr = function(url)
             local target_branch, source_branch = mr_data.target_branch, mr_data.source_branch
 
             vim.schedule(function()
-                vim.cmd('CodeDiff origin/' .. target_branch .. ' origin/' .. source_branch)
+                vim.cmd('CodeDiff origin/' .. target_branch .. '...origin/' .. source_branch)
             end)
         end)
 

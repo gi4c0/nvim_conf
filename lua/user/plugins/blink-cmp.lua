@@ -61,7 +61,7 @@ return {
                     }
                 },
                 lsp = {
-                    fallbacks = {},
+                    fallbacks = { 'buffer' },
                     name = 'LSP',
                     module = 'blink.cmp.sources.lsp',
                     transform_items = function(_, items)

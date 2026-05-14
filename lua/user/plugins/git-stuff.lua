@@ -74,6 +74,11 @@ return {
         },
         config = function()
             local gitlab = require('user.libs.gitlab')
+            require('codediff').setup {
+                explorer = {
+                    enabled = false
+                }
+            }
 
             vim.api.nvim_create_user_command(
                 'MR',

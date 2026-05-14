@@ -1,5 +1,6 @@
 return {
     "litvinov-git/furry.nvim",
+    enabled = false,
     dependencies = { "nvim-mini/mini.fuzzy" },
     config = function()
         require("furry").setup({
